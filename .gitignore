@@ -1,0 +1,22 @@
+# This .gitignore file should help you avoid tracking unnecessary files in a Unity project
+
+# Visual Studio / Rider
+.vs/
+.vscode/
+.idea/
+
+# Unity specific
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# macOS
+.DS_Store
+
+# Windows Image File Execution Options
+*.opendb
+*.VC.db

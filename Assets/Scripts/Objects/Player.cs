@@ -5,42 +5,48 @@ namespace GameProject.Models
     public class Player : MonoBehaviour
     {
         // Serialized fields to expose in the Unity Inspector
-        [SerializeField]
-        private int width = 60;
-        [SerializeField]
-        private int height = 100;
-        [SerializeField]
-        private int attack = 10;
-        [SerializeField]
-        private int hp = 100;
-        [SerializeField]
-        private int movementSpeed = 10;
-        [SerializeField]
-        private Vector2 pos; // Position of the player
+        [SerializeField] private int width;
+        [SerializeField] private int height;
+        [SerializeField] private int attack;
+        [SerializeField] private int hp;
+        [SerializeField] private int movementSpeed;
+        [SerializeField] private Vector2 pos; // Position of the player
 
-        // Public properties
-        public int Width { get { return width; } }
-        public int Height { get { return height; } }
-        public int Attack { get { return attack; } set { attack = value; } }
-        public int HP { get { return hp; } set { hp = value; } }
-        public int MovementSpeed { get { return movementSpeed; } set { movementSpeed = value; } }
-        public Vector2 Pos { get { return pos; } set { pos = value; } }
+        // Properties
+        public int Width { get => width; set => width = value; }
+        public int Height { get => height; set => height = value; }
+        public int Attack { get => attack; set => attack = value; }
+        public int HP { get => hp; set => hp = value; }
+        public int MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
+        public Vector2 Pos { get => pos; set => pos = value; }
 
-        // Constructor
-        public Player(Vector2 startingPos, int width = 60, int height = 100, int attack = 10, int hp = 100, int movementSpeed = 10)
+        // Constructors
+        public Player()
+        {
+            // Default initialization
+            width = 60;
+            height = 100;
+            attack = 10;
+            hp = 100;
+            movementSpeed = 10;
+            pos = Vector2.zero;
+        }
+
+        public Player(Vector2 startingPos, int width, int height, int attack, int hp, int movementSpeed)
         {
             Pos = startingPos;
+            Width = width;
+            Height = height;
             Attack = attack;
             HP = hp;
             MovementSpeed = movementSpeed;
         }
 
-
-        // Start is called before the first frame update
-        void Start()
+        // Awake is called when the script instance is being loaded
+        private void Awake()
         {
-            // Initialize the player object
             InitializePlayer();
+            SetDefaultSize();
         }
 
         // Method to initialize the player object
@@ -50,10 +56,11 @@ namespace GameProject.Models
             transform.position = pos;
         }
 
-        // Method to get the position of the player
-        public Vector2 GetPosition()
+        // Method to set default size
+        private void SetDefaultSize()
         {
-            return pos;
+            // Set the default size of the player
+            transform.localScale = new Vector3(0.5f, 0.9f, 1f);
         }
     }
 }

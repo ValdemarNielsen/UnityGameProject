@@ -9,6 +9,9 @@ public class ChestButtonHandler : MonoBehaviour
     // Reference to the player GameObject. You can assign this in the Unity Editor.
     public Player player;
 
+    // Reference to the chest's Animator component.
+    public Animator chestAnimator; // Assign this in the Unity Editor.
+
     // Update is called once per frame
     void Update()
     {
@@ -19,7 +22,7 @@ public class ChestButtonHandler : MonoBehaviour
             InteractWithChest();
         }
     }
-
+        
     // Method to check if the player is close enough to the chest.
     bool IsPlayerCloseEnough()
     {
@@ -33,9 +36,15 @@ public class ChestButtonHandler : MonoBehaviour
     // Method to handle the interaction with the chest.
     void InteractWithChest()
     {
-        // Add your logic here for what should happen when the player interacts with the chest.
-        Debug.Log("Chest interacted!");
-
-        // For example, you could open the chest, play an animation, or trigger some other action.
+        // Check if the Animator component is attached.
+        if (chestAnimator != null)
+        {
+            // Trigger the chest opening animation.
+            chestAnimator.SetTrigger("OpenChest"); // "OpenChest" has to be same as Trigger name if changed. 
+        }
+        else
+        {
+            Debug.LogError("Animator not assigned on ChestButtonHandler.");
+        }
     }
 }

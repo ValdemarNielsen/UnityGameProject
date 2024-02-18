@@ -1,12 +1,7 @@
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameProject.Services;
 using GameProject.Models;
+using GameProject.Services;
+using NUnit.Framework;
+using UnityEngine;
 
 namespace GameProject.Tests
 {
@@ -16,90 +11,58 @@ namespace GameProject.Tests
         [Test]
         public void GetPlayerPos_ReturnInitialPos()
         {
-            //Arrange the bounds and expected position
-            Rectangle bounds = new Rectangle(0, 0, 800, 600);
-            GameManagerService gameManager = new GameManagerService(bounds, 0);
-            Point expPos = new Point(bounds.Width / 2, bounds.Height - 50);
+            // Arrange the bounds and expected position
+            Vector2 boundsCenter = new Vector2(800, 600);
+            Vector2 boundsSize = Vector2.zero;
+            GameManagerService gameManager = new GameManagerService(new Bounds(boundsCenter, boundsSize), 0);
+            Vector2 expPos = new Vector2(boundsCenter.x, boundsCenter.y - 50); // Adjusted expected position to Vector2
 
-            Point ActPos = gameManager.GetPlayerPosition();
+            Vector2 actPos = gameManager.GetPlayerPosition(); // Changed Point to Vector2 for actual position
 
-
-            //Assert Whether or not the Actual Position is at the Expected Position
-            Assert.That(expPos, Is.EqualTo(ActPos));
+            // Assert Whether or not the Actual Position is at the Expected Position
+            Assert.That(expPos, Is.EqualTo(actPos));
         }
-
 
         [TestCase(10)]
         [TestCase(1)]
         public void movePlayerLeft_UpdatePlayerPos(int movementSpeed)
         {
-            Rectangle bounds = new Rectangle(0, 0, 800, 600);
-            GameManagerService gameManager = new GameManagerService(bounds, movementSpeed);
-            Point initialPosition = gameManager.GetPlayerPosition();
+            Vector2 boundsCenter = Vector2.zero;
+            Vector2 boundsSize = new Vector2(800, 600);
+            GameManagerService gameManager = new GameManagerService(new Bounds(boundsCenter, boundsSize), movementSpeed);
+            Vector2 initialPosition = gameManager.GetPlayerPosition(); // Changed Point to Vector2 for initial position
 
-            Player player = new Player(initialPosition, 60, 100, 10, 100, 10);
+            Player player = new Player(initialPosition, 60, 100, 10, 100, 10); // Adjusted Player initialization to use Vector2
 
-
-            Point expectedPosition = new Point(initialPosition.X - movementSpeed, initialPosition.Y);
+            Vector2 expectedPosition = new Vector2(initialPosition.x - movementSpeed, initialPosition.y); // Adjusted expected position to Vector2
 
             gameManager.MovePlayerLeft();
 
-            Point acPos = gameManager.GetPlayerPosition();
+            Vector2 acPos = gameManager.GetPlayerPosition(); // Changed Point to Vector2 for actual position
 
-
-            if (player.MovementSpeed > movementSpeed)
-            {
-                Assert.That(expectedPosition.X, Is.GreaterThan(acPos.X));
-            }
-            else if (player.MovementSpeed < movementSpeed)
-            {
-                Assert.That(expectedPosition.X, Is.LessThan(acPos.X));
-            }
-            else if (player.MovementSpeed == movementSpeed)
-            {
-                Assert.That(expectedPosition.X, Is.EqualTo(acPos.X));
-            }
-
-
-
-
+            // Assert
+            Assert.That(expectedPosition.x, Is.EqualTo(acPos.x));
         }
 
         [TestCase(10)]
         [TestCase(1)]
         public void movePlayerRight_UpdatePlayerPos(int movementSpeed)
         {
-            Rectangle bounds = new Rectangle(0, 0, 800, 600);
-            GameManagerService gameManager = new GameManagerService(bounds, movementSpeed);
-            Point initialPosition = gameManager.GetPlayerPosition();
+            Vector2 boundsCenter = Vector2.zero;
+            Vector2 boundsSize = new Vector2(800, 600);
+            GameManagerService gameManager = new GameManagerService(new Bounds(boundsCenter, boundsSize), movementSpeed);
+            Vector2 initialPosition = gameManager.GetPlayerPosition(); // Changed Point to Vector2 for initial position
 
-            Player player = new Player(initialPosition, 60, 100, 10, 100, 10);
+            Player player = new Player(initialPosition, 60, 100, 10, 100, 10); // Adjusted Player initialization to use Vector2
 
-
-            Point expectedPosition = new Point(initialPosition.X + movementSpeed, initialPosition.Y);
+            Vector2 expectedPosition = new Vector2(initialPosition.x + movementSpeed, initialPosition.y); // Adjusted expected position to Vector2
 
             gameManager.MovePlayerRight();
 
-            Point acPos = gameManager.GetPlayerPosition();
+            Vector2 acPos = gameManager.GetPlayerPosition(); // Changed Point to Vector2 for actual position
 
-
-            if (player.MovementSpeed > movementSpeed)
-            {
-                Assert.That(expectedPosition.X, Is.LessThan(acPos.X));
-            }
-            else if (player.MovementSpeed < movementSpeed)
-            {
-                Assert.That(expectedPosition.X, Is.GreaterThan(acPos.X));
-            }
-            else if (player.MovementSpeed == movementSpeed)
-            {
-                Assert.That(expectedPosition.X, Is.EqualTo(acPos.X));
-            }
-
+            // Assert
+            Assert.That(expectedPosition.x, Is.EqualTo(acPos.x));
         }
-
-
-
-
     }
 }

@@ -1,10 +1,5 @@
 ﻿using GameProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace GameProject.Services
 {
@@ -12,22 +7,21 @@ namespace GameProject.Services
     {
         // Properties
         private Player player;
-
         private PlayerMovementService playerMovement;
-        private Rectangle gameBounds;
+        private Bounds gameBounds;
 
         // Constructor
-        public GameManagerService(Rectangle bounds, int movementSpeed)
+        public GameManagerService(Bounds bounds, int movementSpeed)
         {
             gameBounds = bounds;
-            player = new Player(new Point(bounds.Width / 2, bounds.Height - 50), movementSpeed);
+            player = new Player(new Vector2(bounds.center.x, bounds.center.y - 50), 60, 100, 10, 100, movementSpeed);
             playerMovement = new PlayerMovementService(player, bounds, movementSpeed);
         }
 
         // Method to get the player's position
-        public Point GetPlayerPosition()
+        public Vector2 GetPlayerPosition() // Adjusted return type to Vector2
         {
-            return player.GetPosition();
+            return player.Pos; // Returning player position as Vector2
         }
 
         // Method to move the player left

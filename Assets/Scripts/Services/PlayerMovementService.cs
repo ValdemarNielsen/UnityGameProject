@@ -1,33 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameProject.Models;
-
+﻿using GameProject.Models;
+using UnityEngine;
 
 namespace GameProject.Services
 {
     public class PlayerMovementService
     {
         private Player player;
-        private Rectangle gameBounds;
-        public PlayerMovementService(Player player, Rectangle bounds, int movementSpeed)
+        private Bounds gameBounds;
+
+        public PlayerMovementService(Player player, Bounds bounds, int movementSpeed)
         {
             this.player = player;
             this.gameBounds = bounds;
-            movementSpeed = player.MovementSpeed;
+            player.MovementSpeed = movementSpeed; // Fixed assignment of movementSpeed
         }
 
         public void MoveLeft()
         {
-            player.Pos = new Point(Math.Max(player.Pos.X - player.MovementSpeed, gameBounds.Left), player.Pos.Y);
+            float movement = player.MovementSpeed * Time.deltaTime; // Adjusted movement calculation
+            player.Pos = new Vector2(
+                Mathf.Max(player.Pos.x - movement, gameBounds.min.x),
+                player.Pos.y
+            );
         }
 
         public void MoveRight()
         {
-            player.Pos = new Point(Math.Min(player.Pos.X + player.MovementSpeed, gameBounds.Right - player.Width), player.Pos.Y);
+            float movement = player.MovementSpeed * Time.deltaTime; // Adjusted movement calculation
+            player.Pos = new Vector2(
+                Mathf.Min(player.Pos.x + movement, gameBounds.max.x - player.Width),
+                player.Pos.y
+            );
         }
 
         public void Jump(ref bool isJumping, ref float verticalVelocity, int jumpSpeed)
@@ -41,13 +44,20 @@ namespace GameProject.Services
 
         public void UpdateMovement(ref bool isJumping, ref float verticalVelocity, float gravity)
         {
-            verticalVelocity += gravity;
+            float deltaTime = Time.deltaTime; // Cache Time.deltaTime to improve performance
+            verticalVelocity += gravity * deltaTime;
 
-            player.Pos = new Point(player.Pos.X, (int)(player.Pos.Y + verticalVelocity));
+            player.Pos = new Vector2(
+                player.Pos.x,
+                player.Pos.y + verticalVelocity * deltaTime
+            );
 
-            if (player.Pos.Y >= gameBounds.Bottom - player.Height)
+            if (player.Pos.y <= gameBounds.min.y + player.Height)
             {
-                player.Pos = new Point(player.Pos.X, gameBounds.Bottom - player.Height);
+                player.Pos = new Vector2(
+                    player.Pos.x,
+                    gameBounds.min.y + player.Height
+                );
                 isJumping = false;
                 verticalVelocity = 0;
             }

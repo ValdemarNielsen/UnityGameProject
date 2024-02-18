@@ -15,7 +15,7 @@ namespace GameProject.Tests
             Vector2 boundsCenter = new Vector2(800, 600);
             Vector2 boundsSize = Vector2.zero;
             GameManagerService gameManager = new GameManagerService(new Bounds(boundsCenter, boundsSize), 0);
-            Vector2 expPos = new Vector2(boundsCenter.x, boundsCenter.y - 50); // Adjusted expected position to Vector2
+            Vector2 expPos = new Vector2(boundsCenter.x, boundsCenter.y);
 
             Vector2 actPos = gameManager.GetPlayerPosition(); // Changed Point to Vector2 for actual position
 
@@ -34,14 +34,16 @@ namespace GameProject.Tests
 
             Player player = new Player(initialPosition, 60, 100, 10, 100, 10); // Adjusted Player initialization to use Vector2
 
-            Vector2 expectedPosition = new Vector2(initialPosition.x - movementSpeed, initialPosition.y); // Adjusted expected position to Vector2
+            // Calculate the expected position based on the movement speed and Time.deltaTime
+            float expectedMovement = movementSpeed * Time.deltaTime;
+            Vector2 expectedPosition = new Vector2(initialPosition.x - expectedMovement, initialPosition.y);
 
             gameManager.MovePlayerLeft();
 
             Vector2 acPos = gameManager.GetPlayerPosition(); // Changed Point to Vector2 for actual position
 
             // Assert
-            Assert.That(expectedPosition.x, Is.EqualTo(acPos.x));
+            Assert.That(expectedPosition.x, Is.EqualTo(acPos.x).Within(0.001f)); // Use Within() to account for floating-point errors
         }
 
         [TestCase(10)]
@@ -55,14 +57,16 @@ namespace GameProject.Tests
 
             Player player = new Player(initialPosition, 60, 100, 10, 100, 10); // Adjusted Player initialization to use Vector2
 
-            Vector2 expectedPosition = new Vector2(initialPosition.x + movementSpeed, initialPosition.y); // Adjusted expected position to Vector2
+            // Calculate the expected position based on the movement speed and Time.deltaTime
+            float expectedMovement = movementSpeed * Time.deltaTime;
+            Vector2 expectedPosition = new Vector2(initialPosition.x + expectedMovement, initialPosition.y);
 
             gameManager.MovePlayerRight();
 
             Vector2 acPos = gameManager.GetPlayerPosition(); // Changed Point to Vector2 for actual position
 
             // Assert
-            Assert.That(expectedPosition.x, Is.EqualTo(acPos.x));
+            Assert.That(expectedPosition.x, Is.EqualTo(acPos.x).Within(0.001f)); // Use Within() to account for floating-point errors
         }
     }
 }

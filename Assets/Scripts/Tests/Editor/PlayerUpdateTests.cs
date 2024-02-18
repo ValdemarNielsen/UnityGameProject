@@ -1,43 +1,61 @@
-using NUnit.Framework;
-using System.Drawing;
 using GameProject.Models;
 using GameProject.Services;
-using Unity;
+using NUnit.Framework;
 using UnityEngine;
+
 namespace GameProject.Tests
 {
     [TestFixture]
     public class PlayerUpdateTests
     {
+        private GameObject playerGameObject;
+        private Player player;
+
+        [SetUp]
+        public void Setup()
+        {
+            // Create a GameObject and add the Player component to it
+            playerGameObject = new GameObject("Player");
+            player = playerGameObject.AddComponent<Player>();
+            player.Pos = new Vector2(0, 0);
+            player.Attack = 10;
+            player.HP = 100;
+            player.MovementSpeed = 10;
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            // Destroy the GameObject after each test
+            Object.DestroyImmediate(playerGameObject);
+        }
+
         [Test]
         public void UpdateHP_ShouldIncreaseHP_WhenPositiveDeltaHP()
         {
-            // Arrange the player with a HP stat
-            Player player = new Player(new Vector2(0,0), 60, 100, 10, 100, 10);
+            // Arrange
             int initialHP = player.HP;
             int deltaHP = 10;
 
-
+            // Act
             PlayerUpdateService.UpdateHP(player, deltaHP);
 
-            // Asssert whether the changes made to the HP stat is correct
+            // Assert
             Assert.That(initialHP + deltaHP, Is.EqualTo(player.HP));
         }
 
         [Test]
         public void UpdateAtt_ShouldIncreaseAtt_WhenPositiveDeltaAtt()
         {
-            // Arrange the player with a Attack stat
-            Player player = new Player(new Vector2(0, 0), 60, 100, 10, 100, 10);
+            // Arrange
             int initialAtt = player.Attack;
             int deltaAtt = 5;
 
-
+            // Act
             PlayerUpdateService.UpdateAttack(player, deltaAtt);
 
-            // Assert whether the changes made to the Attack stat is correct
+            // Assert
             Assert.That(initialAtt + deltaAtt, Is.EqualTo(player.Attack));
         }
-
     }
 }

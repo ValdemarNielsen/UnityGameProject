@@ -14,14 +14,15 @@ namespace GameProject.Services
         public GameManagerService(Bounds bounds, int movementSpeed)
         {
             gameBounds = bounds;
-            player = new Player(new Vector2(bounds.center.x, bounds.center.y - 50), 60, 100, 10, 100, movementSpeed);
+            // Adjusted the initial position of the player to ensure it stays within the bounds
+            player = new Player(new Vector2(bounds.center.x, bounds.center.y), 60, 100, 10, 100, movementSpeed);
             playerMovement = new PlayerMovementService(player, bounds, movementSpeed);
         }
 
         // Method to get the player's position
-        public Vector2 GetPlayerPosition() // Adjusted return type to Vector2
+        public Vector2 GetPlayerPosition()
         {
-            return player.Pos; // Returning player position as Vector2
+            return player.Pos;
         }
 
         // Method to move the player left

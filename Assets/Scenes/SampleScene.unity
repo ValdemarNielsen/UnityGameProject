@@ -1137,7 +1137,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 642662948}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &642662948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2889,4 +2901,4 @@ SceneRoots:
   - {fileID: 840947147}
   - {fileID: 297891655}
   - {fileID: 1370149079}
-  - {fileID: 2146287908}
+  - {fileID: 1122320498}

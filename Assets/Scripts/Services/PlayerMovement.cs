@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("IM GROUNDED");
             }
-            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(transform.up * jumpForce);
         }
     }
 

@@ -10,7 +10,7 @@ namespace GameProject.Models
         [SerializeField] private int attack;
         [SerializeField] private int hp;
         [SerializeField] private int movementSpeed;
-        [SerializeField] private Vector2 pos; // Position of the player
+        [SerializeField] private Vector2 pos;
 
         // Properties
         public int Width { get => width; set => width = value; }

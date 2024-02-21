@@ -17,6 +17,7 @@ namespace GameProject.Services
         private bool[,] visited;
         private Random random = new Random();
 
+        
         public MazeGeneratorService(int size)
         {
             this.size = size;

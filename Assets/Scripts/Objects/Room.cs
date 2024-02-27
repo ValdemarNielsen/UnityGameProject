@@ -12,12 +12,15 @@ namespace GameProject.Models
         public bool Down { get; set; }
         public bool Left { get; set; }
         public bool Right { get; set; }
+        public string DirectionLetter { get; set; }
+        public string SceneName { get; set; } // Add SceneName property
 
         // Constructor. Ensures all rooms start with no doors (set to false)
         public Room()
         {
             Up = Down = Left = Right = false;
-
+            DirectionLetter = "";
+            SceneName = ""; // Initialize SceneName
         }
 
         // Method to count doors, to later assign room number

@@ -45,11 +45,11 @@ public class Jump : MonoBehaviour
         isGrounded = Physics2D.Raycast(rb.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
         if (!isGrounded)
         {
-            isGrounded = Physics2D.Raycast(rb.position, Vector2.right, 2f, LayerMask.GetMask("Ground"));
+            isGrounded = Physics2D.Raycast(rb.position, Vector2.right, 1.2f, LayerMask.GetMask("Ground"));
         }
         if (!isGrounded) 
         {
-            isGrounded = Physics2D.Raycast(rb.position, Vector2.left, 2f, LayerMask.GetMask("Ground"));
+            isGrounded = Physics2D.Raycast(rb.position, Vector2.left, 1.2f, LayerMask.GetMask("Ground"));
         }
     }
 }

@@ -133,8 +133,6 @@ namespace GameProject.Services
         }
 
 
-
-
         private bool ShouldConnectVisitedRoom(int x, int y, int newX, int newY)
         {
             // Implement logic to determine if an additional connection should be made

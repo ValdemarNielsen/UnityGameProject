@@ -2,9 +2,9 @@
 using GameProject.Models;
 using System.Collections.Generic;
 
-namespace RoomManagement
+namespace SceneManagement
 {
-    public class RoomManager : MonoBehaviour
+    public class SceneManagement : MonoBehaviour
     {
         // List of our scenes
         private string[] scenes = { "D", "DL", "L", "R", "RD", "RDL", "RL", "U", "UD", "UDL", "UL", "UR", "URD", "URDL", "URL" }; // Add all our scenes

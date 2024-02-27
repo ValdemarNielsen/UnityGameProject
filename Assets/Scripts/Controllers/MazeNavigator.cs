@@ -52,28 +52,6 @@ public class MazeNavigator : MonoBehaviour
                 break;
         }
 
-        // Feedback to player about the move - Might be implemented later
-        /// Debug.Log($"Player moved to room at {currentX}, {currentY}. Current room has doors: Up={currentRoom.Up}, Down={currentRoom.Down}, Left={currentRoom.Left}, Right={currentRoom.Right}");
     }
 
-    // Example method to connect to UI buttons
-    public void MovePlayerUp()
-    {
-        Move("Up");
-    }
-
-    public void MovePlayerDown()
-    {
-        Move("Down");
-    }
-
-    public void MovePlayerLeft()
-    {
-        Move("Left");
-    }
-
-    public void MovePlayerRight()
-    {
-        Move("Right");
-    }
 }

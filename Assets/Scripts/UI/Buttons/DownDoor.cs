@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DownDoor : MonoBehaviour
-{ /*
+{ 
     public MazeManager mazeManager = new MazeManager();
     // The distance at which the player can interact with the chest.
     public float interactionDistance = 1.5f;
@@ -28,7 +28,7 @@ public class DownDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not close enough to door");
+                Debug.Log("Not close enough to Down door");
             }
 
         }
@@ -37,23 +37,24 @@ public class DownDoor : MonoBehaviour
     public void TransitionToUpScene()
     {
         Debug.Log("First part of transition");
-        int[] currentPlayerPosition = mazeManager.GetPlayerPosition();
+        int[] currentPlayerPosition = GameManager.GetPlayerPosition();
         int currentPlayerRow = currentPlayerPosition[0];
         int currentPlayerColumn = currentPlayerPosition[1];
 
         // the index of going left.
-        int UpRoomRow = currentPlayerRow + 1;
+        int DownRoomRow = currentPlayerRow + 1;
 
         // check if the left room is valid
-        if (UpRoomRow >= 0 && UpRoomRow < mazeManager.mazeSize)
+        if (DownRoomRow >= 0 && DownRoomRow < 5)
         {
             Debug.Log("First IF - statement of transition");
             // getting scene name for the left room
-            string sceneName = GameManager.MazeHolder.Rooms[UpRoomRow, currentPlayerColumn].SceneName;
+            string sceneName = GameManager.MazeHolder.Rooms[DownRoomRow, currentPlayerColumn].SceneName;
 
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
+                GameManager.UpdatePlayerPosition(DownRoomRow, currentPlayerColumn);
                 SceneManager.LoadScene(sceneName);
             }
             else
@@ -68,9 +69,9 @@ public class DownDoor : MonoBehaviour
     {
         // Calculate the distance between the player and the chest.
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log($"Chest position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}");
+        Debug.Log($"Down position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}");
 
         // Return true if the distance is less than or equal to the interaction distance.
         return distance <= interactionDistance;
-    }*/
+    }
 }

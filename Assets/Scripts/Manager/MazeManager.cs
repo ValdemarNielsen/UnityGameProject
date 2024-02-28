@@ -29,14 +29,5 @@ public class MazeManager : MonoBehaviour
         }
     }
 
-    public void UpdatePlayerPosition(int newRow, int newColumn)
-    {
-        GameManager.playerRowHolder = newRow;
-        GameManager.playerColHolder = newColumn;
-    }
-
-    public int[] GetPlayerPosition()
-    {
-        return new int[] { GameManager.playerRowHolder, GameManager.playerColHolder };
-    }
+    
 }

@@ -13,7 +13,7 @@ public class UpDoor : MonoBehaviour
 
     // Reference to the player GameObject. You can assign this in the Unity Editor.
     public Player player;
-    /*
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -28,7 +28,7 @@ public class UpDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not close enough to door");
+                Debug.Log("Not close enough to UP door");
             }
 
         }
@@ -37,7 +37,7 @@ public class UpDoor : MonoBehaviour
     public void TransitionToUpScene()
     {
         Debug.Log("First part of transition");
-        int[] currentPlayerPosition = mazeManager.GetPlayerPosition();
+        int[] currentPlayerPosition = GameManager.GetPlayerPosition();
         int currentPlayerRow = currentPlayerPosition[0];
         int currentPlayerColumn = currentPlayerPosition[1];
 
@@ -54,6 +54,7 @@ public class UpDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
+                GameManager.UpdatePlayerPosition(UpRoomRow, currentPlayerColumn);
                 SceneManager.LoadScene(sceneName);
             }
             else
@@ -68,9 +69,9 @@ public class UpDoor : MonoBehaviour
     {
         // Calculate the distance between the player and the chest.
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log($"Chest position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}");
+        Debug.Log($"UpDoor position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}");
 
         // Return true if the distance is less than or equal to the interaction distance.
         return distance <= interactionDistance;
-    } */
+    }
 }

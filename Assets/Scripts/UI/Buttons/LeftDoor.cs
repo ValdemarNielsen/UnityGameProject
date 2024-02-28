@@ -18,8 +18,8 @@ public class LeftDoor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            bool closeEnough = true; // IsPlayerCloseEnough();
-            Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
+            bool closeEnough = IsPlayerCloseEnough();
+            Debug.Log($"E key pressed. Is player close enough TO THE LEFT DOOR? {closeEnough}");
 
             if (closeEnough)
             {
@@ -28,7 +28,7 @@ public class LeftDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not close enough to door");
+                Debug.Log("Not close enough to LEFT door");
             }
 
         }
@@ -37,7 +37,7 @@ public class LeftDoor : MonoBehaviour
     public void TransitionToLeftScene()
     {
         Debug.Log("First part of transition");
-        int[] currentPlayerPosition = mazeManager.GetPlayerPosition();
+        int[] currentPlayerPosition = GameManager.GetPlayerPosition();
         int currentPlayerRow = currentPlayerPosition[0];
         int currentPlayerColumn = currentPlayerPosition[1];
 
@@ -45,7 +45,7 @@ public class LeftDoor : MonoBehaviour
         int leftRoomColumn = currentPlayerColumn - 1;
 
         // check if the left room is valid
-        if (leftRoomColumn >= 0 && leftRoomColumn < mazeManager.mazeSize)
+        if (leftRoomColumn >= 0 && leftRoomColumn < 5)
         {
             Debug.Log("First IF - statement of transition");
             // getting scene name for the left room
@@ -54,7 +54,9 @@ public class LeftDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName) )
             {
+                GameManager.UpdatePlayerPosition(currentPlayerRow, leftRoomColumn);
                 SceneManager.LoadScene(sceneName);
+                
             }
             else
             {
@@ -62,15 +64,15 @@ public class LeftDoor : MonoBehaviour
             }
         }
     }
-    /*
-    // Method to check if the player is close enough to the chest.
+
+    // Method to check if the player is close enough to the door
     bool IsPlayerCloseEnough()
     {
-        // Calculate the distance between the player and the chest.
+        // Calculate the distance between the player and the door.
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log($"Chest position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}");
+        Debug.Log($"Left door position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}");
 
         // Return true if the distance is less than or equal to the interaction distance.
         return distance <= interactionDistance;
-    } */
+    }
 }

@@ -2671,7 +2671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mazeManager: {fileID: 598084504}
   interactionDistance: 1.5
-  player: {fileID: 1122320503}
+  player: {fileID: 72872014}
 --- !u!212 &1904959348
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3378,3 +3378,4 @@ SceneRoots:
   - {fileID: 985926492}
   - {fileID: 598084505}
   - {fileID: 1904959349}
+  - {fileID: 72872019}

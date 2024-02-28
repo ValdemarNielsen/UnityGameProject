@@ -2,14 +2,41 @@ using GameProject.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using SceneManagement;
+using GameProject.Services;
 
 public class MazeManager : MonoBehaviour
 {
     public int mazeSize = 5;
-    public Maze maze { get; private set; }
 
     void Start()
     {
-        maze = new Maze(mazeSize);
+        if (GameManager.MazeHolder == null)
+        {
+            MazeGeneratorService mazeGeneratorService = new MazeGeneratorService(mazeSize);
+            GameManager.MazeHolder = mazeGeneratorService.GenerateMaze();
+            SceneManagements.AssignScenesToRooms(GameManager.MazeHolder);
+            Debug.Log($"Loaded maze. printing maze {GameManager.MazeHolder}");
+            // initialize players position at the center of the maze.
+            GameManager.playerRowHolder = mazeSize / 2;
+            GameManager.playerColHolder = mazeSize / 2;
+            SceneManager.LoadScene(GameManager.MazeHolder.Rooms[GameManager.playerRowHolder, GameManager.playerColHolder].SceneName);
+        }
+        else
+        {
+            Debug.Log("Maze is already generated");
+        }
+    }
+
+    public void UpdatePlayerPosition(int newRow, int newColumn)
+    {
+        GameManager.playerRowHolder = newRow;
+        GameManager.playerColHolder = newColumn;
+    }
+
+    public int[] GetPlayerPosition()
+    {
+        return new int[] { GameManager.playerRowHolder, GameManager.playerColHolder };
     }
 }

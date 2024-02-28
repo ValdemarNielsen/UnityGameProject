@@ -2,18 +2,18 @@
 using GameProject.Models;
 using System.Collections.Generic;
 
-namespace RoomManagement
+namespace SceneManagement
 {
-    public class RoomManager : MonoBehaviour
+    public static class SceneManagements
     {
         // List of our scenes
-        private string[] scenes = { "D", "DL", "L", "R", "RD", "RDL", "RL", "U", "UD", "UDL", "UL", "UR", "URD", "URDL", "URL" }; // Add all our scenes
+        private static string[] scenes = { "D", "DL", "L", "R", "RD", "RDL", "RL", "U", "UD", "UDL", "UL", "UR", "URD", "URDL", "URL" }; // Add all our scenes
 
         // Dictionary to map room layouts to scenes
-        private Dictionary<string, string> layoutToSceneMap = new Dictionary<string, string>();
+        private static Dictionary<string, string> layoutToSceneMap = new Dictionary<string, string>();
 
         // Method to initialize the layout to scene mapping
-        private void InitializeLayoutToSceneMap()
+        private static void InitializeLayoutToSceneMap()
         {
             // Add mappings based on room layouts and scenes. Its "RoomLetters", "Unity Scene name" . 
             layoutToSceneMap.Add("D", "D");
@@ -35,7 +35,7 @@ namespace RoomManagement
         }
 
         // Method to assign scenes to rooms in the maze based on their layout
-        public void AssignScenesToRooms(Maze maze)
+        public static void AssignScenesToRooms(Maze maze)
         {
             InitializeLayoutToSceneMap();
 
@@ -45,6 +45,7 @@ namespace RoomManagement
             {
                 for (int j = 0; j < size; j++)
                 {
+                    Debug.Log("Assigning scenes to rooms in the maze");
                     Room room = maze.Rooms[i, j];
                     string layout = room.DirectionLetter;
                     string sceneName = GetSceneForLayout(layout);
@@ -54,7 +55,7 @@ namespace RoomManagement
         }
 
         // Method to get the scene associated with a given room layout
-        private string GetSceneForLayout(string layout)
+        private static string GetSceneForLayout(string layout)
         {
             // Check if the layout exists in the mapping
             if (layoutToSceneMap.ContainsKey(layout))

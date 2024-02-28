@@ -1,13 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Jump : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpAmount = 9;
+
+    public Rigidbody2D rb;
+    public float jumpAmount = 10;
     private bool isGrounded;
-
-
-    private Rigidbody2D rb;
+    public float moveSpeed = 5f;
 
 
     // Start is called before the first frame update
@@ -15,34 +16,25 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
+    {
             Debug.Log("IM GROUNDED");
-            Jump();
-        }
+            JumpNow();
+    }
 
     }
 
-    void FixedUpdate()
-    {
-        // Get horizontal input
-        float horizontalInput = Input.GetAxis("Horizontal");
 
-        // Calculate movement vector
-        Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
-
-        // Apply movement
-        rb.velocity = movement;
-
+    private void FixedUpdate()
+    {       
+        // Check if the player is grounded
         CheckGrounded();
 
-    }
 
-    void Jump()
+    }
+    void JumpNow()
     {
         // Apply jump force
         rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
@@ -55,9 +47,11 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = Physics2D.Raycast(rb.position, Vector2.right, 1.2f, LayerMask.GetMask("Ground"));
         }
-        if (!isGrounded)
+        if (!isGrounded) 
         {
             isGrounded = Physics2D.Raycast(rb.position, Vector2.left, 1.2f, LayerMask.GetMask("Ground"));
         }
     }
 }
+
+

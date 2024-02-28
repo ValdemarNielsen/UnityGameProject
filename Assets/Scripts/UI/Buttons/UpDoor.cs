@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LeftDoor : MonoBehaviour
+public class UpDoor : MonoBehaviour
 {
     public MazeManager mazeManager = new MazeManager();
     // The distance at which the player can interact with the chest.
@@ -13,18 +13,18 @@ public class LeftDoor : MonoBehaviour
 
     // Reference to the player GameObject. You can assign this in the Unity Editor.
     public Player player;
-
+    /*
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            bool closeEnough = true; // IsPlayerCloseEnough();
+            bool closeEnough = IsPlayerCloseEnough();
             Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
 
             if (closeEnough)
             {
                 // Call the method to handle the interaction with the door;
-                TransitionToLeftScene();
+                TransitionToUpScene();
             }
             else
             {
@@ -34,7 +34,7 @@ public class LeftDoor : MonoBehaviour
         }
     }
 
-    public void TransitionToLeftScene()
+    public void TransitionToUpScene()
     {
         Debug.Log("First part of transition");
         int[] currentPlayerPosition = mazeManager.GetPlayerPosition();
@@ -42,17 +42,17 @@ public class LeftDoor : MonoBehaviour
         int currentPlayerColumn = currentPlayerPosition[1];
 
         // the index of going left.
-        int leftRoomColumn = currentPlayerColumn - 1;
+        int UpRoomRow = currentPlayerRow - 1;
 
         // check if the left room is valid
-        if (leftRoomColumn >= 0 && leftRoomColumn < mazeManager.mazeSize)
+        if (UpRoomRow >= 0 && UpRoomRow < mazeManager.mazeSize)
         {
             Debug.Log("First IF - statement of transition");
             // getting scene name for the left room
-            string sceneName = GameManager.MazeHolder.Rooms[currentPlayerRow, leftRoomColumn].SceneName;
+            string sceneName = GameManager.MazeHolder.Rooms[UpRoomRow, currentPlayerColumn].SceneName;
 
             // Load the scene
-            if (!string.IsNullOrEmpty(sceneName) )
+            if (!string.IsNullOrEmpty(sceneName))
             {
                 SceneManager.LoadScene(sceneName);
             }
@@ -62,7 +62,7 @@ public class LeftDoor : MonoBehaviour
             }
         }
     }
-    /*
+
     // Method to check if the player is close enough to the chest.
     bool IsPlayerCloseEnough()
     {

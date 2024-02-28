@@ -63,24 +63,24 @@
     <Compile Include="Assets\Scripts\Services\RoomGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\DownButtonHandler.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\UpButtonHandler.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\DownDoor.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\ChestButtonHandler.cs" />
     <Compile Include="Assets\Scripts\hej.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\RightButtonHandler.cs" />
     <Compile Include="Assets\Scripts\Manager\MazeManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Maze.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\LeftDoor.cs" />
     <Compile Include="Assets\Scripts\Controllers\MazeNavigator.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneManagements.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\UpDoor.cs" />
     <Compile Include="Assets\Scripts\Objects\Room.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerUpdateService.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Boss.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemy.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\RightDoor.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovementService.cs" />
     <Compile Include="Assets\Scripts\Program.cs" />
   </ItemGroup>

@@ -1318,7 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mazeManager: {fileID: 890708094}
-  interactionDistance: 1.5
+  interactionDistance: 30
   player: {fileID: 1122320503}
 --- !u!212 &1213265361
 SpriteRenderer:

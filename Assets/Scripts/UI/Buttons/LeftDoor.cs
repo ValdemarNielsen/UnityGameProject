@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class LeftDoor : MonoBehaviour
 {
-    public MazeManager mazeManager;
+    public MazeManager mazeManager = new MazeManager();
     // The distance at which the player can interact with the chest.
     public float interactionDistance = 1.5f;
 
@@ -23,7 +23,7 @@ public class LeftDoor : MonoBehaviour
 
             if (closeEnough)
             {
-                // Call the method to handle the interaction with the chest.
+                // Call the method to handle the interaction with the door;
                 TransitionToLeftScene();
             }
             else
@@ -36,6 +36,7 @@ public class LeftDoor : MonoBehaviour
 
     public void TransitionToLeftScene()
     {
+        Debug.Log("First part of transition");
         int[] currentPlayerPosition = mazeManager.GetPlayerPosition();
         int currentPlayerRow = currentPlayerPosition[0];
         int currentPlayerColumn = currentPlayerPosition[1];
@@ -46,13 +47,18 @@ public class LeftDoor : MonoBehaviour
         // check if the left room is valid
         if (leftRoomColumn >= 0 && leftRoomColumn < mazeManager.mazeSize)
         {
+            Debug.Log("First IF - statement of transition");
             // getting scene name for the left room
-            string sceneName = mazeManager.maze.Rooms[currentPlayerRow, leftRoomColumn].SceneName;
+            string sceneName = GameManager.MazeHolder.Rooms[currentPlayerRow, leftRoomColumn].SceneName;
 
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName) )
             {
                 SceneManager.LoadScene(sceneName);
+            }
+            else
+            {
+                Debug.Log($"String is empty or NULL sceneName content -> {sceneName}");
             }
         }
     }

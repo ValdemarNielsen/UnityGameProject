@@ -5,6 +5,8 @@ using System.Text;
 using GameProject.Models;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using SceneManagement;
+
 
 /// MazeGeneratorService.cs: Contains the logic for generating the entire maze. This service would use algorithms to ensure 
 /// all rooms are accessible from the starting point and correctly interconnected. It may utilize RoomGeneratorService to create 
@@ -19,11 +21,14 @@ namespace GameProject.Services
         private Random random = new Random();
 
 
+
         public MazeGeneratorService(int size)
         {
             this.size = size;
             maze = new Maze(size);
             visited = new bool[size, size];
+            
+
         }
 
 
@@ -34,6 +39,7 @@ namespace GameProject.Services
             int startX = size / 2;
             int startY = size / 2;
             DFS(startX, startY);
+            // sceneManagement.AssignScenesToRooms(maze); // Assign scenes after maze generation
             return maze;
         }
 

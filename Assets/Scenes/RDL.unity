@@ -156,12 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011a516bd233e0548b02fa82ff1fc6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 5
-  height: 80
-  attack: 10
-  hp: 100
-  movementSpeed: 10
-  pos: {x: 0, y: 0}
 --- !u!114 &72872015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,8 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c2730579d10464fb7cc1f0c4d16389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpAmount: 9
 --- !u!61 &72872016
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 369811495}
   - component: {fileID: 369811494}
   - component: {fileID: 369811493}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: LadderPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2486,8 +2486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c2730579d10464fb7cc1f0c4d16389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpAmount: 9
 --- !u!61 &2026765368
 BoxCollider2D:
   m_ObjectHideFlags: 0

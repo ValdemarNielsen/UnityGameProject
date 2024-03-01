@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpAmount = 9;
+    float moveSpeed = 5f;
+    float jumpAmount = 6;
     private bool isGrounded;
 
 

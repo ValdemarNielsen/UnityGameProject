@@ -5,12 +5,12 @@ namespace GameProject.Models
     public class Player : MonoBehaviour
     {
         // Serialized fields to expose in the Unity Inspector
-        [SerializeField] private int width;
-        [SerializeField] private int height;
-        [SerializeField] private int attack;
-        [SerializeField] private int hp;
-        [SerializeField] private int movementSpeed;
-        [SerializeField] private Vector2 pos;
+        private int width;
+        private int height;
+        private int attack;
+        private int hp;
+        private int movementSpeed;
+        private Vector2 pos;
 
         // Properties
         public int Width { get => width; set => width = value; }
@@ -24,8 +24,8 @@ namespace GameProject.Models
         public Player()
         {
             // Default initialization
-            width = 60;
-            height = 100;
+            width = 40;
+            height = 66;
             attack = 10;
             hp = 100;
             movementSpeed = 10;
@@ -60,7 +60,7 @@ namespace GameProject.Models
         private void SetDefaultSize()
         {
             // Set the default size of the player
-            transform.localScale = new Vector3(0.5f, 0.9f, 1f);
+            transform.localScale = new Vector3(0.3f, 0.6f, 1f);
         }
     }
 }

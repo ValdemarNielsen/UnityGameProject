@@ -5,16 +5,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using SceneManagement;
 using GameProject.Services;
+using UnityEditor.SceneManagement;
 
 public class MazeManager : MonoBehaviour
 {
     public int mazeSize = 5;
-
     void Start()
     {
         if (GameManager.MazeHolder == null)
         {
             MazeGeneratorService mazeGeneratorService = new MazeGeneratorService(mazeSize);
+
             GameManager.MazeHolder = mazeGeneratorService.GenerateMaze();
             SceneManagements.AssignScenesToRooms(GameManager.MazeHolder);
             Debug.Log($"Loaded maze. printing maze {GameManager.MazeHolder}");

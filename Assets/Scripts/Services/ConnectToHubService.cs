@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
-
 using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class ConnectToHub : MonoBehaviour
+    public class ConnectToHubService : MonoBehaviour
     {
 
         private HubConnection hubConnection;
-
         async void Start()
         {
+
             try
             {
                 hubConnection = new HubConnectionBuilder()
+              
                     .WithUrl("https://localhost:7206/client-hub")
                     .Build();
 
@@ -46,5 +45,4 @@ namespace Assets.Scripts
         }
     }
         }
-    }
-}
+    

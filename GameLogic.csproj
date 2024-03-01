@@ -60,11 +60,11 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Services\ConnectToHubService.cs" />
     <Compile Include="Assets\Scripts\Services\RoomGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\ConnectToHub.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\DownDoor.cs" />
@@ -433,12 +433,24 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.Extensions.Features">
+      <HintPath>Assets\Plugin\Microsoft.Extensions.Features.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Connections.Common">
+      <HintPath>Assets\Plugin\Microsoft.AspNetCore.Http.Connections.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines">
+      <HintPath>Assets\Plugin\System.IO.Pipelines.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
@@ -449,8 +461,16 @@
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
+      <HintPath>Assets\Plugin\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
+      <HintPath>Assets\Plugin\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
@@ -461,12 +481,52 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
+      <HintPath>Assets\Plugin\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
+      <HintPath>Assets\Plugin\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives">
+      <HintPath>Assets\Plugin\Microsoft.Extensions.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging">
+      <HintPath>Assets\Plugin\Microsoft.Extensions.Logging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>Assets\Plugin\Microsoft.Extensions.Options.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>Assets\Plugin\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
+      <HintPath>Assets\Plugin\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
+      <HintPath>Assets\Plugin\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection">
+      <HintPath>Assets\Plugin\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>Assets\Plugin\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

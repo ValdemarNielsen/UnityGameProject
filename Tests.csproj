@@ -65,7 +65,9 @@
     <Compile Include="Assets\Scripts\Tests\Editor\GameManagerServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Assets\Scripts\Tests\Tests.asmdef" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

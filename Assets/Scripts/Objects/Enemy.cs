@@ -1,32 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using log4net.Util;
+using UnityEngine;
+using Assets.Scripts.Objects;
 
 namespace GameProject.Models
 {
-    public class Enemy
+    public class Enemy : Character
     {
-        public Point Pos { get; set; }
-        public int Width { get; }
-        public int Height { get; }
-        public int Attack { get; set; }
-        public int HP { get; set; }
+        public string MonsterType { get; set; }
+        public float ChaseDistance { get; set; }
 
-
-        public Enemy (Point startPos, int width = 60, int height = 60, int attack = 5, int hp = 15)
+        public void Initialize(string monsterType, Sprite idleSprite)
         {
-            Pos = startPos;
-            Width = width;
-            Height = height;
-            Attack = attack;
-            HP = hp;
+            MonsterType = monsterType;
+
+            // Set the size of the enemy GameObject
+            SetMonsterSize();
         }
-        public Point GetPosition()
+
+        // Method to set default size
+        private void SetMonsterSize()
         {
-            return Pos;
+            // Set the scale of the enemy GameObject to be larger than the default size
+            transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        }
+
+        private void SetMonsterChaseDistance(string monsterType)
+        {
+            switch (MonsterType)
+            {
+                case "Skeleton(Clone)":
+                    ChaseDistance = 10f;
+                    break;
+                case "Goblin(Clone)":
+                    ChaseDistance = 15f;
+                    break;
+                case "zombie":
+                    ChaseDistance = 7.5f;
+                    break;
+            }
         }
     }
 }

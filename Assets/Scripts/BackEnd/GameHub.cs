@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.SignalR;
-using System.Collections.Generic;
+﻿/*using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -33,4 +32,4 @@ public class GameHub : Hub
         // Broadcast the updated player position to all other clients
         await Clients.Others.PlayerPositionUpdated(Context.ConnectionId, x, y);
     }
-}
+}*/

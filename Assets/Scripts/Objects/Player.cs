@@ -24,7 +24,7 @@ namespace GameProject.Models
         public Player()
         {
             // Default initialization
-            width = 40;
+            width = 66;
             height = 66;
             attack = 10;
             hp = 100;
@@ -60,7 +60,7 @@ namespace GameProject.Models
         private void SetDefaultSize()
         {
             // Set the default size of the player
-            transform.localScale = new Vector3(0.3f, 0.6f, 1f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }

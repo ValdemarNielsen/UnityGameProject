@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("IM GROUNDED");
             Jump();
         }
+        if ( Input.GetKeyDown(KeyCode.Space) && !isGrounded )
+        {
+            Debug.Log("IM NOT GROUNDED");
+        }
 
     }
 
@@ -50,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckGrounded()
     {
-        isGrounded = Physics2D.Raycast(rb.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
+        isGrounded = Physics2D.Raycast(rb.position, Vector2.down, 1.4f, LayerMask.GetMask("Ground"));
         if (!isGrounded)
         {
             isGrounded = Physics2D.Raycast(rb.position, Vector2.right, 1.2f, LayerMask.GetMask("Ground"));

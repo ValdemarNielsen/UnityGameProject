@@ -25,6 +25,7 @@ public class LeftDoor : MonoBehaviour
             {
                 // Call the method to handle the interaction with the door;
                 TransitionToLeftScene();
+              
             }
             else
             {

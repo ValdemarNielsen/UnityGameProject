@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private bool m_FacingRight = true;  // To know which way the player is currently facing.
     private Rigidbody2D rb;
     public Animator animator;
+ //   bool jump = false;
 
 
     // Start is called before the first frame update
@@ -29,7 +30,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("IM GROUNDED");
             Jump();
-          //  animator.SetBool("IsJumping", true);
+
+          //  jump = true;
+            
+
         }
         if ( Input.GetKeyDown(KeyCode.Space) && !isGrounded )
         {
@@ -59,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply movement
         rb.velocity = movement;
+        
+       // jump = false;
 
         CheckGrounded();
 

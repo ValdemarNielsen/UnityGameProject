@@ -57,7 +57,9 @@ public class LeftDoor : MonoBehaviour
             {
                 GameManager.UpdatePlayerPosition(currentPlayerRow, leftRoomColumn);
                 SceneManager.LoadScene(sceneName);
-                
+                player.transform.position = new Vector3(8, -3, player.transform.position.z);
+
+
             }
             else
             {

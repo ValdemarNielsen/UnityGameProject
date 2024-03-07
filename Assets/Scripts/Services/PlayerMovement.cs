@@ -7,8 +7,11 @@ public class PlayerMovement : MonoBehaviour
 {
     float moveSpeed = 5f;
     float jumpAmount = 6;
+    float climbSpeed = 3f;
     private bool isGrounded;
     private bool m_FacingRight = true;  // To know which way the player is currently facing.
+    private bool isLadder;
+    private bool isClimbing;
     private Rigidbody2D rb;
     public Animator animator;
  //   bool jump = false;
@@ -103,5 +106,7 @@ public class PlayerMovement : MonoBehaviour
         scale.x *= -1;
         transform.localScale = scale;
     }
+
+
 
 }

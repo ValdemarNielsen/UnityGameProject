@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
     <Compile Include="Assets\Scripts\BackEnd\GameHub.cs" />
+    <Compile Include="Assets\Scripts\Services\BroadcastServices.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\Services\PlayerUpdateService.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Boss.cs" />
+    <Compile Include="Assets\Scripts\Hubs\GameHub.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemy.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\RightDoor.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovementService.cs" />

@@ -9,6 +9,7 @@ namespace GameProject.Models
         private int width;
         private int height;
         private int movementSpeed;
+        Rigidbody2D rb;
         
 
         // Properties

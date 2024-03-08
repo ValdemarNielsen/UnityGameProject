@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{9A0B4607-64F2-5993-9845-FD0206FDAC02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -63,10 +64,7 @@
     <Compile Include="Assets\Scripts\Services\RoomGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
-    <Compile Include="Assets\Scripts\BackEnd\MySignalRClient.cs" />
-    <Compile Include="Assets\Scripts\BackEnd\GameHub.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\BackEnd\PlayerHub.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\DownDoor.cs" />
@@ -89,8 +87,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\GameLogic.asmdef" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.SignalR.Client.8.0.0\lib\net462\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -463,8 +465,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="NuGetForUnity.PluginAPI">
+      <HintPath>Assets\NuGet\Editor\NuGetForUnity.PluginAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NugetForUnity">
+      <HintPath>Assets\NuGet\Editor\NugetForUnity.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

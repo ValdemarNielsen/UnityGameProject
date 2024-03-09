@@ -1,9 +1,9 @@
-﻿// using Microsoft.AspNet.SignalR;
+﻿/* using Microsoft.AspNet.SignalR;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-/*
+
 public class GameHub : Hub
 {
     // Dictionary to store player positions

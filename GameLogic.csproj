@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Services\RoomGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
+    <Compile Include="Assets\Scripts\BackEnd\WebSocketClient.cs" />
     <Compile Include="Assets\Scripts\BackEnd\GameHub.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />

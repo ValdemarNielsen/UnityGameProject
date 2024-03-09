@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isClimbing;
     private Rigidbody2D rb;
     public Animator animator;
- //   bool jump = false;
+    private bool jump = false;
+    //   bool jump = false;
 
 
     // Start is called before the first frame update
@@ -51,6 +52,16 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetAxis("Horizontal") < 0 && m_FacingRight)
         {
             Flip();
+        }
+        if (!Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
+        {
+            jump = true;
+            animator.SetBool("IsJumping", jump);
+        }
+        else if (Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
+        {
+            jump = false;
+            animator.SetBool("IsJumping", jump);
         }
 
     }

@@ -54,6 +54,7 @@ public class RightDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
+
                 GameManager.UpdatePlayerPosition(currentPlayerRow, rightRoomColumn);
                 SceneManager.LoadScene(sceneName);
             }

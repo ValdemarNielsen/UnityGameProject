@@ -19,7 +19,7 @@ public class DownDoor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             bool closeEnough = IsPlayerCloseEnough();
-            Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
+           // Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
 
             if (closeEnough)
             {
@@ -28,7 +28,7 @@ public class DownDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not close enough to Down door");
+                Debug.Log("Not close enough to Down DOOR");
             }
 
         }

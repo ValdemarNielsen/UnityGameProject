@@ -4,13 +4,14 @@ namespace GameProject.Models
 {
     public class Player : MonoBehaviour
     {
+        
         // Serialized fields to expose in the Unity Inspector
         private int width;
         private int height;
         private int attack;
         private int hp;
         private int movementSpeed;
-        public string PlayerId { get; set; }
+        
         private Vector2 pos;
 
         // Properties
@@ -20,6 +21,7 @@ namespace GameProject.Models
         public int HP { get => hp; set => hp = value; }
         public int MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
         public Vector2 Pos { get => pos; set => pos = value; }
+        public int PlayerId { get; set; } // unique identifier for each player
 
         // Constructors
         public Player()
@@ -31,6 +33,7 @@ namespace GameProject.Models
             hp = 100;
             movementSpeed = 10;
             pos = Vector2.zero;
+            PlayerId = 1;
         }
 
         public Player(Vector2 startingPos, int width, int height, int attack, int hp, int movementSpeed)
@@ -46,6 +49,7 @@ namespace GameProject.Models
         // Awake is called when the script instance is being loaded
         private void Awake()
         {
+            
             InitializePlayer();
             SetDefaultSize();
         }
@@ -63,5 +67,12 @@ namespace GameProject.Models
             // Set the default size of the player
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+
+        public void UpdatePosition(Vector2 newPosition)
+        {
+            transform.position = newPosition;
+            Debug.Log("called Update Position");
+        }
+  
     }
 }

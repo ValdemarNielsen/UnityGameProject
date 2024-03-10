@@ -1,4 +1,5 @@
 using GameProject.Models;
+using GameProject.Services;
 using SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,13 +14,13 @@ public class LeftDoor : MonoBehaviour
 
     // Reference to the player GameObject. You can assign this in the Unity Editor.
     public Player player;
-
+   
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             bool closeEnough = IsPlayerCloseEnough();
-            Debug.Log($"E key pressed. Is player close enough TO THE LEFT DOOR? {closeEnough}");
+           // Debug.Log($"E key pressed. Is player close enough TO THE LEFT DOOR? {closeEnough}");
 
             if (closeEnough)
             {
@@ -29,7 +30,7 @@ public class LeftDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not close enough to LEFT door");
+                Debug.Log("Not close enough to LEFT DOOR");
             }
 
         }
@@ -37,6 +38,7 @@ public class LeftDoor : MonoBehaviour
 
     public void TransitionToLeftScene()
     {
+        
         Debug.Log("First part of transition");
         int[] currentPlayerPosition = GameManager.GetPlayerPosition();
         int currentPlayerRow = currentPlayerPosition[0];
@@ -57,8 +59,8 @@ public class LeftDoor : MonoBehaviour
             {
                 GameManager.UpdatePlayerPosition(currentPlayerRow, leftRoomColumn);
                 SceneManager.LoadScene(sceneName);
-                player.transform.position = new Vector3(8, -3, player.transform.position.z);
 
+                player.UpdatePosition(Vector2(3, 3)); 
 
             }
             else

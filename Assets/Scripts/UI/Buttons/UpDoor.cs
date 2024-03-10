@@ -54,6 +54,7 @@ public class UpDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
+                GameManager.spawnPoint = new Vector2(0f, -3f);
                 GameManager.UpdatePlayerPosition(UpRoomRow, currentPlayerColumn);
                 SceneManager.LoadScene(sceneName);
             }

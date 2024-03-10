@@ -54,6 +54,9 @@ public class DownDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
+
+                // Set the spawn point to the new position
+                GameManager.spawnPoint = new Vector2(0f, 4.5f);
                 GameManager.UpdatePlayerPosition(DownRoomRow, currentPlayerColumn);
                 SceneManager.LoadScene(sceneName);
             }

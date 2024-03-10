@@ -1,3 +1,4 @@
+using Assets.Scripts.Services;
 using GameProject.Models;
 using GameProject.Services;
 using SceneManagement;
@@ -14,7 +15,7 @@ public class LeftDoor : MonoBehaviour
 
     // Reference to the player GameObject. You can assign this in the Unity Editor.
     public Player player;
-   
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -57,10 +58,11 @@ public class LeftDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName) )
             {
+                // Set the spawn point to the new position
+                GameManager.spawnPoint = new Vector2(8f, - 2.8f);
+
                 GameManager.UpdatePlayerPosition(currentPlayerRow, leftRoomColumn);
                 SceneManager.LoadScene(sceneName);
-
-                player.UpdatePosition(Vector2(3, 3)); 
 
             }
             else
@@ -80,4 +82,6 @@ public class LeftDoor : MonoBehaviour
         // Return true if the distance is less than or equal to the interaction distance.
         return distance <= interactionDistance;
     }
+
+    
 }

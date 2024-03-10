@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Services;
+using UnityEngine;
 
 namespace GameProject.Models
 {
@@ -49,7 +50,6 @@ namespace GameProject.Models
         // Awake is called when the script instance is being loaded
         private void Awake()
         {
-            
             InitializePlayer();
             SetDefaultSize();
         }
@@ -57,8 +57,7 @@ namespace GameProject.Models
         // Method to initialize the player object
         private void InitializePlayer()
         {
-            // Set the initial position of the player
-            transform.position = pos;
+            transform.position = GameManager.spawnPoint;
         }
 
         // Method to set default size

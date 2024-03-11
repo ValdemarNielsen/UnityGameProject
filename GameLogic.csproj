@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\UI\Buttons\LeftDoor.cs" />
     <Compile Include="Assets\Scripts\Controllers\MazeNavigator.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneManagements.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\StartGameButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\UpDoor.cs" />
     <Compile Include="Assets\Scripts\Objects\Room.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerUpdateService.cs" />

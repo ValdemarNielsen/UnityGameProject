@@ -19,7 +19,7 @@ public class RightDoor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             bool closeEnough = IsPlayerCloseEnough();
-            Debug.Log($"E key pressed. Is player close enough to the RIGHT door? {closeEnough}");
+          //  Debug.Log($"E key pressed. Is player close enough to the RIGHT door? {closeEnough}");
 
             if (closeEnough)
             {
@@ -28,7 +28,7 @@ public class RightDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not close enough to RIGHT door");
+                Debug.Log("Not close enough to RIGHT DOOR");
             }
 
         }
@@ -54,6 +54,8 @@ public class RightDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
+                // Set the spawn point to the new position
+                GameManager.spawnPoint = new Vector2(-8f, -2.8f);
                 GameManager.UpdatePlayerPosition(currentPlayerRow, rightRoomColumn);
                 SceneManager.LoadScene(sceneName);
             }

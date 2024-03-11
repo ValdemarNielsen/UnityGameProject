@@ -1,4 +1,5 @@
 using GameProject.Models;
+using GameProject.Services;
 using SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,16 +20,17 @@ public class LeftDoor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             bool closeEnough = IsPlayerCloseEnough();
-            Debug.Log($"E key pressed. Is player close enough TO THE LEFT DOOR? {closeEnough}");
+           // Debug.Log($"E key pressed. Is player close enough TO THE LEFT DOOR? {closeEnough}");
 
             if (closeEnough)
             {
                 // Call the method to handle the interaction with the door;
                 TransitionToLeftScene();
+              
             }
             else
             {
-                Debug.Log("Not close enough to LEFT door");
+                Debug.Log("Not close enough to LEFT DOOR");
             }
 
         }
@@ -36,6 +38,7 @@ public class LeftDoor : MonoBehaviour
 
     public void TransitionToLeftScene()
     {
+        
         Debug.Log("First part of transition");
         int[] currentPlayerPosition = GameManager.GetPlayerPosition();
         int currentPlayerRow = currentPlayerPosition[0];
@@ -54,9 +57,12 @@ public class LeftDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName) )
             {
+                // Set the spawn point to the new position
+                GameManager.spawnPoint = new Vector2(8f, - 2.8f);
+
                 GameManager.UpdatePlayerPosition(currentPlayerRow, leftRoomColumn);
                 SceneManager.LoadScene(sceneName);
-                
+
             }
             else
             {
@@ -75,4 +81,6 @@ public class LeftDoor : MonoBehaviour
         // Return true if the distance is less than or equal to the interaction distance.
         return distance <= interactionDistance;
     }
+
+    
 }

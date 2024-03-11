@@ -1,13 +1,21 @@
+using Codice.CM.Common;
+using PlasticGui.WorkspaceWindow;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     float moveSpeed = 5f;
     float jumpAmount = 6;
+    float climbSpeed = 3f;
     private bool isGrounded;
-
-
+    private bool m_FacingRight = true;  // To know which way the player is currently facing.
+    private bool isLadder;
+    private bool isClimbing;
     private Rigidbody2D rb;
+    public Animator animator;
+    private bool jump = false;
+    //   bool jump = false;
 
 
     // Start is called before the first frame update
@@ -19,14 +27,46 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")*moveSpeed));
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Debug.Log("IM GROUNDED");
             Jump();
+
+          //  jump = true;
+            
+
+        }
+        if ( Input.GetKeyDown(KeyCode.Space) && !isGrounded )
+        {
+            Debug.Log("IM NOT GROUNDED");
+        }
+
+        // Update facing direction based on horizontal input
+        if (Input.GetAxis("Horizontal") > 0 && !m_FacingRight)
+        {
+            Flip();
+        }
+        else if (Input.GetAxis("Horizontal") < 0 && m_FacingRight)
+        {
+            Flip();
+        }
+        if (!Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
+        {
+            jump = true;
+            animator.SetBool("IsJumping", jump);
+        }
+        else if (Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
+        {
+            jump = false;
+            animator.SetBool("IsJumping", jump);
         }
 
     }
 
+    // to move our charactor
     void FixedUpdate()
     {
         // Get horizontal input
@@ -37,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply movement
         rb.velocity = movement;
+        
+       // jump = false;
 
         CheckGrounded();
 
@@ -50,7 +92,8 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckGrounded()
     {
-        isGrounded = Physics2D.Raycast(rb.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
+        bool wasGrounded = isGrounded;
+        isGrounded = Physics2D.Raycast(rb.position, Vector2.down, 1.4f, LayerMask.GetMask("Ground"));
         if (!isGrounded)
         {
             isGrounded = Physics2D.Raycast(rb.position, Vector2.right, 1.2f, LayerMask.GetMask("Ground"));
@@ -59,5 +102,22 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = Physics2D.Raycast(rb.position, Vector2.left, 1.2f, LayerMask.GetMask("Ground"));
         }
+
     }
+
+    
+
+    void Flip()
+    {
+        // Switch the direction the player is facing
+        m_FacingRight = !m_FacingRight;
+
+        // Flip the player's sprite horizontally
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
+
+
+
 }

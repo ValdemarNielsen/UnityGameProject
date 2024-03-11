@@ -19,7 +19,7 @@ public class DownDoor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             bool closeEnough = IsPlayerCloseEnough();
-            Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
+           // Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
 
             if (closeEnough)
             {
@@ -28,7 +28,7 @@ public class DownDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not close enough to Down door");
+                Debug.Log("Not close enough to Down DOOR");
             }
 
         }
@@ -54,6 +54,9 @@ public class DownDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
+
+                // Set the spawn point to the new position
+                GameManager.spawnPoint = new Vector2(0f, 4.5f);
                 GameManager.UpdatePlayerPosition(DownRoomRow, currentPlayerColumn);
                 SceneManager.LoadScene(sceneName);
             }

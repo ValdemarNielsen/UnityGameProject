@@ -11,31 +11,74 @@ namespace GameProject.Models
 {
     public class Enemy: Character
     {
-        public Vector2 Pos { get; set; }
-        public int Width { get; }
-        public int Height { get; }
-        public float Attack { get; set; }
-        public float HP { get; set; }
-        
-        public int MovementSpeed {  get; set; }
+        [Header("Attack Parameters")]
+        [SerializeField] private float attackCoolDown;
+        [SerializeField] private int damage;
+        [SerializeField] private float range;
 
+        [Header("Collider Parameters")]
+        [SerializeField] BoxCollider2D boxCollider;
+        [SerializeField] private float colliderDistance;
 
-        public Enemy (Character character)
+        [Header("Player Layer")]
+        [SerializeField] private LayerMask playerLayer;
+        private float cooldownTimer = Mathf.Infinity;
+
+        private CharacterHealth playerHealth;
+        private Animator anim;
+
+        private EnemyPatrolService enemyPatrol;
+        private void Awake()
         {
-            Pos = character.Pos;
-            Width = character.Width;
-            Height = character.Height;
-            Width = character.Width;
-            Attack = character.Attack;
-            HP = character.HP;
-            MovementSpeed = character.MovementSpeed;
+            anim = GetComponent<Animator>();
+            enemyPatrol = GetComponentInParent<EnemyPatrolService>();
         }
 
-        public void InitializeEnemy()
+        private void Update()
         {
+            cooldownTimer += Time.deltaTime;
 
-
+            //attack when player is within attack range
+            if (PlayerInRange())
+            {
+                if (cooldownTimer >= attackCoolDown)
+                {
+                    cooldownTimer = 0;
+                    anim.SetTrigger("meleeAttack");
+                }
+            }
+            if(enemyPatrol != null)
+            {
+                enemyPatrol.enabled = !PlayerInRange();
+            }
+            
         }
-        
+
+        private bool PlayerInRange()
+        {
+            RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance, 
+                                                 new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z), 
+                                                 0, 
+                                                 Vector2.left, 0, playerLayer);
+            if(hit.collider != null)
+            {
+                playerHealth = hit.transform.GetComponent<CharacterHealth>();
+            }
+            return hit.collider != null;
+        }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance, 
+                                new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+        }
+        private void DamagePlayer()
+        {
+            if (PlayerInRange())
+            {
+                playerHealth.TakeDamage(damage);
+                Debug.Log("IVE HIT THE PLAYER: "+playerHealth);
+            }
+        }
     }
-}
+}   

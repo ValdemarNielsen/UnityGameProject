@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Services\RoomGeneratorService.cs" />
+    <Compile Include="Assets\Scripts\Services\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\ConnectToHubService.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Assets\Scripts\UI\Buttons\DownDoor.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\ChestButtonHandler.cs" />
     <Compile Include="Assets\Scripts\hej.cs" />
+    <Compile Include="Assets\Scripts\Services\EnemyPatrolService.cs" />
     <Compile Include="Assets\Scripts\Manager\MazeManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Maze.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\LeftDoor.cs" />

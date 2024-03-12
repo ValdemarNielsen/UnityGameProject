@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9216483696487077182}
   - component: {fileID: 5880718048556481585}
   - component: {fileID: 2878662815533732401}
+  - component: {fileID: 5668786145501786805}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -221,3 +222,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 10
+--- !u!114 &5668786145501786805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3418762200117086421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc3ed3d84132c54aaef78a64421e133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCoolDown: 1
+  damage: 2
+  range: 1.2
+  boxCollider: {fileID: 3653402516803510365}
+  colliderDistance: 1.2
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128

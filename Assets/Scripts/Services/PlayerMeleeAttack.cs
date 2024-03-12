@@ -31,11 +31,6 @@ public class PlayerMeleeAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             anim.SetTrigger("meleeAttack");
-            if (EnemyInRange())
-            {
-                DamageEnemy();
-            }
-            
         }
     }
 

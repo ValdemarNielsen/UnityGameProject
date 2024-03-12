@@ -27,42 +27,22 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        JumpAttack();
+        TriggerJump();
+        FlipAimation();
+        Jump();
+        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("Attack");
+        }
 
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")*moveSpeed));
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Debug.Log("IM GROUNDED");
-            Jump();
+        
 
-          //  jump = true;
-            
+        
 
-        }
-        if ( Input.GetKeyDown(KeyCode.Space) && !isGrounded )
-        {
-            Debug.Log("IM NOT GROUNDED");
-        }
-
-        // Update facing direction based on horizontal input
-        if (Input.GetAxis("Horizontal") > 0 && !m_FacingRight)
-        {
-            Flip();
-        }
-        else if (Input.GetAxis("Horizontal") < 0 && m_FacingRight)
-        {
-            Flip();
-        }
-        if (!Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
-        {
-            jump = true;
-            animator.SetBool("IsJumping", jump);
-        }
-        else if (Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
-        {
-            jump = false;
-            animator.SetBool("IsJumping", jump);
-        }
 
     }
 
@@ -86,8 +66,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        // Apply jump force
-        rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Debug.Log("IM GROUNDED");
+            // Apply jump force
+            rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)
+        {
+            Debug.Log("IM NOT GROUNDED");
+        }
+        
     }
 
     void CheckGrounded()
@@ -118,6 +108,39 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = scale;
     }
 
+    void JumpAttack()
+    {
+        if (!Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")) && Input.GetKeyDown(KeyCode.E)) {
+                    
+            animator.SetBool("JumpAttack", true);
+            
+        }
+    } 
+    void TriggerJump()
+    {
+        if (!Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
+        {
+            jump = true;
+            animator.SetBool("IsJumping", jump);
+        }
+        else if (Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
+        {
+            jump = false;
+            animator.SetBool("IsJumping", jump);
+        }
+    }
 
-
+    void FlipAimation()
+    {
+        // Update facing direction based on horizontal input
+        if (Input.GetAxis("Horizontal") > 0 && !m_FacingRight)
+        {
+            Flip();
+        }
+        else if (Input.GetAxis("Horizontal") < 0 && m_FacingRight)
+        {
+            Flip();
+        }
+    }
+            
 }

@@ -1,32 +1,41 @@
-﻿using System;
+﻿using Assets.Scripts.Objects;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 namespace GameProject.Models
 {
-    public class Enemy
+    public class Enemy: Character
     {
-        public Point Pos { get; set; }
+        public Vector2 Pos { get; set; }
         public int Width { get; }
         public int Height { get; }
-        public int Attack { get; set; }
-        public int HP { get; set; }
+        public float Attack { get; set; }
+        public float HP { get; set; }
+        
+        public int MovementSpeed {  get; set; }
 
 
-        public Enemy (Point startPos, int width = 60, int height = 60, int attack = 5, int hp = 15)
+        public Enemy (Character character)
         {
-            Pos = startPos;
-            Width = width;
-            Height = height;
-            Attack = attack;
-            HP = hp;
+            Pos = character.Pos;
+            Width = character.Width;
+            Height = character.Height;
+            Width = character.Width;
+            Attack = character.Attack;
+            HP = character.HP;
+            MovementSpeed = character.MovementSpeed;
         }
-        public Point GetPosition()
+
+        public void InitializeEnemy()
         {
-            return Pos;
+
+
         }
+        
     }
 }

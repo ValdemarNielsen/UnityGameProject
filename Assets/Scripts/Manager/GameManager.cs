@@ -1,6 +1,7 @@
 using GameProject.Models;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 public static class GameManager
@@ -24,4 +25,21 @@ public static class GameManager
         return new int[] { GameManager.playerRowHolder, GameManager.playerColHolder };
     }
 
+
+    // TCP PlayerClient and not player
+    private static PlayerClient currentPlayer = null;
+
+    public static PlayerClient CurrentPlayer
+    {
+        get
+        {
+            if (currentPlayer == null)
+            {
+                // Lazy initialization of the PlayerClient
+                currentPlayer = new PlayerClient("Bobby", new TcpClient());
+            }
+            return currentPlayer;
+        }
+
+    }
 }

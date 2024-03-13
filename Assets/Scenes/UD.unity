@@ -1533,6 +1533,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd7cfbe1bdab5d6409df182b690f570e, type: 3}
+--- !u!114 &711570331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2947540961825941851, guid: cd7cfbe1bdab5d6409df182b690f570e, type: 3}
+  m_PrefabInstance: {fileID: 711570330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011a516bd233e0548b02fa82ff1fc6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &784304852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,7 +2088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mazeManager: {fileID: 890708094}
   interactionDistance: 1.5
-  player: {fileID: 0}
+  player: {fileID: 711570331}
 --- !u!212 &1726687180
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2299,7 +2310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mazeManager: {fileID: 890708094}
   interactionDistance: 1.5
-  player: {fileID: 0}
+  player: {fileID: 711570331}
 --- !u!212 &2109889801
 SpriteRenderer:
   m_ObjectHideFlags: 0

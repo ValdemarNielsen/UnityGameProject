@@ -6,42 +6,47 @@ using System.Net;
 using System.IO;
 using UnityEditor.PackageManager;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Text;
 
 
 public class TCPClient : MonoBehaviour
 {
-	private TcpClient _client;
-	private NetworkStream _stream;
-	private Thread _clientThread;
+	private TcpClient client;
+	private NetworkStream stream;
+
 
 
 	public int port = 13000;
     public string hostAdress = "127.0.0.1";
 
 
-	  void Start()
-    {
-         ConnectedToServer();
-            
-            }
 
-    private void ConnectedToServer()
+
+    private async void Start()
     {
-        try { 
-  
-            _client = new TcpClient(hostAdress, port);
-            _stream = _client.GetStream();
-			Debug.Log("Connected to the server.");
-		}
-		catch (System.Exception e)
-		{
-			Debug.LogError("Socket error: " + e.Message);
-		}
+        try
+        {
+
+            client = new TcpClient(hostAdress, port);
+            await client.ConnectAsync(hostAdress, port);
+            stream = client.GetStream();
+            Debug.Log("Connected to the server.");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Socket error: " + e.Message);
+        }
+    }
+
+        private async void ConnectedToServer()
+    {
+
 	}
 
 	public void JoinLobby(string lobbyId, PlayerClient player)
 	{
-		if(lobbyId == null || player == null && _stream != null)
+		if(lobbyId == null || player == null && stream != null)
 		{
 			string message = $"JOIN,{lobbyId},{player.Id},{player.Name}";
 
@@ -49,20 +54,42 @@ public class TCPClient : MonoBehaviour
 		}
 	}
 
-    public void CreateLobby(PlayerClient player)
+    public async Task CreateLobby()
     {
-        if ( player == null && _stream != null)
-        {
-            string message = $"Create,{player.Id},{player.Name}";
 
-            player.SendMessage(message);
+
+        if (client != null)
+        {
+            Debug.Log("YOu got this far");
+            try {
+        
+
+                string message = $"CREATE,{2},Henrik";
+
+
+                byte[] dataToSend = Encoding.UTF8.GetBytes(message);
+                await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+
+
+                //.SendMessage(message);
+
+                byte[] receivedBytes = new byte[1024]; // Adjust buffer size as needed
+                int bytesRead = await stream.ReadAsync(receivedBytes, 0, receivedBytes.Length);
+                string receivedData = Encoding.UTF8.GetString(receivedBytes, 0, bytesRead);
+
+                // Process the server's response
+                Debug.Log("Received from server: " + receivedData);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Error in CreateLobby: " + ex.Message);
+            }
         }
     }
     private void OnApplicationQuit()
     {
-        _stream?.Close();
-        _client?.Close();
-        _clientThread?.Abort();
+        stream?.Close();
+        client?.Close();
     }
 
     private void OnDestroy()

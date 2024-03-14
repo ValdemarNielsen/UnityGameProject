@@ -16,7 +16,7 @@ namespace Assets.Scripts.UI.Buttons
 
  
     {
-        public TCPClient Client;
+        public TCPClient tcpClient;
         public Button createLobby;
 
         void Start()
@@ -25,15 +25,12 @@ namespace Assets.Scripts.UI.Buttons
             btn.onClick.AddListener(TaskOnClick);
         }
 
-        void TaskOnClick()
+        public void TaskOnClick()
         {
-
+            tcpClient.CreateLobby();
             Debug.Log("You have clicked the button!");
             Console.WriteLine("test");
-
-            PlayerClient currentPlayer = GameManager.CurrentPlayer;
-
-            Client.CreateLobby(currentPlayer);
         }
+
     }
 }

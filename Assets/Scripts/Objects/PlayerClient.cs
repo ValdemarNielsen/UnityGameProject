@@ -1,12 +1,14 @@
 using System.Net.Sockets;
 using System.Text;
 using System;
+using Unity.Plastic.Newtonsoft.Json;
 
-    public class PlayerClient
+
+public class PlayerClient
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public TcpClient TcpClient { get; set; }
+    [JsonIgnore] public TcpClient TcpClient { get; set; }
 
         public PlayerClient(string name, TcpClient tcpClient)
         {
@@ -21,10 +23,14 @@ using System;
             byte[] buffer = Encoding.ASCII.GetBytes(message);
 
             NetworkStream stream = TcpClient.GetStream();
-
-            stream.Write(buffer, 0, buffer.Length);
+        stream.Write(buffer, 0, buffer.Length);
         }
 
+    public string SerializeToJson()
+    {
+        return JsonConvert.SerializeObject(this);
     }
+
+}
 
 

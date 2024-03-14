@@ -187,6 +187,7 @@
     <Compile Include="Assets\Scripts\UI\Buttons\UpDoor.cs" />
     <Compile Include="Assets\Scripts\Objects\Character.cs" />
     <Compile Include="Assets\Scripts\Objects\Room.cs" />
+    <Compile Include="Assets\Scripts\Manager\PlayerClientManager.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerUpdateService.cs" />
     <Compile Include="Assets\Scripts\Services\LoginManager.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\Shared\PlayerData.cs" />

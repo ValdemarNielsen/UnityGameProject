@@ -179,6 +179,7 @@
     <Compile Include="Assets\Scripts\Controllers\MazeNavigator.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneManagements.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\StartGameButton.cs" />
+    <Compile Include="Assets\Scripts\UI\MazeMiniMap.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\WebSocketClient.cs" />
     <Compile Include="Assets\Scripts\Services\CharacterHealth.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\UpDoor.cs" />

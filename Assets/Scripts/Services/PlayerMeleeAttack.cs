@@ -1,3 +1,4 @@
+using GameProject.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-    }
+        boxCollider = GetComponent<BoxCollider2D>();
+    }   
 
     private void Update()
     {

@@ -1,3 +1,5 @@
+using Assets.Scripts.Services;
+using GameProject.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +26,7 @@ public class CharacterHealth : MonoBehaviour
         }
         else
         {
+            
             anim.SetTrigger("die");
             CharacterDeath();
         }

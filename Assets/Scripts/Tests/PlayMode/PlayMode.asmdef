@@ -1,3 +1,7 @@
 {
-    "name": "PlayMode"
-    }
+    "name": "PlayMode",
+    "references": ["GameLogic"],
+    "optionalUnityReferences": ["TestAssemblies"],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": []
+}

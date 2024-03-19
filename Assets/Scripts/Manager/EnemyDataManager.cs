@@ -1,6 +1,7 @@
 ﻿using Codice.CM.Client.Differences.Graphic;
 using UnityEngine;
 
+
 public class EnemyDataManager : MonoBehaviour
 {
     // Static property to access the EnemyData instance

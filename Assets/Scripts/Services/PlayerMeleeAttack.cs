@@ -22,6 +22,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     private Animator anim;
 
 
+
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -64,5 +66,6 @@ public class PlayerMeleeAttack : MonoBehaviour
             enemyHealth.TakeDamage(damage);
             Debug.Log("IVE HIT THE enemy: ");
         }
+        
     }
 }

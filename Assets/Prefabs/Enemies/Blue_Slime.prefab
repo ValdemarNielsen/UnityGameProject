@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2019067198227922774}
   - component: {fileID: 3800315703295121713}
   - component: {fileID: 3716541743804995343}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blue_Slime
   m_TagString: Blue_Slime
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114310434023027912}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.549387, y: -3.66, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -168,12 +168,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCoolDown: 1
   damage: 2
+  range: 1
   boxCollider: {fileID: 2019067198227922774}
+  colliderDistance: 0.1
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  range: 1
-  colliderDistance: 0.4
 --- !u!114 &3716541743804995343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +187,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 10
+  character: {fileID: 2114310434023027912}

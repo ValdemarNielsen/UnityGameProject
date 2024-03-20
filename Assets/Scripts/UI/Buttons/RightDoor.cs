@@ -54,10 +54,13 @@ public class RightDoor : MonoBehaviour
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
+                
+
                 // Set the spawn point to the new position
                 GameManager.spawnPoint = new Vector2(-8f, -2.8f);
                 GameManager.UpdatePlayerPosition(currentPlayerRow, rightRoomColumn);
                 SceneManager.LoadScene(sceneName);
+               // GameManager.MiniMapGlow[rightRoomColumn, currentPlayerColumn] = true;
             }
             else
             {

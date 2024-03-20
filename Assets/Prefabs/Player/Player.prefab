@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 10
+  character: {fileID: 3418762200117086421}
 --- !u!114 &5668786145501786805
 MonoBehaviour:
   m_ObjectHideFlags: 0

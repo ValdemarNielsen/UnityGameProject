@@ -28,22 +28,27 @@ public class EnemyPatrolService : MonoBehaviour
 
     private void Update()
     {
-        if (movingLeft) {
-            if(enemy.position.x >= leftEdge.position.x) 
-                MoveLeftOrRight(-1);
-            else
-            {
-                DirectionChange();
-            }
-            
-        }
-        else
+
+        if (enemy != null)
         {
-            if (enemy.position.x <= rightEdge.position.x)
-                MoveLeftOrRight(1);
+            if (movingLeft)
+            {
+                if (enemy.position.x >= leftEdge.position.x)
+                    MoveLeftOrRight(-1);
+                else
+                {
+                    DirectionChange();
+                }
+
+            }
             else
             {
-                DirectionChange();
+                if (enemy.position.x <= rightEdge.position.x)
+                    MoveLeftOrRight(1);
+                else
+                {
+                    DirectionChange();
+                }
             }
         }
     }
@@ -71,6 +76,9 @@ public class EnemyPatrolService : MonoBehaviour
 
     private void OnDisable()
     {
-        anim.SetBool("isMoving", false);
+        if (enemy != null)
+        {
+            anim.SetBool("isMoving", false);
+        }
     }
 }

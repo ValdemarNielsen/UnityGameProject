@@ -10,7 +10,6 @@ namespace GameProject.Models
     public class Maze
     {
         public Room[,] Rooms { get; private set; }
-
         public Maze(int size)
         {
             Rooms = new Room[size, size];

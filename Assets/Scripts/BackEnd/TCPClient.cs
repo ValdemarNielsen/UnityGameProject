@@ -56,6 +56,11 @@ public class TCPClient : MonoBehaviour
             string message = $"Create,{player.Id},{player.Name}";
 
             player.SendMessage(message);
+            Debug.Log("Send message" + message);
+        }
+        else
+        {
+            Debug.Log("It did not send the message");
         }
     }
     private void OnApplicationQuit()

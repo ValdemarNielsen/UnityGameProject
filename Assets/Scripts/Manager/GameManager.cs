@@ -13,6 +13,7 @@ public static class GameManager
     public static int playerColHolder { get; set; }
 
     public static Vector2 spawnPoint { get; set; }
+    public static bool[,] enemy { get; set; }
 
     public static void UpdatePlayerPosition(int newRow, int newColumn)
     {

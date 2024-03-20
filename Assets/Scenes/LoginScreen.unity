@@ -2575,7 +2575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8617fc286e2134a4284ab2650f80334d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createLobby: {fileID: 0}
+  Client: {fileID: 0}
+  createLobby: {fileID: 1603560188}
 --- !u!1 &1731392045
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ using UnityEditor.SceneManagement;
 
 public class MazeManager : MonoBehaviour
 {
-    public int mazeSize = 5;
+    private int mazeSize = 5;
     void Start()
     {
         if (GameManager.MazeHolder == null)
@@ -29,6 +29,5 @@ public class MazeManager : MonoBehaviour
             Debug.Log("Maze is already generated");
         }
     }
-
-    
+        
 }

@@ -62,8 +62,8 @@ public class TCPClient : MonoBehaviour
         {
             Debug.Log("YOu got this far");
             try {
-        
 
+                Debug.Log("Inside TCP Call");
                 string message = $"CREATE,{2},Henrik";
 
 

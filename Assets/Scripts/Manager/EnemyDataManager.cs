@@ -21,7 +21,6 @@ public class EnemyDataManager : MonoBehaviour
 
     private void Awake()
     {
-        // Load the EnemyData asset when the scene starts (optional)
-        EnemyDataInstance.LoadEnemyData();
+      
     }
 }

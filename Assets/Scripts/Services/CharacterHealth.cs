@@ -1,3 +1,5 @@
+using Assets.Scripts.Services;
+using GameProject.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +7,7 @@ using UnityEngine;
 public class CharacterHealth : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
+    [SerializeField] private GameObject character;
     public float CurrecntHealth { get; private set; }
     private Animator anim;
 
@@ -23,15 +26,18 @@ public class CharacterHealth : MonoBehaviour
         }
         else
         {
+            
             anim.SetTrigger("die");
+            CharacterDeath();
         }
     }
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            TakeDamage(1);
-            Debug.Log("THIS IS THE CURRENT HEALTH: "+CurrecntHealth);
-        }
+        
+    }
+
+    public void CharacterDeath()
+    {
+        Destroy(character);
     }
 }

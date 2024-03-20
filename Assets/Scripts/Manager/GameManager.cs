@@ -13,12 +13,20 @@ public static class GameManager
     public static int playerColHolder { get; set; }
 
     public static Vector2 spawnPoint { get; set; }
-    public static bool[,] enemy { get; set; }
+    public static int[,] HasVisitedRoom { get; set; } = new int[5,5];
+
 
     public static void UpdatePlayerPosition(int newRow, int newColumn)
     {
         GameManager.playerRowHolder = newRow;
         GameManager.playerColHolder = newColumn;
+        HasVisitedRoom[newRow, newColumn] += 1;
+    }
+
+    // Check if the room has been visited
+    public static bool HasVisited(int row, int column)
+    {
+        return HasVisitedRoom[row, column] == 1;
     }
 
     public static int[] GetPlayerPosition()
@@ -26,21 +34,4 @@ public static class GameManager
         return new int[] { GameManager.playerRowHolder, GameManager.playerColHolder };
     }
 
-
-    // TCP PlayerClient and not player
-    private static PlayerClient currentPlayer = null;
-
-    public static PlayerClient CurrentPlayer
-    {
-        get
-        {
-            if (currentPlayer == null)
-            {
-                // Lazy initialization of the PlayerClient
-                currentPlayer = new PlayerClient("Bobby", new TcpClient());
-            }
-            return currentPlayer;
-        }
-
-    }
 }

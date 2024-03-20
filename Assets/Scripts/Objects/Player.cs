@@ -50,7 +50,7 @@ namespace GameProject.Models
         private void Awake()
         {
             InitializePlayer();
-            SetDefaultSize();
+            //SetDefaultSize();
         }
 
         // Method to initialize the player object

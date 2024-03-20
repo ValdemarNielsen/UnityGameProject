@@ -11,7 +11,7 @@ public class EnemySpawn : MonoBehaviour
 
         int[] playerPosition = GameManager.GetPlayerPosition();
 
-        if (GetRandomPercentage() < spawnRate && !GameManager.HasVisited(playerPosition[0], playerPosition[1]))
+        if (GetRandomPercentage() < spawnRate)
         {
             Destroy(enemy);
         }

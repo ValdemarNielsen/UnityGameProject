@@ -11,10 +11,12 @@ namespace GameProject.Models
 {
     public class Enemy: Character
     {
-        [Header("Attack Parameters")]
+
+        [Header("Stat Parameters")]
         [SerializeField] private float attackCoolDown;
         [SerializeField] private int damage;
         [SerializeField] private float range;
+        [SerializeField] private CharacterHealth enemyHealth;
 
         [Header("Collider Parameters")]
         [SerializeField] BoxCollider2D boxCollider;
@@ -24,12 +26,23 @@ namespace GameProject.Models
         [SerializeField] private LayerMask playerLayer;
         private float cooldownTimer = Mathf.Infinity;
 
+        [SerializeField] private GameObject gameObject;
+
         private CharacterHealth playerHealth;
         private Animator anim;
 
         private EnemyPatrolService enemyPatrol;
+
+        private int[] currentPlayerPosition = GameManager.GetPlayerPosition();
+
         private void Awake()
         {
+            if (GameManager.hasKilled[currentPlayerPosition[0],currentPlayerPosition[1]] == 1){ 
+            
+                Destroy(gameObject);
+            }
+
+            
             anim = GetComponent<Animator>();
             enemyPatrol = GetComponentInParent<EnemyPatrolService>();
         }
@@ -80,5 +93,7 @@ namespace GameProject.Models
                 Debug.Log("IVE HIT THE PLAYER: "+playerHealth);
             }
         }
+
+       
     }
 }   

@@ -29,8 +29,8 @@ public class TCPClient : MonoBehaviour
         {
 
             client = new TcpClient(hostAdress, port);
-            await client.ConnectAsync(hostAdress, port);
             stream = client.GetStream();
+            await client.ConnectAsync(hostAdress, port);
             Debug.Log("Connected to the server.");
         }
         catch (System.Exception e)
@@ -62,8 +62,8 @@ public class TCPClient : MonoBehaviour
         {
             Debug.Log("YOu got this far");
             try {
-        
 
+                Debug.Log("Inside TCP Call");
                 string message = $"CREATE,{2},Henrik";
 
 

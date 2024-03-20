@@ -29,6 +29,5 @@ public class MazeManager : MonoBehaviour
             Debug.Log("Maze is already generated");
         }
     }
-
-    
+        
 }

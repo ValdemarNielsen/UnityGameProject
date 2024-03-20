@@ -14,7 +14,7 @@ namespace Assets.Scripts.UI.Buttons
 {
     internal class CreateLobbyButton : MonoBehaviour
 
- 
+
     {
         public TCPClient tcpClient;
         public Button createLobby;

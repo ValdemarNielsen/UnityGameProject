@@ -16,10 +16,11 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     [Header("Player Layer")]
     [SerializeField] private LayerMask enemyLayer;
-    private float cooldownTimer = Mathf.Infinity;
 
     private CharacterHealth enemyHealth;
     private Animator anim;
+
+
 
 
     private void Awake()
@@ -64,5 +65,6 @@ public class PlayerMeleeAttack : MonoBehaviour
             enemyHealth.TakeDamage(damage);
             Debug.Log("IVE HIT THE enemy: ");
         }
+        
     }
 }

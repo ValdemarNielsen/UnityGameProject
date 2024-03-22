@@ -25,7 +25,7 @@ namespace Assets.Scripts.UI
         float tileSize = 0.1f;
         float gapSize = 0.29f;
 
-        private void Update()
+        private void Awake()
         {
             for (int i = 0; i < 5; i++)
             {

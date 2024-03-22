@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     float moveSpeed = 5f;
     float jumpAmount = 6;
-    float climbSpeed = 3f;
+    // float climbSpeed = 3f;
     private bool isGrounded;
     private bool m_FacingRight = true;  // To know which way the player is currently facing.
     private bool isLadder;

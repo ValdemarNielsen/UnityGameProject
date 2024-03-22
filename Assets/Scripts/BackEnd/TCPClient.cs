@@ -8,15 +8,14 @@ using UnityEditor.PackageManager;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text;
+using JetBrains.Annotations;
 
 
 public class TCPClient : MonoBehaviour
 {
-	private TcpClient client;
+
+    private TcpClient client;
 	private NetworkStream stream;
-
-
-
 	public int port = 13000;
     public string hostAdress = "127.0.0.1";
 
@@ -25,12 +24,13 @@ public class TCPClient : MonoBehaviour
 
     private async void Start()
     {
+        Debug.Log("we got into start");
         try
         {
 
             client = new TcpClient(hostAdress, port);
-            await client.ConnectAsync(hostAdress, port);
             stream = client.GetStream();
+            await client.ConnectAsync(hostAdress, port);
             Debug.Log("Connected to the server.");
         }
         catch (System.Exception e)

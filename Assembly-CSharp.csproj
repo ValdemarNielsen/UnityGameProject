@@ -1537,10 +1537,6 @@
       <Project>{5DEC5C3C-DCE5-D494-D1C9-CA0A590D51C9}</Project>
       <Name>GameLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="PlayMode.csproj">
-      <Project>{515A4871-EF88-52C8-4568-0B4AFB72104A}</Project>
-      <Name>PlayMode</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

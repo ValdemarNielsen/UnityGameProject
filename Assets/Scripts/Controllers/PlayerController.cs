@@ -18,8 +18,13 @@ public class PlayerController : MonoBehaviour
         bool attackInput = Input.GetKeyDown(KeyCode.E);
         bool interactInput = Input.GetKeyDown(KeyCode.F);
 
-        // Send the player input to the server
-        udpClient.SendPlayerInput(horizontalInput, jumpInput, attackInput, interactInput);
+        if(horizontalInput != 0)
+        {
+            // Send the player input to the server
+            udpClient.SendPlayerInput(horizontalInput, jumpInput, attackInput, interactInput);
+            Debug.Log("this is the horizontal input and jump input " + horizontalInput);
+        }
+        
     }
 
     void OnDestroy()

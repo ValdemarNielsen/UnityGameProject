@@ -162,8 +162,8 @@
     <Compile Include="Assets\Scripts\Services\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
-    <Compile Include="Assets\Scripts\Services\BackEnd\ConnectToHubService.cs" />
     <Compile Include="Assets\Scripts\BackEnd\GameHub.cs" />
+    <Compile Include="Assets\Scripts\Manager\CalculusQuestionManager.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\ServerManager.cs" />
     <Compile Include="Assets\Scripts\Services\EnemySpawn.cs" />
     <Compile Include="Assets\Scripts\Resources\EnemyData.cs" />
@@ -201,6 +201,7 @@
     <Compile Include="Assets\Scripts\Objects\Boss.cs" />
     <Compile Include="Assets\Scripts\Hubs\GameHub.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Services\CalculusQuestionGeneratorService.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\RightDoor.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovementService.cs" />
     <Compile Include="Assets\Scripts\Program.cs" />

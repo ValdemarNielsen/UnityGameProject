@@ -30,6 +30,7 @@ namespace Assets.Scripts.UI.Buttons
             tcpClient.CreateLobby();
             Debug.Log("You have clicked the button!");
             Console.WriteLine("test");
+            SceneManager.LoadScene("Lobby");
         }
 
     }

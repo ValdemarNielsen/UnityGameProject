@@ -6,6 +6,7 @@ using UnityEngine;
 
 public static class GameManager
 {
+    public static int mazeSize = 5;
     public static Maze MazeHolder { get; set; }
 
     public static int playerRowHolder { get; set; }

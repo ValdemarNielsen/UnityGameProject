@@ -36,7 +36,6 @@ public class UpDoor : MonoBehaviour
 
     public void TransitionToUpScene()
     {
-        Debug.Log("First part of transition");
         int[] currentPlayerPosition = GameManager.GetPlayerPosition();
         int currentPlayerRow = currentPlayerPosition[0];
         int currentPlayerColumn = currentPlayerPosition[1];
@@ -47,7 +46,6 @@ public class UpDoor : MonoBehaviour
         // check if the left room is valid
         if (UpRoomRow >= 0 && UpRoomRow < mazeManager.mazeSize)
         {
-            Debug.Log("First IF - statement of transition");
             // getting scene name for the left room
             string sceneName = GameManager.MazeHolder.Rooms[UpRoomRow, currentPlayerColumn].SceneName;
 
@@ -70,7 +68,6 @@ public class UpDoor : MonoBehaviour
     {
         // Calculate the distance between the player and the chest.
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log($"UpDoor position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}");
 
         // Return true if the distance is less than or equal to the interaction distance.
         return distance <= interactionDistance;

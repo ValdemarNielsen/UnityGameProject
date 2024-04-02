@@ -25,9 +25,9 @@ namespace Assets.Scripts.UI.Buttons
             btn.onClick.AddListener(TaskOnClick);
         }
 
-        public void TaskOnClick()
+        public async void TaskOnClick()
         {
-            tcpClient.CreateLobby();
+            await tcpClient.CreateLobby();
             Debug.Log("You have clicked the button!");
             Console.WriteLine("test");
             SceneManager.LoadScene("Lobby");

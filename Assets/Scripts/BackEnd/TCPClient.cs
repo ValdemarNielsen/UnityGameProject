@@ -17,7 +17,7 @@ public class TCPClient : MonoBehaviour
 	private TcpClient client;
 	private NetworkStream stream;
    // public GameObject PlayerPrefab;
-    public string playerId; // Unique ID for the player
+   // public string playerId; // Unique ID for the player
 
 
 
@@ -49,13 +49,14 @@ public class TCPClient : MonoBehaviour
     {
 
 	}
-
+    /*
     // Call this method when the player performs an action or moves. That could be sending ones location or action done shown as below. 
     // Call this instead of each method individually. 
     public void OnPlayerAction(Vector2 playerPosition)
     {
        // SendPlayerData(playerPosition);
     }
+    */
 
 	public void JoinLobby(string lobbyId, PlayerClient player)
 	{
@@ -100,6 +101,7 @@ public class TCPClient : MonoBehaviour
         }
     }
 
+    /*
     private async void SendPlayerData(Vector2 playerPosition)
     {
         try
@@ -144,7 +146,7 @@ public class TCPClient : MonoBehaviour
             Debug.LogError("Error receiving player data: " + ex.Message);
         }
     }
-
+    */
 
     private void OnApplicationQuit()
     {

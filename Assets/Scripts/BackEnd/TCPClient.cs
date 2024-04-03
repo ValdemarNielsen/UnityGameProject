@@ -74,7 +74,7 @@ public class TCPClient : MonoBehaviour
 
         if (client != null)
         {
-            Debug.Log("YOu got this far");
+            Debug.Log("You got this far");
             try {
 
                 Debug.Log("Inside TCP Call");

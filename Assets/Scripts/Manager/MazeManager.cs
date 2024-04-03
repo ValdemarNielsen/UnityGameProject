@@ -14,7 +14,7 @@ public class MazeManager : MonoBehaviour
     {
         if (GameManager.MazeHolder == null)
         {
-            MazeGeneratorService mazeGeneratorService = new MazeGeneratorService(mazeSize);
+            MazeGeneratorService mazeGeneratorService = new MazeGeneratorService(GameManager.mazeSize);
 
             GameManager.MazeHolder = mazeGeneratorService.GenerateMaze();
             SceneManagements.AssignScenesToRooms(GameManager.MazeHolder);

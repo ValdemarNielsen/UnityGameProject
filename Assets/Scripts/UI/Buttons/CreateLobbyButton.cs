@@ -8,6 +8,11 @@ using Unity.UI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor.PackageManager;
+using Assets;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using SceneManagement;
+using GameProject.Services;
 
 
 namespace Assets.Scripts.UI.Buttons
@@ -16,8 +21,8 @@ namespace Assets.Scripts.UI.Buttons
 
 
     {
-        public TCPClient tcpClient;
-        public Button createLobby;
+        private TCPClient tcpClient;
+        private Button createLobby;
 
         void Start()
         {
@@ -32,6 +37,10 @@ namespace Assets.Scripts.UI.Buttons
             Console.WriteLine("test");
             //tcpClient.ListenForServerMessages();
             //SceneManager.LoadScene("Lobby");
+            if (GameManager.localPlayerId == null)
+            {
+                GameManager.localPlayerId = tcpClient.GeneratePlayerId();
+            }
         }
 
     }

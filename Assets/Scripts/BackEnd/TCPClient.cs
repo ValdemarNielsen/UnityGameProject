@@ -78,11 +78,11 @@ public class TCPClient : MonoBehaviour
 	}
 
     // Generate a unique player ID
-    private string GeneratePlayerId()
+    public string GeneratePlayerId()
     {
         // You can generate a unique ID based on various factors such as timestamp, GUID, etc.
         // Here's an example using timestamp:
-        string playerId = DateTime.Now.ToString("yyMMddHHmmssfff");
+        string playerId = DateTime.Now.ToString("ddHHmmssfff");
 
         return playerId;
     }
@@ -144,22 +144,20 @@ public class TCPClient : MonoBehaviour
         }
     }
 
-    private void SpawnPlayer(string playerId, bool isLocalPlayer = false)
+    private void SpawnPlayer(string playerId)
     {
         // Instantiate the player prefab at the spawn point
         GameObject newPlayer = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
-        // Assign the player ID to the spawned player (you might have to adjust this based on your player controller script)
+        // Assign the player ID to the spawned player (you might have to adjust this based on our player controller script)
         newPlayer.GetComponent<PlayerController>().PlayerId = playerId;
 
         // Determine if this is the local player and set that as a variable under the prefab.
         if (playerId == GameManager.localPlayerId)
         {
-           // controller.isLocalPlayer = true;
             // Perform any additional setup for the local player
         }
         else
         {
-           // controller.isLocalPlayer = false;
             // Setup for remote players if needed
         }
         Debug.Log($"Player spawned with ID: {playerId}");

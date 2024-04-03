@@ -205,6 +205,7 @@
     <Compile Include="Assets\Scripts\UI\Buttons\RightDoor.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovementService.cs" />
     <Compile Include="Assets\Scripts\Program.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\JoinLobbyButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\GameLogic.asmdef" />

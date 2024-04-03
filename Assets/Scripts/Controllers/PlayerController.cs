@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private UDPClient udpClient;
+    public string PlayerId { get; set; }
+
 
     void Start()
     {

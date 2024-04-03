@@ -9,7 +9,7 @@ using UnityEditor.SceneManagement;
 
 public class MazeManager : MonoBehaviour
 {
-    public int mazeSize = GameManager.mazeSize;
+    private int mazeSize = GameManager.mazeSize;
     void Start()
     {
         if (GameManager.MazeHolder == null)

@@ -44,7 +44,7 @@ public class DownDoor : MonoBehaviour
         int DownRoomRow = currentPlayerRow + 1;
 
         // check if the left room is valid
-        if (DownRoomRow >= 0 && DownRoomRow < 5)
+        if (DownRoomRow >= 0 && DownRoomRow < GameManager.mazeSize)
         {
             // getting scene name for the left room
             string sceneName = GameManager.MazeHolder.Rooms[DownRoomRow, currentPlayerColumn].SceneName;

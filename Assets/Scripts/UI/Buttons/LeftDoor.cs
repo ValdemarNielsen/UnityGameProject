@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class LeftDoor : MonoBehaviour
 {
-    public MazeManager mazeManager = new MazeManager();
     // The distance at which the player can interact with the chest.
     public float interactionDistance = 1.5f;
 
@@ -47,7 +46,7 @@ public class LeftDoor : MonoBehaviour
         int leftRoomColumn = currentPlayerColumn - 1;
 
         // check if the left room is valid
-        if (leftRoomColumn >= 0 && leftRoomColumn < 5)
+        if (leftRoomColumn >= 0 && leftRoomColumn < GameManager.mazeSize)
         {
             // getting scene name for the left room
             string sceneName = GameManager.MazeHolder.Rooms[currentPlayerRow, leftRoomColumn].SceneName;

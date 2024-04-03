@@ -144,62 +144,31 @@ public class TCPClient : MonoBehaviour
         }
     }
 
-    private void SpawnPlayer(string playerId)
+    private void SpawnPlayer(string playerId, bool isLocalPlayer = false)
     {
         // Instantiate the player prefab at the spawn point
         GameObject newPlayer = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
         // Assign the player ID to the spawned player (you might have to adjust this based on your player controller script)
         newPlayer.GetComponent<PlayerController>().PlayerId = playerId;
+
+        // Determine if this is the local player and set that as a variable under the prefab.
+        if (playerId == GameManager.localPlayerId)
+        {
+           // controller.isLocalPlayer = true;
+            // Perform any additional setup for the local player
+        }
+        else
+        {
+           // controller.isLocalPlayer = false;
+            // Setup for remote players if needed
+        }
         Debug.Log($"Player spawned with ID: {playerId}");
     }
 
 
-    /*
-    private async void SendPlayerData(Vector2 playerPosition)
-    {
-        try
-        {
-            if (client != null && stream != null)
-            {
-                // Serialize coordinates to JSON
-                string json = JsonUtility.ToJson(new { playerId = playerId, x = playerPosition.x, y = playerPosition.y });
-
-                // Send JSON string over TCP
-                byte[] dataToSend = Encoding.UTF8.GetBytes(json);
-                await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error sending player data: " + ex.Message);
-        }
-    }
-
-    private async void StartReceivingPlayerData()
-    {
-        try
-        {
-            if (client != null && stream != null)
-            {
-                byte[] buffer = new byte[1024];
-                while (true)
-                {
-                    int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-                    string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                    // Deserialize received data
-                    // Note: We may need to implement your own deserialization logic here
-                    // For example, JsonUtility.FromJson<MyPlayerData>(receivedData);
-                    // Where MyPlayerData could be a class representing the received player data
-                    Debug.Log("Received from server: " + receivedData);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error receiving player data: " + ex.Message);
-        }
-    }
-    */
+    
+    
+    
 
     private void OnApplicationQuit()
     {

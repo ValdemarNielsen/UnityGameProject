@@ -36,14 +36,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
         }
-
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")*moveSpeed));
-
-        
-
-        
-
-
     }
 
     // to move our charactor

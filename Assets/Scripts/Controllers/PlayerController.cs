@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     private UDPClient udpClient;
     public string PlayerId { get; set; }
+    public PlayerMovement movement; // Reference to our playerMovement script component. 
 
 
     void Start()
@@ -14,6 +15,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        /*
+        if (isLocalPlayer)
+        {
+            movement;
+        }
         // Capture player input
         float horizontalInput = Input.GetAxis("Horizontal");
         bool jumpInput = Input.GetKeyDown(KeyCode.Space);
@@ -25,9 +31,10 @@ public class PlayerController : MonoBehaviour
             // Send the player input to the server
             udpClient.SendPlayerInput(horizontalInput, jumpInput, attackInput, interactInput);
             Debug.Log("this is the horizontal input and jump input " + horizontalInput);
-        }
+        } */
         
     }
+
 
     void OnDestroy()
     {

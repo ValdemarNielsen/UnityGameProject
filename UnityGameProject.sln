@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests.csproj", "{00815B67-BB12-E914-7CDF-0652DD6100DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayMode", "PlayMode.csproj", "{58D898AC-4B69-C1A2-AF4B-7508E6876C91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D898AC-4B69-C1A2-AF4B-7508E6876C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D898AC-4B69-C1A2-AF4B-7508E6876C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D898AC-4B69-C1A2-AF4B-7508E6876C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D898AC-4B69-C1A2-AF4B-7508E6876C91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

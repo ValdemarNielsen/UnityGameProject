@@ -23,18 +23,6 @@ namespace GameProject.Models
         public Vector2 Pos { get => pos; set => pos = value; }
         public int PlayerId { get; set; } // unique identifier for each player
 
-        // Constructors
-        public Player()
-        {
-            // Default initialization
-            width = 66;
-            height = 66;
-            attack = 10;
-            hp = 100;
-            movementSpeed = 10;
-            pos = Vector2.zero;
-            PlayerId = 1;
-        }
 
         public Player(Vector2 startingPos, int width, int height, int attack, int hp, int movementSpeed)
         {
@@ -59,18 +47,5 @@ namespace GameProject.Models
             transform.position = GameManager.spawnPoint;
         }
 
-        // Method to set default size
-        private void SetDefaultSize()
-        {
-            // Set the default size of the player
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-
-        public void UpdatePosition(Vector2 newPosition)
-        {
-            transform.position = newPosition;
-            Debug.Log("called Update Position");
-        }
-  
     }
 }

@@ -1,0 +1,7 @@
+{
+    "name": "PlayMode",
+    "references": ["GameLogic"],
+    "optionalUnityReferences": ["TestAssemblies"],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

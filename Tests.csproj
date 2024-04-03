@@ -163,7 +163,7 @@
     <Compile Include="Assets\Scripts\Tests\Editor\GameManagerServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Scripts\Tests\Tests.asmdef" />
+    <None Include="Assets\Scripts\Tests\Editor\EditMode.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

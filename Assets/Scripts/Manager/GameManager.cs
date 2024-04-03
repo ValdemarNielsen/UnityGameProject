@@ -6,6 +6,7 @@ using UnityEngine;
 
 public static class GameManager
 {
+    public static int mazeSize = 5;
     public static Maze MazeHolder { get; set; }
 
     public static int playerRowHolder { get; set; }
@@ -16,6 +17,7 @@ public static class GameManager
 
     public static int[,] hasKilled { get; set; } = new int[5, 5];
 
+    public static string localPlayerId { get; set; }
 
     public static void UpdatePlayerPosition(int newRow, int newColumn)
     {

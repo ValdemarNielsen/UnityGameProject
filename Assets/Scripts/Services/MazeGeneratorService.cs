@@ -35,11 +35,9 @@ namespace GameProject.Services
         public Maze GenerateMaze()
         {
             // Start from the middle room
-            UnityEngine.Debug.Log("MazeGenerator is called again");
             int startX = size / 2;
             int startY = size / 2;
             DFS(startX, startY);
-            // sceneManagement.AssignScenesToRooms(maze); // Assign scenes after maze generation
             return maze;
         }
 
@@ -136,15 +134,6 @@ namespace GameProject.Services
                 // Insert the new direction letter at the determined index
                 room.DirectionLetter = room.DirectionLetter.Insert(index, directionLetter.ToString());
             }
-        }
-
-
-        private bool ShouldConnectVisitedRoom(int x, int y, int newX, int newY)
-        {
-            // Implement logic to determine if an additional connection should be made
-            // This could be based on the number of existing doors in the room, 
-            // ensuring that not every room becomes too interconnected.
-            return true; // Simplified for illustration
         }
 
     }

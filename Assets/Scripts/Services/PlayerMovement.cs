@@ -36,14 +36,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
         }
-
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")*moveSpeed));
-
-        
-
-        
-
-
     }
 
     // to move our charactor
@@ -80,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    void CheckGrounded()
+    public void CheckGrounded()
     {
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.Raycast(rb.position, Vector2.down, 1.4f, LayerMask.GetMask("Ground"));

@@ -1,14 +1,13 @@
-<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.9.34622.214
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}"
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{83BE2866-0A53-71D6-C680-423D67BBAD46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic.csproj", "{9A0B4607-64F2-5993-9845-FD0206FDAC02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic.csproj", "{5DEC5C3C-DCE5-D494-D1C9-CA0A590D51C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests.csproj", "{00815B67-BB12-E914-7CDF-0652DD6100DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests.csproj", "{41CE5DB1-B9E6-146E-A80E-D329BF387180}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayMode", "PlayMode.csproj", "{515A4871-EF88-52C8-4568-0B4AFB72104A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,56 +15,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A0B4607-64F2-5993-9845-FD0206FDAC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A0B4607-64F2-5993-9845-FD0206FDAC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A0B4607-64F2-5993-9845-FD0206FDAC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A0B4607-64F2-5993-9845-FD0206FDAC02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83BE2866-0A53-71D6-C680-423D67BBAD46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83BE2866-0A53-71D6-C680-423D67BBAD46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83BE2866-0A53-71D6-C680-423D67BBAD46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83BE2866-0A53-71D6-C680-423D67BBAD46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DEC5C3C-DCE5-D494-D1C9-CA0A590D51C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DEC5C3C-DCE5-D494-D1C9-CA0A590D51C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DEC5C3C-DCE5-D494-D1C9-CA0A590D51C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DEC5C3C-DCE5-D494-D1C9-CA0A590D51C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CE5DB1-B9E6-146E-A80E-D329BF387180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CE5DB1-B9E6-146E-A80E-D329BF387180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CE5DB1-B9E6-146E-A80E-D329BF387180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CE5DB1-B9E6-146E-A80E-D329BF387180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{515A4871-EF88-52C8-4568-0B4AFB72104A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515A4871-EF88-52C8-4568-0B4AFB72104A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515A4871-EF88-52C8-4568-0B4AFB72104A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515A4871-EF88-52C8-4568-0B4AFB72104A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
-=======
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.9.34622.214
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic.csproj", "{9A0B4607-64F2-5993-9845-FD0206FDAC02}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests.csproj", "{00815B67-BB12-E914-7CDF-0652DD6100DA}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6B5851E-6214-2D2B-4C71-ACF400FF4EF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A0B4607-64F2-5993-9845-FD0206FDAC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A0B4607-64F2-5993-9845-FD0206FDAC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A0B4607-64F2-5993-9845-FD0206FDAC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A0B4607-64F2-5993-9845-FD0206FDAC02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{00815B67-BB12-E914-7CDF-0652DD6100DA}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
->>>>>>> 6fdc2e2a75d818b134ca881c0df0e74984042bb2

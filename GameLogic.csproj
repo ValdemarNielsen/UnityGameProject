@@ -205,6 +205,7 @@
     <Compile Include="Assets\Scripts\UI\Buttons\RightDoor.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovementService.cs" />
     <Compile Include="Assets\Scripts\Program.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\JoinLobbyButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\GameLogic.asmdef" />
@@ -548,6 +549,10 @@
     </Reference>
     <Reference Include="UnityEditor.WebGL.Extensions">
       <HintPath>H:\2022.3.20f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">

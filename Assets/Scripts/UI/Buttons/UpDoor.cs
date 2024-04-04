@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class UpDoor : MonoBehaviour
 {
-    public MazeManager mazeManager = new MazeManager();
     // The distance at which the player can interact with the chest.
     public float interactionDistance = 1.5f;
 
@@ -44,7 +43,7 @@ public class UpDoor : MonoBehaviour
         int UpRoomRow = currentPlayerRow - 1;
 
         // check if the left room is valid
-        if (UpRoomRow >= 0 && UpRoomRow < mazeManager.mazeSize)
+        if (UpRoomRow >= 0 && UpRoomRow < GameManager.mazeSize)
         {
             // getting scene name for the left room
             string sceneName = GameManager.MazeHolder.Rooms[UpRoomRow, currentPlayerColumn].SceneName;

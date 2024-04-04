@@ -9,13 +9,13 @@ using UnityEditor.SceneManagement;
 
 public class MazeManager : MonoBehaviour
 {
-    public int mazeSize = 5;
+    private int mazeSize = GameManager.mazeSize;
     void Start()
     {
         if (GameManager.MazeHolder == null)
         {
             // insert 
-            MazeGeneratorService mazeGeneratorService = new MazeGeneratorService(GameManager.mazeSize);
+            MazeGeneratorService mazeGeneratorService = new MazeGeneratorService(mazeSize);
 
             GameManager.MazeHolder = mazeGeneratorService.GenerateMaze();
             SceneManagements.AssignScenesToRooms(GameManager.MazeHolder);

@@ -163,10 +163,21 @@ public class TCPClient : MonoBehaviour
         Debug.Log($"Player spawned with ID: {playerId}");
     }
 
+    public async Task SendPlayerActionAsync(string playerId, string actionType, string jsonData)
+    {
+        if (client != null && stream != null)
+        {
+            string message = $"{playerId},{actionType},{jsonData}"; // Format as needed
+            byte[] dataToSend = Encoding.UTF8.GetBytes(message);
+            await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+        }
+    }
 
-    
-    
-    
+
+
+
+
+
 
     private void OnApplicationQuit()
     {

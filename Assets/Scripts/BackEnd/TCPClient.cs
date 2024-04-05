@@ -18,8 +18,8 @@ public class TCPClient : MonoBehaviour
     public GameObject playerPrefab;
     public Vector3 spawnPoint;
     private TcpClient client;
-	private NetworkStream stream;
-   // public string playerId; // Unique ID for the player
+    private NetworkStream stream;
+    // public string playerId; // Unique ID for the player
 
 
 
@@ -51,13 +51,13 @@ public class TCPClient : MonoBehaviour
 
     private async void Update()
     {
-       
+
     }
 
     private async void ConnectedToServer()
     {
 
-	}
+    }
     /*
     // Call this method when the player performs an action or moves. That could be sending ones location or action done shown as below. 
     // Call this instead of each method individually. 
@@ -67,15 +67,15 @@ public class TCPClient : MonoBehaviour
     }
     */
 
-	public void JoinLobby(string lobbyId, PlayerClient player)
-	{
-		if(lobbyId == null || player == null && stream != null)
-		{
-			string message = $"JOIN,{lobbyId},{player.Id},{player.Name}";
+    public void JoinLobby(string lobbyId, PlayerClient player)
+    {
+        if (lobbyId == null || player == null && stream != null)
+        {
+            string message = $"JOIN,{lobbyId},{player.Id},{player.Name}";
 
-			player.SendMessage(message);
-		}
-	}
+            player.SendMessage(message);
+        }
+    }
 
     // Generate a unique player ID
     public string GeneratePlayerId()
@@ -128,7 +128,7 @@ public class TCPClient : MonoBehaviour
 
                 // Parse the received data
                 string[] dataParts = receivedData.Split(',');
-                Debug.Log("This is the Data received "+dataParts[0]);
+                Debug.Log("This is the Data received " + dataParts[0]);
                 if (dataParts[0] == "SPAWN_PLAYER")
                 {
                     string playerId = dataParts[1];
@@ -163,23 +163,25 @@ public class TCPClient : MonoBehaviour
         Debug.Log($"Player spawned with ID: {playerId}");
     }
 
-    public async Task SendPlayerActionAsync(string playerId, string actionType, string jsonData)
+
+    public async Task SendPlayerActionAsync(string actionType, string playerId, string jsonData)
     {
+        Debug.Log("Entered the send player action method");
         if (client != null && stream != null)
-        {
-            string message = $"{playerId},{actionType},{jsonData}"; // Format as needed
-            byte[] dataToSend = Encoding.UTF8.GetBytes(message);
-            await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
-            Debug.Log("action message: " + message + "data to send: " + dataToSend);
-        }
+            try
+            {
+
+                string message = $"{actionType},{playerId},{jsonData}"; // Format as needed
+                byte[] dataToSend = Encoding.UTF8.GetBytes(message);
+                await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+                Debug.Log("action message: " + message + "data to send: " + dataToSend);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Error in send action: " + ex.Message);
+            }
     }
-            
-
-
-
-
-
-
+ 
     private void OnApplicationQuit()
     {
         stream?.Close();

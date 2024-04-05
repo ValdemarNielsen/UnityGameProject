@@ -1,6 +1,7 @@
 using Codice.CM.Common;
 using PlasticGui.WorkspaceWindow;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,12 +15,15 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     private bool jump = false;
     //   bool jump = false;
+    private TCPClient tcpClient;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        tcpClient = FindObjectOfType<TCPClient>();
+
     }
 
     // Update is called once per frame
@@ -56,13 +60,15 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void Jump()
+    public async void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Debug.Log("IM GROUNDED");
             // Apply jump force
             rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+            await tcpClient.SendPlayerActionAsync("Space", GameManager.localPlayerId, "{}");
+            Debug.Log("Went past the send statement of the action");
 
         }
         if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)

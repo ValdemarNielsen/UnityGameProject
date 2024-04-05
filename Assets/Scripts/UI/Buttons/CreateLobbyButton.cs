@@ -24,8 +24,10 @@ namespace Assets.Scripts.UI.Buttons
 
         void Start()
         {
-            Button btn = createLobby.GetComponent<Button>();
-            btn.onClick.AddListener(TaskOnClick);
+            createLobby = GetComponent<Button>();
+            createLobby.onClick.AddListener(TaskOnClick);
+
+            tcpClient = FindObjectOfType<TCPClient>();
         }
 
         public async void TaskOnClick()

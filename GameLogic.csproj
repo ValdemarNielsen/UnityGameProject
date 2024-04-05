@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{9A0B4607-64F2-5993-9845-FD0206FDAC02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -166,7 +167,6 @@
     <Compile Include="Assets\Scripts\Manager\CalculusQuestionManager.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\ServerManager.cs" />
     <Compile Include="Assets\Scripts\Services\EnemySpawn.cs" />
-    <Compile Include="Assets\Scripts\Resources\EnemyData.cs" />
     <Compile Include="Assets\Scripts\Services\BroadcastServices.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\CreateLobbyButton.cs" />

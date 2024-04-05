@@ -9,8 +9,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor.PackageManager;
 using Assets;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using SceneManagement;
 using GameProject.Services;
 

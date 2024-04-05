@@ -12,13 +12,22 @@ public class UpDoor : MonoBehaviour
 
     // Reference to the player GameObject. You can assign this in the Unity Editor.
     public Player player;
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            UpTransition();
+
+        }
+    }
+
+    public void UpTransition()
+    { 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
             bool closeEnough = IsPlayerCloseEnough();
-          //  Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
+            //  Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
 
             if (closeEnough)
             {

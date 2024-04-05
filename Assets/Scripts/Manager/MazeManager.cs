@@ -16,7 +16,6 @@ public class MazeManager : MonoBehaviour
         {
             // insert 
             MazeGeneratorService mazeGeneratorService = new MazeGeneratorService(mazeSize);
-
             GameManager.MazeHolder = mazeGeneratorService.GenerateMaze();
             SceneManagements.AssignScenesToRooms(GameManager.MazeHolder);
             Debug.Log($"Loaded maze. printing maze {GameManager.MazeHolder}");

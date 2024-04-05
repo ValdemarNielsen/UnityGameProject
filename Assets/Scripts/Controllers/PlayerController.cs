@@ -1,11 +1,15 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private UDPClient udpClient;
+    private PlayerMovement playerMovement; // reference to our playermovement script.
+    private PlayerMeleeAttack playerAttack;
+    private UpDoor upDoor;
     public string PlayerId { get; set; }
-    public PlayerMovement movement; // Reference to our playerMovement script component. 
-
+    // Find all player objects. This could be optimized if you have a list or dictionary.
+    PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
 
     void Start()
     {
@@ -15,27 +19,58 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        /*
-        if (isLocalPlayer)
-        {
-            movement;
-        }
-        // Capture player input
-        float horizontalInput = Input.GetAxis("Horizontal");
-        bool jumpInput = Input.GetKeyDown(KeyCode.Space);
-        bool attackInput = Input.GetKeyDown(KeyCode.E);
-        bool interactInput = Input.GetKeyDown(KeyCode.F);
-
-        if(horizontalInput != 0)
-        {
-            // Send the player input to the server
-            udpClient.SendPlayerInput(horizontalInput, jumpInput, attackInput, interactInput);
-            Debug.Log("this is the horizontal input and jump input " + horizontalInput);
-        } */
         
+        if (PlayerId == GameManager.localPlayerId)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerMovement.JumpAttack();
+                playerMovement.Jump();
+                playerMovement.TriggerJump();
+
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                playerAttack.attack();
+            }
+
+            playerMovement.FlipAimation();
+        }         
     }
 
+    // This method is called when a command is received from the server
+    public async Task ExecuteCommandFromServer(string playerId, string input, string message)
+    {
+        
+        foreach (var playerController in playerControllers)
+        {
+            if (playerController.PlayerId == playerId)
+            {
+                // Execute the action based on the input
+                switch (input)
+                {
+                    case "E":
+                        // Insert action of E
+                        break;
+                    case "Space":
+                        playerMovement.JumpAttack();
+                        playerMovement.Jump();
+                        playerMovement.TriggerJump();
+                        break;
 
+                        // Handle other inputs...
+                }
+                break; // Exit the loop once the correct player is found and the action is executed
+            }
+        }
+    }
+
+    
     void OnDestroy()
     {
         // Close the UDP client when the player object is destroyed

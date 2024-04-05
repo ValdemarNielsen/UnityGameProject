@@ -1,6 +1,7 @@
 using Codice.CM.Common;
 using PlasticGui.WorkspaceWindow;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,23 +11,25 @@ public class PlayerMovement : MonoBehaviour
     // float climbSpeed = 3f;
     private bool isGrounded;
     private bool m_FacingRight = true;  // To know which way the player is currently facing.
-    private bool isLadder;
-    private bool isClimbing;
     private Rigidbody2D rb;
     public Animator animator;
     private bool jump = false;
     //   bool jump = false;
+    private TCPClient tcpClient;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        tcpClient = FindObjectOfType<TCPClient>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         JumpAttack();
         TriggerJump();
         FlipAimation();
@@ -57,13 +60,15 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void Jump()
+    public async void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Debug.Log("IM GROUNDED");
             // Apply jump force
             rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+            await tcpClient.SendPlayerActionAsync("Space", GameManager.localPlayerId, "{}");
+            Debug.Log("Went past the send statement of the action");
 
         }
         if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)
@@ -90,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
     
 
-    void Flip()
+    public void Flip()
     {
         // Switch the direction the player is facing
         m_FacingRight = !m_FacingRight;
@@ -101,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = scale;
     }
 
-    void JumpAttack()
+    public void JumpAttack()
     {
         if (!Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")) && Input.GetKeyDown(KeyCode.E)) {
                     
@@ -109,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
     } 
-    void TriggerJump()
+    public void TriggerJump()
     {
         if (!Physics2D.Raycast(rb.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground")))
         {
@@ -123,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FlipAimation()
+    public void FlipAimation()
     {
         // Update facing direction based on horizontal input
         if (Input.GetAxis("Horizontal") > 0 && !m_FacingRight)

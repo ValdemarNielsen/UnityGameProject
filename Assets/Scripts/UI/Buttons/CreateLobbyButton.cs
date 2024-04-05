@@ -9,8 +9,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor.PackageManager;
 using Assets;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using SceneManagement;
 using GameProject.Services;
 
@@ -26,8 +24,10 @@ namespace Assets.Scripts.UI.Buttons
 
         void Start()
         {
-            Button btn = createLobby.GetComponent<Button>();
-            btn.onClick.AddListener(TaskOnClick);
+            createLobby = GetComponent<Button>();
+            createLobby.onClick.AddListener(TaskOnClick);
+
+            tcpClient = FindObjectOfType<TCPClient>();
         }
 
         public async void TaskOnClick()

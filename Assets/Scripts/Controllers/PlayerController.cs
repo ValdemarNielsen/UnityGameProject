@@ -3,8 +3,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private UDPClient udpClient;
+    private PlayerMovement playerMovement; // reference to our playermovement script.
+    private PlayerMeleeAttack playerAttack;
     public string PlayerId { get; set; }
-    public PlayerMovement movement; // Reference to our playerMovement script component. 
 
 
     void Start()
@@ -15,24 +16,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        /*
-        if (isLocalPlayer)
-        {
-            movement;
-        }
-        // Capture player input
-        float horizontalInput = Input.GetAxis("Horizontal");
-        bool jumpInput = Input.GetKeyDown(KeyCode.Space);
-        bool attackInput = Input.GetKeyDown(KeyCode.E);
-        bool interactInput = Input.GetKeyDown(KeyCode.F);
-
-        if(horizontalInput != 0)
-        {
-            // Send the player input to the server
-            udpClient.SendPlayerInput(horizontalInput, jumpInput, attackInput, interactInput);
-            Debug.Log("this is the horizontal input and jump input " + horizontalInput);
-        } */
         
+        if (PlayerId == GameManager.localPlayerId)
+        {
+            playerMovement.JumpAttack();
+            playerMovement.TriggerJump();
+            playerMovement.FlipAimation();
+            playerMovement.Jump();
+            playerAttack.attack();
+
+        }              
     }
 
 

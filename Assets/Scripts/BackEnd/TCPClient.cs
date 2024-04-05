@@ -170,9 +170,10 @@ public class TCPClient : MonoBehaviour
             string message = $"{playerId},{actionType},{jsonData}"; // Format as needed
             byte[] dataToSend = Encoding.UTF8.GetBytes(message);
             await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+            Debug.Log("action message: " + message + "data to send: " + dataToSend);
         }
     }
-
+            
 
 
 

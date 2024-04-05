@@ -31,10 +31,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            anim.SetTrigger("meleeAttack");
-        }
+        attack();
     }
 
 
@@ -66,5 +63,13 @@ public class PlayerMeleeAttack : MonoBehaviour
             Debug.Log("IVE HIT THE enemy: ");
         }
         
+    }
+
+    public void attack()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            anim.SetTrigger("meleeAttack");
+        }
     }
 }

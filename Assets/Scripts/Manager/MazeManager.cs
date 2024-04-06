@@ -1,11 +1,7 @@
-using GameProject.Models;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using SceneManagement;
 using GameProject.Services;
-using UnityEditor.SceneManagement;
 
 public class MazeManager : MonoBehaviour
 {

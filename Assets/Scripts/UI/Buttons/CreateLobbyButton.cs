@@ -1,16 +1,6 @@
 using System;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using Unity.UI;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEditor.PackageManager;
-using Assets;
-using SceneManagement;
-using GameProject.Services;
 
 
 namespace Assets.Scripts.UI.Buttons

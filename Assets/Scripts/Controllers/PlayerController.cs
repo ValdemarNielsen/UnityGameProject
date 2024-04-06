@@ -19,28 +19,34 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
         if (PlayerId == GameManager.localPlayerId)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                playerMovement.JumpAttack();
-                playerMovement.Jump();
-                playerMovement.TriggerJump();
+            HandleLocalInput();
+        }
 
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
 
-            }
+    }
 
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                playerAttack.attack();
-            }
+    private void HandleLocalInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerMovement.JumpAttack();
+            playerMovement.Jump();
+            playerMovement.TriggerJump();
 
-            playerMovement.FlipAimation();
-        }         
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            playerAttack.attack();
+        }
+
+        playerMovement.FlipAimation();
     }
 
     // This method is called when a command is received from the server

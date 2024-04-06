@@ -1,7 +1,3 @@
-using Codice.CM.Common;
-using PlasticGui.WorkspaceWindow;
-using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour

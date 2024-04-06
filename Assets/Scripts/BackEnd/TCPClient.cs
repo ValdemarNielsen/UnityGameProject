@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Net;
 using System.IO;
-using UnityEditor.PackageManager;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text;
@@ -14,7 +13,6 @@ using GameProject.Models;
 
 public class TCPClient : MonoBehaviour
 {
-
     public GameObject playerPrefab;
     public Vector3 spawnPoint;
     private TcpClient client;
@@ -27,20 +25,18 @@ public class TCPClient : MonoBehaviour
     public int port = 13000;
     public string hostAdress = "127.0.0.1";
 
-
-
-
     private async void Start()
     {
-
+        
         Debug.Log("we got into start");
         try
         {
-
             client = new TcpClient(hostAdress, port);
             stream = client.GetStream();
+            ListenForServerMessages();
             await client.ConnectAsync(hostAdress, port);
             Debug.Log("Connected to the server.");
+            
         }
         catch (System.Exception e)
         {
@@ -48,7 +44,7 @@ public class TCPClient : MonoBehaviour
         }
 
     }
-
+    /*
     private async void Update()
     {
 
@@ -58,7 +54,7 @@ public class TCPClient : MonoBehaviour
     {
 
     }
-    /*
+    
     // Call this method when the player performs an action or moves. That could be sending ones location or action done shown as below. 
     // Call this instead of each method individually. 
     public void OnPlayerAction(Vector2 playerPosition)
@@ -67,16 +63,7 @@ public class TCPClient : MonoBehaviour
     }
     */
 
-    public void JoinLobby(string lobbyId, PlayerClient player)
-    {
-        if (lobbyId == null || player == null && stream != null)
-        {
-            string message = $"JOIN,{lobbyId},{player.Id},{player.Name}";
-
-            player.SendMessage(message);
-        }
-    }
-
+    
     // Generate a unique player ID
     public string GeneratePlayerId()
     {
@@ -94,11 +81,13 @@ public class TCPClient : MonoBehaviour
         {
             try
             {
-                // Generate a player ID
-                string playerId = GeneratePlayerId();
-
+                // Ensure there's a player ID generated and assigned.
+                if (GameManager.localPlayerId == null)
+                {
+                    GameManager.localPlayerId = GeneratePlayerId();
+                }
                 // Send "CREATE" message to the server
-                string message = $"CREATE,{playerId},Henrik"; // Assuming "Henrik" is the player name
+                string message = $"CREATE,{GameManager.localPlayerId},Henrik"; // Assuming "Henrik" is the player name
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
 
@@ -106,7 +95,7 @@ public class TCPClient : MonoBehaviour
                 byte[] receivedBytes = new byte[1024]; // Adjust buffer size as needed
                 int bytesRead = await stream.ReadAsync(receivedBytes, 0, receivedBytes.Length);
                 string receivedData = Encoding.UTF8.GetString(receivedBytes, 0, bytesRead);
-                Debug.Log("Received from server: " + receivedData);
+                Debug.Log("Received from server: " + receivedData);                
             }
             catch (Exception ex)
             {
@@ -114,26 +103,54 @@ public class TCPClient : MonoBehaviour
             }
         }
     }
+
+    public async Task JoinLobby()
+    {
+        if (client != null && stream != null)
+        {
+            try
+            {              
+                // Ensure there's a player ID generated and assigned.
+                if (GameManager.localPlayerId == null)
+                {
+                    GameManager.localPlayerId = GeneratePlayerId();
+                }
+
+                string joinMessage = $"JOIN,{GameManager.localPlayerId},Henrik";
+                byte[] dataToSend = Encoding.UTF8.GetBytes(joinMessage);
+                await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+
+                Debug.Log("'JOIN'Lobby message sent to server.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"An error occurred: {ex.Message}");
+                // Handle the exception (log the error, show an error message to the user, etc.)
+            }
+        }
+    }
+    
     public async Task ListenForServerMessages()
     {
         byte[] buffer = new byte[1024];
         int bytesRead;
+        Debug.Log("starting listeningForServerMessages");
+
         while (true)
         {
             try
             {
+                Debug.Log("This is  listening for server message");
                 bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
                 string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                Debug.Log("Received from server: " + receivedData);
+                Debug.Log("ListeningForServerMessages received: " + receivedData);
+                string[] dataParts = receivedData.Split(',');                               
 
-                // Parse the received data
-                string[] dataParts = receivedData.Split(',');
-                Debug.Log("This is the Data received " + dataParts[0]);
                 if (dataParts[0] == "SPAWN_PLAYER")
                 {
-                    string playerId = dataParts[1];
-                    SpawnPlayer(playerId);
+                    SpawnPlayer(dataParts[1]);
                 }
+
                 // Add more cases for other types of messages if needed
             }
             catch (Exception ex)
@@ -144,23 +161,24 @@ public class TCPClient : MonoBehaviour
         }
     }
 
-    private void SpawnPlayer(string playerId)
+    public void SpawnPlayer(string playerId)
     {
-        // Instantiate the player prefab at the spawn point
-        GameObject newPlayer = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
-        // Assign the player ID to the spawned player (you might have to adjust this based on our player controller script)
-        newPlayer.GetComponent<PlayerController>().PlayerId = playerId;
-
+        Debug.Log("a SpawnPlayer request was send to client");
         // Determine if this is the local player and set that as a variable under the prefab.
         if (playerId == GameManager.localPlayerId)
         {
+            Debug.Log("A player with that Id already exists");
             // Perform any additional setup for the local player
         }
         else
         {
+            // Instantiate the player prefab at the spawn point
+            GameObject newPlayer = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            // Assign the player ID to the spawned player (we might have to adjust this based on our player controller script)
+            newPlayer.GetComponent<PlayerController>().PlayerId = playerId;
             // Setup for remote players if needed
-        }
-        Debug.Log($"Player spawned with ID: {playerId}");
+            Debug.Log($"Player spawned with ID: {playerId}");
+        }        
     }
 
 
@@ -171,7 +189,7 @@ public class TCPClient : MonoBehaviour
             try
             {
 
-                string message = $"{actionType},{playerId},{jsonData}"; // Format as needed
+                string message = $"{actionType},{playerId},{jsonData}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
                 Debug.Log("action message: " + message + "data to send: " + dataToSend);

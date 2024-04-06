@@ -35,6 +35,7 @@ public class TCPClient : MonoBehaviour
             stream = client.GetStream();
             ListenForServerMessages();
             await client.ConnectAsync(hostAdress, port);
+            
             Debug.Log("Connected to the server.");
             
         }

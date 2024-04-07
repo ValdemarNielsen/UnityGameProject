@@ -88,7 +88,7 @@ public class TCPClient : MonoBehaviour
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
                 // Send "CREATE" message to the server
-                string message = $"CREATE,{GameManager.localPlayerId},Henrik"; // Assuming "Henrik" is the player name
+                string message = $"CREATE,{GameManager.localPlayerId},Henrik,HenrikLobby"; // Assuming "Henrik" is the player name
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
 

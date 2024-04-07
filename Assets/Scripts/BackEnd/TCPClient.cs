@@ -154,7 +154,7 @@ public class TCPClient : MonoBehaviour
                 string responseData = Encoding.ASCII.GetString(buffer, 0, bytesRead);
 
                 var myObject = JsonSerializer.Deserialize<dynamic>(responseData);
-                Console.WriteLine($"Received: {myObject}");
+                Debug.LogError($" testsasd 1231 Received: {myObject} test 123");
 
             }
             catch (Exception ex)
@@ -164,8 +164,8 @@ public class TCPClient : MonoBehaviour
             }
         }
 
-    }
 
+    }
     public async Task ListenForServerMessages()
     {
         byte[] buffer = new byte[1024];

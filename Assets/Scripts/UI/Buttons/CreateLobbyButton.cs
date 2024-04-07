@@ -6,8 +6,6 @@ using UnityEngine.UI;
 namespace Assets.Scripts.UI.Buttons
 {
     internal class CreateLobbyButton : MonoBehaviour
-
-
     {
         private TCPClient tcpClient;
         private Button createLobby;
@@ -16,7 +14,6 @@ namespace Assets.Scripts.UI.Buttons
         {
             createLobby = GetComponent<Button>();
             createLobby.onClick.AddListener(TaskOnClick);
-
             tcpClient = FindObjectOfType<TCPClient>();
         }
 
@@ -32,6 +29,5 @@ namespace Assets.Scripts.UI.Buttons
                 GameManager.localPlayerId = tcpClient.GeneratePlayerId();
             }
         }
-
     }
 }

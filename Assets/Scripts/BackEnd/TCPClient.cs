@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text;
 using GameProject.Models;
+using System.Text.Json;
 
 
 
@@ -88,7 +89,7 @@ public class TCPClient : MonoBehaviour
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
                 // Send "CREATE" message to the server
-                string message = $"CREATE,{GameManager.localPlayerId},Henrik,HenrikLobby"; // Assuming "Henrik" is the player name
+                string message = $"CREATE,{GameManager.localPlayerId},Henrik,Henrik's Lobby"; // Assuming "Henrik" is the player name
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
 
@@ -130,7 +131,41 @@ public class TCPClient : MonoBehaviour
             }
         }
     }
-    
+
+    public async Task BrowseLobbies()
+    {
+        if (client != null && stream != null)
+        {
+            try
+            {
+
+                if (GameManager.localPlayerId == null)
+                {
+                    GameManager.localPlayerId = GeneratePlayerId();
+                }
+
+                string BrowseLobbiesMessage = $"LIST_LOBBIES";
+                byte[] dataToSend = Encoding.UTF8.GetBytes(BrowseLobbiesMessage);
+                await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+
+                // Read server's response
+                byte[] buffer = new byte[client.ReceiveBufferSize];
+                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                string responseData = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+
+                var myObject = JsonSerializer.Deserialize<dynamic>(responseData);
+                Debug.LogError($" testsasd 1231 Received: {myObject} test 123");
+
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"An error occurred: {ex.Message}");
+                // Handle the exception (log the error, show an error message to the user, etc.)
+            }
+        }
+
+
+    }
     public async Task ListenForServerMessages()
     {
         byte[] buffer = new byte[1024];

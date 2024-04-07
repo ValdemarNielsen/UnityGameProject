@@ -24,7 +24,7 @@ namespace Assets.Scripts.UI.Buttons
 
         public async void TaskOnClick()
         {
-            await tcpClient.JoinLobby();
+            await tcpClient.BrowseLobbies();
             Debug.Log("You have clicked the joinLobby button!");
         }
 

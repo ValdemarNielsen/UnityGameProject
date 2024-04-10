@@ -31,12 +31,6 @@ public class TCPClient : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
-
     private async void Start()
     {
         

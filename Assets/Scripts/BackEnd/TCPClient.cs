@@ -49,7 +49,7 @@ public class TCPClient : MonoBehaviour
     /*
     private async void Update()
     {
-
+      
     }
 
     private async void ConnectedToServer()
@@ -169,25 +169,53 @@ public class TCPClient : MonoBehaviour
     public async Task ListenForServerMessages()
     {
         byte[] buffer = new byte[1024];
-        int bytesRead;
-        Debug.Log("starting listeningForServerMessages");
+        Debug.Log("Starting listeningForServerMessages");
 
         while (true)
         {
             try
             {
-                Debug.Log("This is  listening for server message");
-                bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-                string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                Debug.Log("ListeningForServerMessages received: " + receivedData);
-                string[] dataParts = receivedData.Split(',');                               
-
-                if (dataParts[0] == "SPAWN_PLAYER")
+                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                if (bytesRead == 0)
                 {
-                    SpawnPlayer(dataParts[1]);
+                    Debug.Log("Server has closed the connection.");
+                    break;
                 }
+                Debug.Log("Listening for a server message...");
+                string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                Debug.Log("Received from server: " + receivedData);
 
-                // Add more cases for other types of messages if needed
+                try
+                {
+                    // Deserialize the JSON data directly into an array of Lobby objects
+                    Lobby[] lobbies = JsonSerializer.Deserialize<Lobby[]>(receivedData);                    
+                    
+                    if (lobbies != null && lobbies.Length > 0)
+                    {
+                        Debug.Log($"Total lobbies received: {lobbies.Length}");
+                        foreach (Lobby lobby in lobbies)
+                        {
+                            Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
+                            // Additional logic to handle the lobby data, e.g., update UI
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("No lobbies found in the received message.");
+                    }
+                }
+                catch (JsonException jsonEx)
+                {
+                    Debug.Log("Not a lobby data message: " + jsonEx.Message + " Data: " + receivedData);
+                    // If parsing fails, it wasn't lobby data. Handle other message types.
+                    string[] dataParts = receivedData.Split(',');
+                    if (dataParts[0] == "SPAWN_PLAYER")
+                    {
+                        SpawnPlayer(dataParts[1]);
+                    }
+
+                    // Add more cases for other types of messages if needed
+                }
             }
             catch (Exception ex)
             {

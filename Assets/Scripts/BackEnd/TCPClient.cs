@@ -21,10 +21,14 @@ public class TCPClient : MonoBehaviour
     // public string playerId; // Unique ID for the player
 
 
-
+    
 
     public int port = 13000;
     public string hostAdress = "127.0.0.1";
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private async void Start()
     {

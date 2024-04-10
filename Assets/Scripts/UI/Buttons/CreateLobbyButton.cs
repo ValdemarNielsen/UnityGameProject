@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 namespace Assets.Scripts.UI.Buttons
@@ -19,15 +20,16 @@ namespace Assets.Scripts.UI.Buttons
 
         public async void TaskOnClick()
         {
-            await tcpClient.CreateLobby();
+            //await tcpClient.CreateLobby();
             Debug.Log("You have clicked the button!");
             Console.WriteLine("test");
             //tcpClient.ListenForServerMessages();
-            //SceneManager.LoadScene("Lobby");
             if (GameManager.localPlayerId == null)
             {
                 GameManager.localPlayerId = tcpClient.GeneratePlayerId();
             }
+            SceneManager.LoadScene("CreateLobby");
+            
         }
     }
 }

@@ -77,7 +77,7 @@ public class TCPClient : MonoBehaviour
     }
 
     // Method to create a lobby
-    public async Task CreateLobby()
+    public async Task CreateLobby(string playerName, string lobbyName)
     {
         if (client != null && stream != null)
         {
@@ -89,7 +89,7 @@ public class TCPClient : MonoBehaviour
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
                 // Send "CREATE" message to the server
-                string message = $"CREATE,{GameManager.localPlayerId},Henrik,Henriks Lobby"; // Assuming "Henrik" is the player name
+                string message = $"CREATE,{GameManager.localPlayerId},{playerName},{lobbyName}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
 

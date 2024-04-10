@@ -1,29 +1,30 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyListManager : MonoBehaviour
 {
-    // Example JSON string
-    private string jsonString = "[{\"LobbyId\":\"64299bd9-55a4-4c99-b278-5c629df473eb\",\"LobbyName\":\"Henrik's Lobby\",\"CreatorName\":\"Henrik\"}]";
+    [SerializeField] private GameObject panelPrefab; // Assign this in the inspector
+    [SerializeField] private Transform contentParent; // Assign the "Content" transform in the inspector
 
-    void Start()
+    // Call this method when you receive your lobby data
+    public void GenerateLobbyPanels(Lobby[] lobbies)
     {
-        ParseLobbyData(jsonString);
-    }
-
-    void ParseLobbyData(string json)
-    {
-        // Since JsonUtility does not directly support top-level arrays, we wrap the array in an object
-        string wrappedJson = "{\"lobbies\":" + json + "}";
-        Lobbies lobbies = JsonUtility.FromJson<Lobbies>(wrappedJson);
-
-        // Example: Accessing the first lobby's data
-        if (lobbies.lobbies.Length > 0)
+        // Clear previous panels
+        foreach (Transform child in contentParent)
         {
-            Debug.Log("First Lobby Name: " + lobbies.lobbies[0].LobbyName);
-            Debug.Log("First Creator Name: " + lobbies.lobbies[0].CreatorName);
+            Destroy(child.gameObject);
         }
 
-        // Here, you could call a method to generate UI elements for each lobby
-        // For example: GenerateLobbyButtons(lobbies.lobbies);
+        // Create a new panel for each lobby
+        foreach (Lobby lobby in lobbies)
+        {
+            GameObject panel = Instantiate(panelPrefab, contentParent);
+
+            // Assuming your panel prefab has text elements named accordingly
+            panel.transform.Find("LobbyIdText").GetComponent<Text>().text = lobby.LobbyId;
+            panel.transform.Find("LobbyNameText").GetComponent<Text>().text = lobby.LobbyName;
+            panel.transform.Find("CreatorNameText").GetComponent<Text>().text = lobby.CreatorName;
+        }
     }
 }

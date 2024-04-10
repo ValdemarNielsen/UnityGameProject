@@ -169,29 +169,34 @@ public class TCPClient : MonoBehaviour
     public async Task ListenForServerMessages()
     {
         byte[] buffer = new byte[1024];
-        int bytesRead;
         Debug.Log("Starting listeningForServerMessages");
 
         while (true)
         {
             try
             {
-                Debug.Log("Listening for server message...");
-                bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                if (bytesRead == 0)
+                {
+                    Debug.Log("Server has closed the connection.");
+                    break;
+                }
+                Debug.Log("Listening for a server message...");
                 string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                Debug.Log("ListeningForServerMessages received: " + receivedData);
+                Debug.Log("Received from server: " + receivedData);
 
-                // Attempt to parse receivedData as JSON
                 try
                 {
-                    // Deserialize the JSON data to 'Lobbies' object
-                    Lobbies receivedLobbies = JsonSerializer.Deserialize<Lobbies>(receivedData);
-                    if (receivedLobbies != null && receivedLobbies.lobbies.Length > 0)
+                    // Deserialize the JSON data directly into an array of Lobby objects
+                    Lobby[] lobbies = JsonSerializer.Deserialize<Lobby[]>(receivedData);                    
+                    
+                    if (lobbies != null && lobbies.Length > 0)
                     {
-                        foreach (Lobby lobby in receivedLobbies.lobbies)
+                        Debug.Log($"Total lobbies received: {lobbies.Length}");
+                        foreach (Lobby lobby in lobbies)
                         {
                             Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
-                            // Here we can add logic to handle the lobby, e.g., update UI
+                            // Additional logic to handle the lobby data, e.g., update UI
                         }
                     }
                     else
@@ -199,9 +204,9 @@ public class TCPClient : MonoBehaviour
                         Debug.Log("No lobbies found in the received message.");
                     }
                 }
-                catch (Exception jsonEx)
+                catch (JsonException jsonEx)
                 {
-                    Debug.Log("Not a lobby data message: " + jsonEx.Message);
+                    Debug.Log("Not a lobby data message: " + jsonEx.Message + " Data: " + receivedData);
                     // If parsing fails, it wasn't lobby data. Handle other message types.
                     string[] dataParts = receivedData.Split(',');
                     if (dataParts[0] == "SPAWN_PLAYER")

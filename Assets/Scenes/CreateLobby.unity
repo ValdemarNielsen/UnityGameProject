@@ -2367,7 +2367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: {fileID: 2083463543}
   lobbyName: {fileID: 690773864}
-  messageTextField: {fileID: 0}
+  messageTextField: {fileID: 363638080}
 --- !u!1 &1615012156
 GameObject:
   m_ObjectHideFlags: 0

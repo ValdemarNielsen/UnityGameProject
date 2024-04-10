@@ -3,9 +3,9 @@
 [Serializable]
 public class Lobby
 {
-    public string LobbyId;
-    public string LobbyName;
-    public string CreatorName;
+    public string LobbyId { get; set; }
+    public string LobbyName { get; set; }
+    public string CreatorName { get; set; }
 }
 
 [Serializable]

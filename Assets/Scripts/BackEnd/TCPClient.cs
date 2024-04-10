@@ -184,12 +184,19 @@ public class TCPClient : MonoBehaviour
                 // Attempt to parse receivedData as JSON
                 try
                 {
-                    Lobbies lobbies = JsonUtility.FromJson<Lobbies>("{\"lobbies\":" + receivedData + "}");
-                    if (lobbies != null && lobbies.lobbies.Length > 0)
+                    // Deserialize the JSON data to 'Lobbies' object
+                    Lobbies receivedLobbies = JsonSerializer.Deserialize<Lobbies>(receivedData);
+                    if (receivedLobbies != null && receivedLobbies.lobbies.Length > 0)
                     {
-                        Debug.Log("Lobby data received: " + lobbies);
-                        // Handle the lobby data, e.g., create UI elements
-                        // Example: GenerateLobbyButtons(lobbies.lobbies);
+                        foreach (Lobby lobby in receivedLobbies.lobbies)
+                        {
+                            Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
+                            // Here we can add logic to handle the lobby, e.g., update UI
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("No lobbies found in the received message.");
                     }
                 }
                 catch (Exception jsonEx)
@@ -201,6 +208,7 @@ public class TCPClient : MonoBehaviour
                     {
                         SpawnPlayer(dataParts[1]);
                     }
+
                     // Add more cases for other types of messages if needed
                 }
             }

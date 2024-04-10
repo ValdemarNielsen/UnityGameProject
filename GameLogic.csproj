@@ -168,6 +168,7 @@
     <Compile Include="Assets\Scripts\Services\EnemySpawn.cs" />
     <Compile Include="Assets\Scripts\Services\BroadcastServices.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\StartLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\CreateLobbyButton.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />

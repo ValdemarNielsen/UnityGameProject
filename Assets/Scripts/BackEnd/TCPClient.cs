@@ -49,7 +49,7 @@ public class TCPClient : MonoBehaviour
     /*
     private async void Update()
     {
-
+      
     }
 
     private async void ConnectedToServer()
@@ -89,7 +89,7 @@ public class TCPClient : MonoBehaviour
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
                 // Send "CREATE" message to the server
-                string message = $"CREATE,{GameManager.localPlayerId},Henrik,Henrik's Lobby"; // Assuming "Henrik" is the player name
+                string message = $"CREATE,{GameManager.localPlayerId},Henrik,Henriks Lobby"; // Assuming "Henrik" is the player name
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
 
@@ -170,24 +170,39 @@ public class TCPClient : MonoBehaviour
     {
         byte[] buffer = new byte[1024];
         int bytesRead;
-        Debug.Log("starting listeningForServerMessages");
+        Debug.Log("Starting listeningForServerMessages");
 
         while (true)
         {
             try
             {
-                Debug.Log("This is  listening for server message");
+                Debug.Log("Listening for server message...");
                 bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
                 string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                 Debug.Log("ListeningForServerMessages received: " + receivedData);
-                string[] dataParts = receivedData.Split(',');                               
 
-                if (dataParts[0] == "SPAWN_PLAYER")
+                // Attempt to parse receivedData as JSON
+                try
                 {
-                    SpawnPlayer(dataParts[1]);
+                    Lobbies lobbies = JsonUtility.FromJson<Lobbies>("{\"lobbies\":" + receivedData + "}");
+                    if (lobbies != null && lobbies.lobbies.Length > 0)
+                    {
+                        Debug.Log("Lobby data received: " + lobbies);
+                        // Handle the lobby data, e.g., create UI elements
+                        // Example: GenerateLobbyButtons(lobbies.lobbies);
+                    }
                 }
-
-                // Add more cases for other types of messages if needed
+                catch (Exception jsonEx)
+                {
+                    Debug.Log("Not a lobby data message: " + jsonEx.Message);
+                    // If parsing fails, it wasn't lobby data. Handle other message types.
+                    string[] dataParts = receivedData.Split(',');
+                    if (dataParts[0] == "SPAWN_PLAYER")
+                    {
+                        SpawnPlayer(dataParts[1]);
+                    }
+                    // Add more cases for other types of messages if needed
+                }
             }
             catch (Exception ex)
             {

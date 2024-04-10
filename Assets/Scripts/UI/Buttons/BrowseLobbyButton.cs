@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -24,6 +25,7 @@ namespace Assets.Scripts.UI.Buttons
 
         public async void TaskOnClick()
         {
+            SceneManager.LoadScene("LobbyBrowse");
             await tcpClient.BrowseLobbies();
             Debug.Log("You have clicked the joinLobby button!");
         }

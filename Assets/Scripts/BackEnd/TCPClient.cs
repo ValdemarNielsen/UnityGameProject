@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using GameProject.Models;
 using System.Text.Json;
+using UnityEngine.SceneManagement;
 
 
 
@@ -18,6 +19,7 @@ public class TCPClient : MonoBehaviour
     public Vector3 spawnPoint;
     private TcpClient client;
     private NetworkStream stream;
+    LobbyListManager lobbyListManager;
     // public string playerId; // Unique ID for the player
 
 
@@ -46,26 +48,7 @@ public class TCPClient : MonoBehaviour
         }
 
     }
-    /*
-    private async void Update()
-    {
-      
-    }
-
-    private async void ConnectedToServer()
-    {
-
-    }
-    
-    // Call this method when the player performs an action or moves. That could be sending ones location or action done shown as below. 
-    // Call this instead of each method individually. 
-    public void OnPlayerAction(Vector2 playerPosition)
-    {
-       // SendPlayerData(playerPosition);
-    }
-    */
-
-    
+  
     // Generate a unique player ID
     public string GeneratePlayerId()
     {
@@ -143,7 +126,7 @@ public class TCPClient : MonoBehaviour
                 {
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
-
+                SceneManager.LoadScene("LobbyBrowse");
                 string BrowseLobbiesMessage = $"LIST_LOBBIES";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(BrowseLobbiesMessage);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
@@ -195,6 +178,7 @@ public class TCPClient : MonoBehaviour
                         Debug.Log($"Total lobbies received: {lobbies.Length}");
                         foreach (Lobby lobby in lobbies)
                         {
+                            lobbyListManager.GenerateLobbyPanels(lobbies);
                             Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
                             // Additional logic to handle the lobby data, e.g., update UI
                         }

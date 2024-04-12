@@ -169,6 +169,7 @@
     <Compile Include="Assets\Scripts\Services\BroadcastServices.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Objects\Lobby.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\StartLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\BrowseLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\CreateLobbyButton.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />

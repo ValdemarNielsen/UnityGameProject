@@ -28,11 +28,9 @@ public class StartLobbyButton : MonoBehaviour
 
     public async void TaskOnClick()
     {
-        Debug.Log("You have clicked the button!");
 
-        if (playerName.text.Length != 0 && lobbyName.text.Length != 0 || lobbyName.text != "Lobby Name..." || playerName.text != "Player Name...")
+        if (playerName.text.Length != 0 && lobbyName.text.Length != 0)
         {
-            messageTextField.text = "";
             await tcpClient.CreateLobby(playerName.text, lobbyName.text);
             Console.WriteLine("Playername and lobbyname was filled");
             //tcpClient.ListenForServerMessages();
@@ -44,6 +42,8 @@ public class StartLobbyButton : MonoBehaviour
         }
         else
         {
+            Debug.Log("You have clicked the button! but the data is not filled");
+
 
             // Change the color of the text
             messageTextField.textComponent.color = Color.red;

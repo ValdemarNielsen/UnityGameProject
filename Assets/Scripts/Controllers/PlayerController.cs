@@ -50,9 +50,8 @@ public class PlayerController : MonoBehaviour
     }
 
     // This method is called when a command is received from the server
-    public async Task ExecuteCommandFromServer(string playerId, string input, string message)
+    public Task ExecuteCommandFromServer(string playerId, string input, string message)
     {
-        
         foreach (var playerController in playerControllers)
         {
             if (playerController.PlayerId == playerId)
@@ -74,9 +73,10 @@ public class PlayerController : MonoBehaviour
                 break; // Exit the loop once the correct player is found and the action is executed
             }
         }
+
+        return Task.CompletedTask;
     }
 
-    
     void OnDestroy()
     {
         // Close the UDP client when the player object is destroyed

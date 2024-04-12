@@ -19,14 +19,18 @@ public class TCPClient : MonoBehaviour
     public Vector3 spawnPoint;
     private TcpClient client;
     private NetworkStream stream;
-    LobbyListManager lobbyListManager;
+    public LobbyListManager lobbyListManager;
     // public string playerId; // Unique ID for the player
 
 
-
+    
 
     public int port = 13000;
     public string hostAdress = "127.0.0.1";
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private async void Start()
     {
@@ -130,15 +134,6 @@ public class TCPClient : MonoBehaviour
                 string BrowseLobbiesMessage = $"LIST_LOBBIES";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(BrowseLobbiesMessage);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
-
-                // Read server's response
-                byte[] buffer = new byte[client.ReceiveBufferSize];
-                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-                string responseData = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-
-                var myObject = JsonSerializer.Deserialize<dynamic>(responseData);
-                Debug.LogError($" testsasd 1231 Received: {myObject} test 123");
-
             }
             catch (Exception ex)
             {
@@ -171,8 +166,7 @@ public class TCPClient : MonoBehaviour
                 try
                 {
                     // Deserialize the JSON data directly into an array of Lobby objects
-                    Lobby[] lobbies = JsonSerializer.Deserialize<Lobby[]>(receivedData);                    
-                    
+                    Lobby[] lobbies = JsonSerializer.Deserialize<Lobby[]>(receivedData);
                     if (lobbies != null && lobbies.Length > 0)
                     {
                         Debug.Log($"Total lobbies received: {lobbies.Length}");
@@ -181,6 +175,7 @@ public class TCPClient : MonoBehaviour
                             lobbyListManager.GenerateLobbyPanels(lobbies);
                             Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
                             // Additional logic to handle the lobby data, e.g., update UI
+
                         }
                     }
                     else
@@ -247,7 +242,7 @@ public class TCPClient : MonoBehaviour
                 Debug.LogError("Error in send action: " + ex.Message);
             }
     }
- 
+    
     private void OnApplicationQuit()
     {
         stream?.Close();

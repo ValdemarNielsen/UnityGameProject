@@ -4,19 +4,25 @@ using UnityEngine.UI;
 
 public class LobbyListManager : MonoBehaviour
 {
-    [SerializeField] private GameObject buttonPrefab;
-    [SerializeField] private Transform contentParent; // Reference to the content folder transform
-   
-    void Start()
+    [SerializeField] private GameObject panelPrefab; // Assign this in the inspector
+    [SerializeField] private Transform contentParent; // Assign the "Content" transform in the inspector
+
+    public void GenerateLobbyPanels(Lobby[] lobbies)
     {
-      
+        // Clear previous panels
+        foreach (Transform child in contentParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Create a new panel for each lobby
+        foreach (Lobby lobby in lobbies)
+        {
+            GameObject panel = Instantiate(panelPrefab, contentParent);
+            // Assuming your panel prefab has text elements named accordingly
+            panel.transform.Find("LobbyIdText").GetComponent<Text>().text = lobby.LobbyId;
+            panel.transform.Find("LobbyNameText").GetComponent<Text>().text = lobby.LobbyName;
+            panel.transform.Find("CreatorNameText").GetComponent<Text>().text = lobby.CreatorName;
+        }
     }
-
-    public void CreateButton()
-    {
-        GameObject newButton = Instantiate(buttonPrefab, contentParent);
-
-    }
-
-
 }

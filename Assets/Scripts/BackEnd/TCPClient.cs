@@ -54,7 +54,7 @@ public class TCPClient : MonoBehaviour
         }
 
     }
-        
+  
     // Generate a unique player ID
     public string GeneratePlayerId()
     {
@@ -176,8 +176,7 @@ public class TCPClient : MonoBehaviour
                         
                         foreach (Lobby lobby in lobbies)
                         {
-                            Debug.Log("Entered the foreach loop");
-                            lobbyListManager.CreateButton();
+                            lobbyListManager.GenerateLobbyPanels(lobbies);
                             Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
                             // Additional logic to handle the lobby data, e.g., update UI
 

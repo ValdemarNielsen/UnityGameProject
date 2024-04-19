@@ -1,8 +1,22 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
-// Your LobbyListManager should access the data from LobbyDataHolder
+﻿using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.UI;
+
 public class LobbyListManager : MonoBehaviour
 {
-    [SerializeField] private GameObject panelPrefab; // Assign this in the inspector
-    [SerializeField] private Transform contentParent; // Assign the "Content" transform in the inspector
+    [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private Transform contentParent; // Reference to the content folder transform
+   
+    void Start()
+    {
+      
+    }
+
+    public void CreateButton()
+    {
+        GameObject newButton = Instantiate(buttonPrefab, contentParent);
+
+    }
+
+
 }

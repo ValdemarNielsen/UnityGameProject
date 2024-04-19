@@ -20,7 +20,7 @@ namespace GameProject.Models
         [SerializeField] private LayerMask playerLayer;
         private float cooldownTimer = Mathf.Infinity;
 
-        [SerializeField] private GameObject gameObject;
+        [SerializeField] private GameObject enemyGameObject;
 
         private CharacterHealth playerHealth;
         private Animator anim;
@@ -33,7 +33,7 @@ namespace GameProject.Models
         {
             if (GameManager.hasKilled[currentPlayerPosition[0],currentPlayerPosition[1]] == 1){ 
             
-                Destroy(gameObject);
+                Destroy(enemyGameObject);
             }
 
             

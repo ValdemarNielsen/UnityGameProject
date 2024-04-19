@@ -12,12 +12,9 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        void Start()
-        {
-            // Initialize the total number of enemies in the scene
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Blue_Slime");
-            totalEnemies = enemies.Length;
-        }
+        // Initialize the total number of enemies in the scene
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Blue_Slime");
+        totalEnemies = enemies.Length;
     }
     private void Update()
     {

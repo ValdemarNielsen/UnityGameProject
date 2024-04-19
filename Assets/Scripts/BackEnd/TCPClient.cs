@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Text;
 using GameProject.Models;
 using System.Text.Json;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 
 
@@ -18,17 +20,18 @@ public class TCPClient : MonoBehaviour
     public Vector3 spawnPoint;
     private TcpClient client;
     private NetworkStream stream;
-    public LobbyListManager lobbyListManager;
-    // public string playerId; // Unique ID for the player
+    private LobbyListManager lobbyListManager;
 
 
-    
+
 
     public int port = 13000;
     public string hostAdress = "127.0.0.1";
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
     }
 
     private async void Start()
@@ -130,6 +133,7 @@ public class TCPClient : MonoBehaviour
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
 
+                SceneManager.LoadScene("LobbyBrowse");
                 string BrowseLobbiesMessage = $"LIST_LOBBIES";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(BrowseLobbiesMessage);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
@@ -169,16 +173,22 @@ public class TCPClient : MonoBehaviour
                     if (lobbies != null && lobbies.Length > 0)
                     {
                         Debug.Log($"Total lobbies received: {lobbies.Length}");
+                        
                         foreach (Lobby lobby in lobbies)
                         {
+                            Debug.Log("Entered the foreach loop");
+                            lobbyListManager.CreateButton();
                             Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
                             // Additional logic to handle the lobby data, e.g., update UI
 
                         }
+                        
+                        
                     }
                     else
                     {
                         Debug.Log("No lobbies found in the received message.");
+                        BroadcastMessage("No lobbies found");
                     }
                 }
                 catch (JsonException jsonEx)
@@ -222,7 +232,7 @@ public class TCPClient : MonoBehaviour
         }        
     }
 
-
+   
     public async Task SendPlayerActionAsync(string actionType, string playerId, string jsonData)
     {
         Debug.Log("Entered the send player action method");

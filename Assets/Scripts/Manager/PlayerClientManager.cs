@@ -15,14 +15,14 @@ public class PlayerClientManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(enemyGameObject);
 
             // Initialize the PlayerClient with example values
             playerClient = new PlayerClient( "Bobby", new TcpClient());
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(enemyGameObject);
         }
     }
 

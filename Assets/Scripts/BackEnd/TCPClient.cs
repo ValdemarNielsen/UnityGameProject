@@ -172,8 +172,10 @@ public class TCPClient : MonoBehaviour
                         Debug.Log($"Total lobbies received: {lobbies.Length}");
                         foreach (Lobby lobby in lobbies)
                         {
-                            lobbyListManager.GenerateLobbyPanels(lobbies);
+                            Debug.Log("Entered the foreach loop");
                             Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
+                            lobbyListManager.GenerateLobbyPanels(lobbies);
+                            
                             // Additional logic to handle the lobby data, e.g., update UI
 
                         }

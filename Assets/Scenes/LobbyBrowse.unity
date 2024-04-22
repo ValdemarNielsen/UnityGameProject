@@ -2070,6 +2070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 754262520}
   spawnPoint: {x: 0, y: 0, z: 0}
+  lobbyListManager: {fileID: 1510061166}
   port: 13000
   hostAdress: 127.0.0.1
 --- !u!4 &1303092195
@@ -2260,7 +2261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ad30ffd8aed304dbf83ac2a5ad06a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelPrefab: {fileID: 5299010951215053631}
+  buttonPrefab: {fileID: 5299010951215053631}
   contentParent: {fileID: 1326063476}
 --- !u!4 &1510061167
 Transform:

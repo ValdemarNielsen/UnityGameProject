@@ -205,6 +205,7 @@
     <Compile Include="Assets\Scripts\Hubs\GameHub.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemy.cs" />
     <Compile Include="Assets\Scripts\Services\CalculusQuestionGeneratorService.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\SpawnLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\RightDoor.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovementService.cs" />
     <Compile Include="Assets\Scripts\Program.cs" />

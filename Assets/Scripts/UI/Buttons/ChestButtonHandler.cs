@@ -50,7 +50,6 @@ public class ChestButtonHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             bool closeEnough = IsPlayerCloseEnough();
-            Debug.Log($"E key pressed. Is player close enough? {closeEnough}");
 
             if (closeEnough)
             {
@@ -65,7 +64,7 @@ public class ChestButtonHandler : MonoBehaviour
     {
         // Calculate the distance between the player and the chest.
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log($"Chest position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}");
+        Debug.Log($"Chest position: {transform.position}, Player position: {player.transform.position}, Distance: {distance}, max distance 1.2f");
 
         // Return true if the distance is less than or equal to the interaction distance.
         return distance <= interactionDistance;

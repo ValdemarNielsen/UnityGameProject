@@ -19,10 +19,6 @@ public static class GameManager
 
     public static string localPlayerId { get; set; }
 
-    public static bool multiPlayer { get; set; }
-
-    public static string sceneName { get; set; }
-
     public static void UpdatePlayerPosition(int newRow, int newColumn)
     {
         GameManager.playerRowHolder = newRow;

@@ -66,9 +66,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LoginScreen.unity
     guid: ce20556d98617394282fb967c05b99b6
   - enabled: 1
-    path: Assets/Scenes/QuestionScene.unity
-    guid: b8fb0049f0733834598696285f7d3aab
-  - enabled: 1
     path: Assets/Scenes/LobbyBrowse.unity
     guid: d30f217b10d87e94cb11fbf38e1c65fc
   m_configObjects: {}

@@ -50,24 +50,15 @@ public class LeftDoor : MonoBehaviour
         {
             // getting scene name for the left room
             string sceneName = GameManager.MazeHolder.Rooms[currentPlayerRow, leftRoomColumn].SceneName;
-            GameManager.sceneName = sceneName;
+
             // Load the scene
-            
             if (!string.IsNullOrEmpty(sceneName) )
             {
                 // Set the spawn point to the new position
-                GameManager.spawnPoint = new Vector2(8f, -2.8f);
-                GameManager.UpdatePlayerPosition(currentPlayerRow, leftRoomColumn);
+                GameManager.spawnPoint = new Vector2(8f, - 2.8f);
 
-                if (!GameManager.multiPlayer)
-                {
-                    SceneManager.LoadScene("QuestionScene");
-                }
-                else
-                {
-                    
-                    SceneManager.LoadScene(sceneName);
-                }
+                GameManager.UpdatePlayerPosition(currentPlayerRow, leftRoomColumn);
+                SceneManager.LoadScene(sceneName);
 
             }
             else

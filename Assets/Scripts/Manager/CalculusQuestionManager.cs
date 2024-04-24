@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace Assets.Scripts.UI.Buttons
+namespace Assets.Scripts.Manager
 {
-    internal class QuestionButton : MonoBehaviour
+    internal class CalculusQuestionManager
     {
-
     }
 }

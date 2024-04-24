@@ -163,16 +163,13 @@
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
     <Compile Include="Assets\Scripts\BackEnd\GameHub.cs" />
+    <Compile Include="Assets\Scripts\Manager\CalculusQuestionManager.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\ServerManager.cs" />
     <Compile Include="Assets\Scripts\Services\EnemySpawn.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\QuestionButton.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\SinglePlayerButton.cs" />
     <Compile Include="Assets\Scripts\Services\BroadcastServices.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Objects\Lobby.cs" />
-    <Compile Include="Assets\Scripts\Services\QuestionGeneratorService.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\StartLobbyButton.cs" />
-    <Compile Include="Assets\Scripts\Interfaces\IQuestionGenerator.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\BrowseLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\CreateLobbyButton.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
@@ -180,7 +177,6 @@
     <Compile Include="Assets\Scripts\UI\Buttons\DownDoor.cs" />
     <Compile Include="Assets\Scripts\BackEnd\UDP\UdpClient.cs" />
     <Compile Include="Assets\Scripts\Manager\LobbyListManager.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\MultiplayerButton.cs" />
     <Compile Include="Assets\Scripts\BackEnd\TCPClient.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\ChestButtonHandler.cs" />
     <Compile Include="Assets\Scripts\hej.cs" />
@@ -191,7 +187,6 @@
     <Compile Include="Assets\Scripts\UI\Buttons\LeftDoor.cs" />
     <Compile Include="Assets\Scripts\Controllers\MazeNavigator.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneManagements.cs" />
-    <Compile Include="Assets\Scripts\Manager\QuestionManager.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\StartGameButton.cs" />
     <Compile Include="Assets\Scripts\UI\MazeMiniMap.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\WebSocketClient.cs" />
@@ -209,7 +204,7 @@
     <Compile Include="Assets\Scripts\Objects\Boss.cs" />
     <Compile Include="Assets\Scripts\Hubs\GameHub.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemy.cs" />
-    <Compile Include="Assets\Scripts\UI\QuestionUI.cs" />
+    <Compile Include="Assets\Scripts\Services\CalculusQuestionGeneratorService.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\SpawnLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\RightDoor.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovementService.cs" />

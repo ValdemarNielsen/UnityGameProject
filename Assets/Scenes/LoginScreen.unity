@@ -1623,7 +1623,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 754262520}
   spawnPoint: {x: 0, y: 0, z: 0}
-  lobbyListManager: {fileID: 0}
+  buttonPrefab: {fileID: 2054639294}
+  contentParent: {fileID: 519420032}
   port: 13000
   hostAdress: 127.0.0.1
 --- !u!4 &1303092195

@@ -1,8 +1,7 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
-// Your LobbyListManager should access the data from LobbyDataHolder
 public class LobbyListManager : MonoBehaviour
 {
     [SerializeField] private GameObject buttonPrefab; // Assign this in the inspector

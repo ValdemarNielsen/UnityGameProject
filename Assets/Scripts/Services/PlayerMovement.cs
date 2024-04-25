@@ -63,8 +63,15 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("IM GROUNDED");
             // Apply jump force
             rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
-            await tcpClient.SendPlayerActionAsync("Space", GameManager.localPlayerId, "{}");
-            Debug.Log("Went past the send statement of the action");
+            if (GameManager.multiPlayer == true)
+            {
+                await tcpClient.SendPlayerActionAsync("Space", GameManager.localPlayerId, "{}");
+
+            }
+            else 
+            {
+                Debug.Log("Went past the send statement of the action");
+            }
 
         }
         if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)

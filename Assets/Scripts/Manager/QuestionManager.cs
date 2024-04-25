@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+/*
 namespace Assets.Scripts.Manager
 {
     internal class QuestionManager
@@ -59,3 +59,4 @@ namespace Assets.Scripts.Manager
         }
     }
 }
+*/

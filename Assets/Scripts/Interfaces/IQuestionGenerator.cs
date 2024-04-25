@@ -10,7 +10,5 @@ namespace Assets.Scripts.Interfaces
     {
         string GenerateQuestion();
         string CorrectAnswer {  get; }
-        List<string> GenerateOptions(); // New method to generate multiple choice options where only 1 of 4 is correct.
-
     }
 }

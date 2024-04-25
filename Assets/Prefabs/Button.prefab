@@ -87,10 +87,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3606088502188957826}
-  - component: {fileID: 777585138832873882}
-  - component: {fileID: 4003933575395520991}
-  - component: {fileID: 6876203267004723534}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged

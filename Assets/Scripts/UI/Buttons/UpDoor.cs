@@ -56,13 +56,22 @@ public class UpDoor : MonoBehaviour
         {
             // getting scene name for the left room
             string sceneName = GameManager.MazeHolder.Rooms[UpRoomRow, currentPlayerColumn].SceneName;
+            GameManager.sceneName = sceneName;
 
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
             {
                 GameManager.spawnPoint = new Vector2(0f, -3f);
                 GameManager.UpdatePlayerPosition(UpRoomRow, currentPlayerColumn);
-                SceneManager.LoadScene(sceneName);
+                if (!GameManager.multiPlayer)
+                {
+                    SceneManager.LoadScene("QuestionScene");
+                }
+                else
+                {
+
+                    SceneManager.LoadScene(sceneName);
+                }
             }
             else
             {

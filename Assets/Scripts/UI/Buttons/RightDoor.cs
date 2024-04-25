@@ -47,6 +47,8 @@ public class RightDoor : MonoBehaviour
         {
             // getting scene name for the left room
             string sceneName = GameManager.MazeHolder.Rooms[currentPlayerRow, rightRoomColumn].SceneName;
+            GameManager.sceneName = sceneName;
+
 
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
@@ -56,8 +58,16 @@ public class RightDoor : MonoBehaviour
                 // Set the spawn point to the new position
                 GameManager.spawnPoint = new Vector2(-8f, -2.8f);
                 GameManager.UpdatePlayerPosition(currentPlayerRow, rightRoomColumn);
-                SceneManager.LoadScene(sceneName);
-               // GameManager.MiniMapGlow[rightRoomColumn, currentPlayerColumn] = true;
+                if (!GameManager.multiPlayer)
+                {
+                    SceneManager.LoadScene("QuestionScene");
+                }
+                else
+                {
+
+                    SceneManager.LoadScene(sceneName);
+                }
+                // GameManager.MiniMapGlow[rightRoomColumn, currentPlayerColumn] = true;
             }
             else
             {

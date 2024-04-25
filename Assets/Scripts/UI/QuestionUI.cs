@@ -1,53 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // If using TextMeshPro
 using Assets.Scripts.Services;
-using Assets.Scripts.Manager;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.UI
 {
     public class QuestionUI : MonoBehaviour
     {
-        public TMP_Text questionText;  // For TextMeshPro use TMP_Text instead of Text
-        public Button[] optionButtons = new Button[4];
-
-        private QuestionManager questionManager;
+        public Text questionDisplayText;
+        public InputField answerInput;
+        public Button submitButton;
+        private BasicMathGenerator questionGenerator;
+        private string currentAnswer;
 
         void Start()
         {
-            // Assuming BasicMathGenerator and QuestionManager are properly set up
-            questionManager = new QuestionManager(new BasicMathGenerator(), 50);
-            GenerateQuestion();
+            questionGenerator = new BasicMathGenerator();
+            GenerateNewQuestion();
+            submitButton.onClick.AddListener(CheckAnswer);
         }
 
-        void GenerateQuestion()
+        void GenerateNewQuestion()
         {
-            List<string> options;
-            string question = questionManager.GetUniqueQuestionWithOptions(out options);
-            questionText.text = $"Solve the following: {question}";
-
-            for (int i = 0; i < optionButtons.Length; i++)
-            {
-                optionButtons[i].GetComponentInChildren<TMP_Text>().text = options[i]; // Ensure to use TMP_Text for TextMeshPro
-                optionButtons[i].onClick.RemoveAllListeners();
-                optionButtons[i].onClick.AddListener(() => OptionSelected(options[i]));
-            }
+            string question = questionGenerator.GenerateQuestion();
+            questionDisplayText.text = question;
+            currentAnswer = questionGenerator.CorrectAnswer;
+            answerInput.text = "";  // Clear previous answer
         }
 
-        void OptionSelected(string selectedOption)
+        void CheckAnswer()
         {
-            if (selectedOption == questionManager.CurrentGenerator.CorrectAnswer)
+            if (answerInput.text == currentAnswer)
             {
                 Debug.Log("Correct!");
+                SceneManager.LoadScene(GameManager.sceneName);
             }
             else
             {
-                Debug.Log("Incorrect!");
+                Debug.Log("Incorrect! Correct answer was: " + currentAnswer);
             }
-            GenerateQuestion();  // Generate a new question after an answer is selected
+            GenerateNewQuestion(); // Generate new question regardless of whether the answer was correct or not
         }
-
     }
 }

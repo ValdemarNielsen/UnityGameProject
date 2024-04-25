@@ -48,6 +48,7 @@ public class DownDoor : MonoBehaviour
         {
             // getting scene name for the left room
             string sceneName = GameManager.MazeHolder.Rooms[DownRoomRow, currentPlayerColumn].SceneName;
+            GameManager.sceneName = sceneName;
 
             // Load the scene
             if (!string.IsNullOrEmpty(sceneName))
@@ -56,7 +57,15 @@ public class DownDoor : MonoBehaviour
                 // Set the spawn point to the new position
                 GameManager.spawnPoint = new Vector2(0f, 4.5f);
                 GameManager.UpdatePlayerPosition(DownRoomRow, currentPlayerColumn);
-                SceneManager.LoadScene(sceneName);
+                if (!GameManager.multiPlayer)
+                {
+                    SceneManager.LoadScene("QuestionScene");
+                }
+                else
+                {
+
+                    SceneManager.LoadScene(sceneName);
+                }
             }
             else
             {

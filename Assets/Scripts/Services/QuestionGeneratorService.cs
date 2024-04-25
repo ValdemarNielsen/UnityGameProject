@@ -15,8 +15,7 @@ namespace Assets.Scripts.Services
             Children,
             Teenagers,
             Adults
-        }        
-        
+        }
     }
 
     public class BasicMathGenerator : IQuestionGenerator
@@ -24,12 +23,11 @@ namespace Assets.Scripts.Services
         public string CorrectAnswer { get; private set; }
         private System.Random random = new System.Random();
 
-
         public string GenerateQuestion()
         {
             int a = random.Next(1, 10);
             int b = random.Next(1, 10);
-            int operation = random.Next(0, 4);
+            int operation = random.Next(0, 4); // Randomly choose an operation: 0, 1, 2, or 3
 
             switch (operation)
             {
@@ -42,44 +40,18 @@ namespace Assets.Scripts.Services
                 case 2: // Multiplication
                     CorrectAnswer = (a * b).ToString();
                     return $"{a} * {b} = ?";
-                case 3: // Division, ensure no division by zero
-                    b = b == 0 ? 1 : b;
-                    a = a * b;
+                case 3: // Division, ensure no division by zero and a whole number result
+                    b = b == 0 ? 1 : b; // Ensure b is not zero
+                    a = a * b; // Adjust a so that the division result is a whole number
                     CorrectAnswer = (a / b).ToString();
                     return $"{a} / {b} = ?";
                 default:
-                    return "Invalid operation";
+                    return "Invalid operation"; // Should never hit this case
             }
-        }
-        public List<string> GenerateOptions()
-        {
-            List<string> options = new List<string> { CorrectAnswer };
-            while (options.Count < 4)
-            {
-                int incorrectAnswer = random.Next(int.Parse(CorrectAnswer) - 10, int.Parse(CorrectAnswer) + 10);
-                string option = incorrectAnswer.ToString();
-                if (!options.Contains(option))
-                {
-                    options.Add(option);
-                }
-            }
-
-            // Shuffle the options
-            int n = options.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = random.Next(n + 1);
-                string value = options[k];
-                options[k] = options[n];
-                options[n] = value;
-            }
-
-            return options;
         }
     }
 
-    public static class MathUtilities
+        public static class MathUtilities
     {
         public static int GCD(int a, int b)
         {

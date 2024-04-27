@@ -23,14 +23,13 @@ public static class GameManager
 
     public static string sceneName { get; set; }
 
+    public static int pointScore { get; set; }
+
     public static void UpdatePlayerPosition(int newRow, int newColumn)
     {
         GameManager.playerRowHolder = newRow;
         GameManager.playerColHolder = newColumn;
     }
-
-
-
 
     public static int[] GetPlayerPosition()
     {

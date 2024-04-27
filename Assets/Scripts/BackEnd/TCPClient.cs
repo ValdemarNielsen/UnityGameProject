@@ -1,16 +1,10 @@
 using UnityEngine;
 using System;
 using System.Net.Sockets;
-using System.Threading;
-using System.Net;
-using System.IO;
 using System.Threading.Tasks;
-using System.Net.Http;
 using System.Text;
-using GameProject.Models;
 using System.Text.Json;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 
 
@@ -21,6 +15,8 @@ public class TCPClient : MonoBehaviour
     private TcpClient client;
     private NetworkStream stream;
     private LobbyListManager lobbyListManager;
+    private PlayerController playerController;
+    private PlayerMovement playerMovement;
 
 
 
@@ -201,6 +197,11 @@ public class TCPClient : MonoBehaviour
                     {
                         SpawnPlayer(dataParts[1]);
                     }
+                    if (dataParts[0] == "MOVE")
+                    {
+                        await playerMovement.ExecuteCommandFromServer(dataParts[1], dataParts[2]);
+                    }
+
 
                     // Add more cases for other types of messages if needed
                 }
@@ -234,14 +235,14 @@ public class TCPClient : MonoBehaviour
     }
 
    
-    public async Task SendPlayerActionAsync(string actionType, string playerId, string jsonData)
+    public async Task SendPlayerActionAsync(string actionType, string action, string playerId, string jsonData)
     {
         Debug.Log("Entered the send player action method");
         if (client != null && stream != null)
             try
             {
 
-                string message = $"{actionType},{playerId},{jsonData}";
+                string message = $"{actionType}, {action},{playerId},{jsonData}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
                 Debug.Log("action message: " + message + "data to send: " + dataToSend);
@@ -251,6 +252,8 @@ public class TCPClient : MonoBehaviour
                 Debug.LogError("Error in send action: " + ex.Message);
             }
     }
+
+
     
     private void OnApplicationQuit()
     {

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Assets.Scripts.Services;
 using UnityEngine.SceneManagement;
 
+
 namespace Assets.Scripts.UI
 {
     public class QuestionUI : MonoBehaviour
@@ -33,7 +34,17 @@ namespace Assets.Scripts.UI
             if (answerInput.text == currentAnswer)
             {
                 Debug.Log("Correct!");
-                SceneManager.LoadScene(GameManager.sceneName);
+                if (GameManager.pointScore == 15)
+                {
+                    Debug.Log("You have won good job");
+                    SceneManager.LoadScene("WinScene");
+                }
+                else 
+                {
+                    GameManager.pointScore++;
+                    SceneManager.LoadScene(GameManager.sceneName);
+                }
+                
             }
             else
             {

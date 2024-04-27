@@ -1,20 +1,19 @@
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private UDPClient udpClient;
+    
     private PlayerMovement playerMovement; // reference to our playermovement script.
     private PlayerMeleeAttack playerAttack;
-    private UpDoor upDoor;
     public string PlayerId { get; set; }
     // Find all player objects. This could be optimized if you have a list or dictionary.
     PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
 
     void Start()
     {
-        // Initialize the UDP client
-        udpClient = new UDPClient("127.0.0.1", 13000);
+
     }
 
     void Update()
@@ -23,6 +22,7 @@ public class PlayerController : MonoBehaviour
         {
             HandleLocalInput();
         }
+        
 
 
     }
@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerMovement.JumpAttack();
             playerMovement.Jump();
             playerMovement.TriggerJump();
 
@@ -50,36 +49,47 @@ public class PlayerController : MonoBehaviour
     }
 
     // This method is called when a command is received from the server
-    public Task ExecuteCommandFromServer(string playerId, string input, string message)
+    public Task ExecuteCommandFromServer(string input, string playerId)
     {
-        foreach (var playerController in playerControllers)
+        if (playerId != GameManager.localPlayerId)
         {
-            if (playerController.PlayerId == playerId)
+            foreach (var playerController in playerControllers)
             {
-                // Execute the action based on the input
-                switch (input)
+                if (playerController.PlayerId == playerId)
                 {
-                    case "E":
-                        // Insert action of E
-                        break;
-                    case "Space":
-                        playerMovement.JumpAttack();
-                        playerMovement.Jump();
-                        playerMovement.TriggerJump();
-                        break;
+                    // Execute the action based on the input
+                    switch (input)
+                    {
+                        case "E":
+                            // Insert action of E
+                            break;
+                        case "SPACE":
+                            playerMovement.MultiplayerJump();
+                            playerMovement.TriggerJump();
+                            break;
+                        case "A":
+                            playerMovement.HorizontalMovement();
+                            break;
+                        case "D":
+                            playerMovement.HorizontalMovement();
+                            break;
 
-                        // Handle other inputs...
+                    }
+                    break; // Exit the loop once the correct player is found and the action is executed
                 }
-                break; // Exit the loop once the correct player is found and the action is executed
             }
-        }
 
-        return Task.CompletedTask;
+            return Task.CompletedTask;
+        }
+        else
+        {
+            Debug.Log("Error playerID was local id");
+            return Task.CompletedTask;
+        }
     }
 
     void OnDestroy()
     {
-        // Close the UDP client when the player object is destroyed
-        udpClient.Close();
+
     }
 }

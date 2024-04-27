@@ -21,7 +21,7 @@ namespace GameProject.Models
         public int HP { get => hp; set => hp = value; }
         public int MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
         public Vector2 Pos { get => pos; set => pos = value; }
-        public int PlayerId { get; set; } // unique identifier for each player
+        public string PlayerId { get; set; } // unique identifier for each player
 
 
         public Player(Vector2 startingPos, int width, int height, int attack, int hp, int movementSpeed)

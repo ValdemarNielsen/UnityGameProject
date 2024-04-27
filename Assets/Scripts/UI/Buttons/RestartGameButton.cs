@@ -22,6 +22,8 @@ public class RestartGameButton : MonoBehaviour
     public async void TaskOnClick()
     {
         GameManager.pointScore = 0;
+        GameManager.UpdatePlayerPosition(2, 2);
+
         SceneManager.LoadScene("GameStateScreen");
     }
 }

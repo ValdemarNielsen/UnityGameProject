@@ -4,8 +4,6 @@ namespace Assets.Scripts.UI
 {
 
 
-    // Logic for doors to update glow:                 GameManager.MiniMapGlow[DownRoomRow, currentPlayerColumn] = true;
-    // logic for GameManager to hold instance of minimap :     public static bool[,] MiniMapGlow { get; set; }
 
     public class MazeMiniMap : MonoBehaviour
     {

@@ -175,6 +175,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IQuestionGenerator.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\BrowseLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\CreateLobbyButton.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\MenuScreenButton.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\DownDoor.cs" />

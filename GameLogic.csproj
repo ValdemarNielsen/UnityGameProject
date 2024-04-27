@@ -215,6 +215,7 @@
     <Compile Include="Assets\Scripts\UI\QuestionUI.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\SpawnLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\RightDoor.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\IntroductionSceneButton.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMovementService.cs" />
     <Compile Include="Assets\Scripts\Program.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\JoinLobbyButton.cs" />

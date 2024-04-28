@@ -2,8 +2,7 @@
 using NUnit.Framework;
 using System.Linq;
 using System;
-using System.Diagnostics;
-using UnityEngine;
+
 
 namespace GameProject.Tests
 {

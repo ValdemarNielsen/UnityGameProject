@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using GameProject.Models;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using SceneManagement;
 
 
 /// MazeGeneratorService.cs: Contains the logic for generating the entire maze. This service would use algorithms to ensure 

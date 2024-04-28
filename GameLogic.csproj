@@ -199,7 +199,6 @@
     <Compile Include="Assets\Scripts\UI\MazeMiniMap.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\WebSocketClient.cs" />
     <Compile Include="Assets\Scripts\Services\CharacterHealth.cs" />
-    <Compile Include="Assets\Scripts\Objects\PlayerClient.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\UpDoor.cs" />
     <Compile Include="Assets\Scripts\Objects\Character.cs" />
     <Compile Include="Assets\Scripts\Objects\Room.cs" />

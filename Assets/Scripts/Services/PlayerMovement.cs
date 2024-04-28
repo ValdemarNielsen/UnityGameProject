@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
             if (GameManager.multiPlayer == true)
             {
-                await tcpClient.SendPlayerActionAsync("MOVE", "SPACE", GameManager.localPlayerId, "{}");
+                await tcpClient.SendPlayerActionAsync("MOVE","SPACE", GameManager.localPlayerId, "{}");
 
             }
             else 

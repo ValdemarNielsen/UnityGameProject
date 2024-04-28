@@ -72,6 +72,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LoginScreen.unity
     guid: ce20556d98617394282fb967c05b99b6
   - enabled: 1
+    path: Assets/Scenes/GameStateScene.unity
+    guid: a9717d682f6bcef45ab20fa9dbae8593
+  - enabled: 1
     path: Assets/Scenes/QuestionScene.unity
     guid: 222220fed9d1f704ba5c164c64c9eeab
   - enabled: 1

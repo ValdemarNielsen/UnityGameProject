@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.UI.Buttons
@@ -22,18 +23,20 @@ namespace Assets.Scripts.UI.Buttons
 
         public async void TaskOnClick()
         {
+            if (GameManager.localPlayerId == null)
+            {
+                GameManager.localPlayerId = tcpClient.GeneratePlayerId();
+            }
             if (tcpClient.playerPrefab == null)
             {
                 Debug.LogError("Player prefab is not assigned.");
                 return;
             }
-            tcpClient.SpawnPlayer("12345");
+            tcpClient.JoinLobby();
             Debug.Log("You have clicked the button!");
+            SceneManager.LoadScene("Lobby");
             //tcpClient.ListenForServerMessages();
-            if (GameManager.localPlayerId == null)
-            {
-                GameManager.localPlayerId = tcpClient.GeneratePlayerId();
-            }
+            
         }
 
     } 

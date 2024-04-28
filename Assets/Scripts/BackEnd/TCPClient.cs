@@ -15,8 +15,9 @@ public class TCPClient : MonoBehaviour
     private TcpClient client;
     private NetworkStream stream;
     private LobbyListManager lobbyListManager;
-    private PlayerController playerController;
     private PlayerMovement playerMovement;
+    public static TCPClient Instance;
+
 
 
 
@@ -26,7 +27,9 @@ public class TCPClient : MonoBehaviour
 
     private void Awake()
     {
+       
         DontDestroyOnLoad(gameObject);
+        
 
     }
 
@@ -184,6 +187,16 @@ public class TCPClient : MonoBehaviour
                     }
                     else
                     {
+                        string[] dataparts = JsonSerializer.Deserialize<string[]>(receivedData);
+                        if (dataparts[0] == "SPAWN_PLAYER")
+                        {
+                            SpawnPlayer(dataparts[1]);
+                            Debug.Log("a spawn player signal has been detected.");
+                        }
+                        if (dataparts[0] == "MOVE")
+                        {
+                            await playerMovement.ExecuteCommandFromServer(dataparts[1], dataparts[2]);
+                        }
                         Debug.Log("No lobbies found in the received message.");
                         BroadcastMessage("No lobbies found");
                     }
@@ -196,6 +209,7 @@ public class TCPClient : MonoBehaviour
                     if (dataParts[0] == "SPAWN_PLAYER")
                     {
                         SpawnPlayer(dataParts[1]);
+                        Debug.Log("a spawn player signal has been detected.");
                     }
                     if (dataParts[0] == "MOVE")
                     {
@@ -228,7 +242,7 @@ public class TCPClient : MonoBehaviour
             // Instantiate the player prefab at the spawn point
             GameObject newPlayer = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             // Assign the player ID to the spawned player (we might have to adjust this based on our player controller script)
-            newPlayer.GetComponent<PlayerController>().PlayerId = playerId;
+            newPlayer.GetComponent<PlayerMovement>().PlayerId = playerId;
             // Setup for remote players if needed
             Debug.Log($"Player spawned with ID: {playerId}");
         }        

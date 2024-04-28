@@ -1,8 +1,4 @@
 using GameProject.Models;
-using GameProject.Services;
-using SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

@@ -8,7 +8,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     [SerializeField] private float range;
 
     [Header("Collider Parameters")]
-    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private float colliderDistance;
 
     [Header("Player Layer")]
@@ -32,7 +32,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     }
 
 
-    private bool EnemyInRange()
+    public bool EnemyInRange()
     {
         RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
                                              new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
@@ -52,7 +52,7 @@ public class PlayerMeleeAttack : MonoBehaviour
                             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 
-    private void DamageEnemy()
+    public void DamageEnemy()
     {
         if (EnemyInRange())
         {

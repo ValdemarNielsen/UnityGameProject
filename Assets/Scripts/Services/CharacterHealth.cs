@@ -6,28 +6,32 @@ using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
 {
-    [SerializeField] private float startingHealth;
-    [SerializeField] private GameObject character;
-    public float CurrecntHealth { get; private set; }
+    [SerializeField] public float startingHealth;
+    [SerializeField] public GameObject character;
+    public float currentHealth { get; set; }
     private Animator anim;
 
     private void Awake()
     {
-        CurrecntHealth = startingHealth;
+        currentHealth = startingHealth;
         anim = GetComponent<Animator>();
+        
     }
 
     public void TakeDamage(float damage)
     {
-        CurrecntHealth = Mathf.Clamp(CurrecntHealth - damage, 0, startingHealth);
-        if(CurrecntHealth > 0)
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+        if(currentHealth > 0 && anim != null)
         {
             anim.SetTrigger("hurt"); 
         }
-        else
+        else if((currentHealth <= 0))
         {
+            if(anim != null)
+            {
+                anim.SetTrigger("die");
+            }
             
-            anim.SetTrigger("die");
             CharacterDeath();
         }
     }
@@ -38,6 +42,10 @@ public class CharacterHealth : MonoBehaviour
 
     public void CharacterDeath()
     {
+#if UNITY_EDITOR
+        DestroyImmediate(character);
+#else
         Destroy(character);
+#endif
     }
 }

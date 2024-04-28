@@ -68,10 +68,10 @@ public class PlayerController : MonoBehaviour
                             playerMovement.TriggerJump();
                             break;
                         case "A":
-                            playerMovement.HorizontalMovement();
+                            playerMovement.HandleMultiplayerInput();
                             break;
                         case "D":
-                            playerMovement.HorizontalMovement();
+                            playerMovement.HandleMultiplayerInput();
                             break;
 
                     }

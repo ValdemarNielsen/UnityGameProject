@@ -41,19 +41,15 @@ public class PlayerMazeNavigationTest
     public void PlayerMovesRight_UpdatesPositionCorrectly()
     {
         
-        // Arrange
         var expectedRow = 2;
         var expectedColumn = 3; // Expecting to move to the right
         Debug.Log("Position before: " + 2 +", " + 2);
         Debug.Log("Expected new position: 2, 3");
-        // Act
         // Simulate the right door transition
-        // This part might need adjustment based on how your actual door interaction is implemented
-        TransitionToRightSceneTest(); // Assume this is accessible for testing, or simulate the logic here
+        TransitionToRightSceneTest();
 
         var actualPosition = GameManager.GetPlayerPosition();
         Debug.Log("position after: " + actualPosition[0] + ", " + actualPosition[1]);
-        // Assert
         Assert.AreEqual(expectedRow, actualPosition[0], "Row did not match expected value.");
         Assert.AreEqual(expectedColumn, actualPosition[1], "Column did not match expected value.");
     }

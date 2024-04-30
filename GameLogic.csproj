@@ -177,6 +177,7 @@
     <Compile Include="Assets\Scripts\UI\Buttons\CreateLobbyButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\MenuScreenButton.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\LoginIntoAccountButton.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\DownDoor.cs" />
     <Compile Include="Assets\Scripts\BackEnd\UDP\UdpClient.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Assets\Scripts\UI\Buttons\RestartGameButton.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneManagements.cs" />
     <Compile Include="Assets\Scripts\Manager\QuestionManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\CreateUserButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\StartGameButton.cs" />
     <Compile Include="Assets\Scripts\UI\MazeMiniMap.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\WebSocketClient.cs" />

@@ -39,7 +39,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.multiPlayer == true)
+        {
 
+            HandleMultiplayerInput();
+
+
+        }
         TriggerJump();
         FlipAimation();
         Jump();
@@ -67,10 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
         CheckGrounded();
         
-        if (GameManager.multiPlayer == true)
-        {
-            HandleMultiplayerInput();
-        }
+        
     }
         
 
@@ -113,19 +116,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            StartCoroutine(SendMoveCommand("MOVE","A"));
+            StartCoroutine(SendMoveCommand("MOVEMENT","A"));
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            StartCoroutine(SendMoveCommand("MOVE","D"));
+            StartCoroutine(SendMoveCommand("MOVEMENT","D"));
         }
         else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            StartCoroutine(SendMoveCommand("MOVE", "SPACE"));
+            StartCoroutine(SendMoveCommand("MOVEMENT","SPACE"));
         }
         else
         {
-            Debug.Log("Went past the send statement of the horizontal movement action");
+           // Debug.Log("Went past the send statement of the horizontal movement action");
         }
     }
 

@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TCPClient" Collapsed="true">
+    <Position X="6.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABACBCAAABAEAAAAAAAQBAQAACgBSAAABAQCAUA=</HashCode>
+      <FileName>Assets\Scripts\BackEnd\TCPClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UDPClient" Collapsed="true">
+    <Position X="8.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAQAAAgAAAgABACAAAA=</HashCode>
+      <FileName>Assets\Scripts\BackEnd\UDP\UdpClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MazeNavigator" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACAQAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Controllers\MazeNavigator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAACAgABAAAAAAAAAAIAAAAAgAAAAIAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\Controllers\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="hej" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\hej.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyIDManager" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAIAAAAAACgAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\EnemyIDManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyManager" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAgAAAACAAAAAAAAAAAAAgAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\EnemyManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADCAAACAAAAAAAAAABQAQgCAAAAAEAAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LobbyListManager" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAABAAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\LobbyListManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MazeManager" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\MazeManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lobby" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEABAA=</HashCode>
+      <FileName>Assets\Scripts\Objects\Lobby.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lobbies" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Objects\Lobby.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterHealth" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAAAAAAAAAABAAAAUAAAAAQAAgAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Services\CharacterHealth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyPatrolService" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAABAAEAAQAAAAAAAAAAQAQAIDQAAAAAQAEI=</HashCode>
+      <FileName>Assets\Scripts\Services\EnemyPatrolService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySpawn" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Services\EnemySpawn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerMeleeAttack" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQUAAAIACAAgAEgAAgAAAAAAQAEAACAAQAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Services\PlayerMeleeAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerMovement" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgUCQAACEiAACBAEAAAAAABAICAAAAAJAAAIAAAECEE=</HashCode>
+      <FileName>Assets\Scripts\Services\PlayerMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChestButtonHandler" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAAAAAAAAAAAAAAAABEAAYAAQAAEA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\ChestButtonHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DownDoor" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAQAAAAAAAAAAAAAAAAAABAAEIAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\DownDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExitGameButton" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAABAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\ExitGameButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NewBehaviourScript" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\IntroductionSceneButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeftDoor" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAIAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\LeftDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuScreenButton" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\MenuScreenButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RestartGameButton" Collapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAABAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\RestartGameButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RightDoor" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAIQAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\RightDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnLobbyButton">
+    <Position X="15.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAACAAAAAAAEAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\SpawnLobbyButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartLobbyButton" Collapsed="true">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAABAAAAAEAAAEAIAABAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\StartLobbyButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UpDoor">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAQAAAAAAAAAAAAAAAAAABAEAIAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\UpDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneManagement.SceneManagements" Collapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAABAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\SceneManagements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Models.Boss" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABCAAAAAAAAAAAEAAQICAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Objects\Boss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Models.Enemy" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQEAAAIACAAgAAgAAAgAAAAARgkAAAgAQAAAgAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Objects\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Models.Maze" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Objects\Maze.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Models.Player" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAQAQBAAAMAAQIiAAACIAABIAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Objects\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Models.Room" Collapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAIAAAAAAAAAAAAAAAAAAAAAACAACACQAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Objects\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.Objects.Character" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAQIiAAACIAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Objects\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Program" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.Services.BackEnd.ServerManager" Collapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Services\BackEnd\ServerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.BackEnd.Shared.PlayerData" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Assets\Scripts\Services\BackEnd\Shared\PlayerData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Services.GameManagerService" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAACAAAAABAAAAAAAAAAAAAAIIABAgQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Services\GameManagerService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Services.MazeGeneratorService" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAAAAAAAAAAAAAAIABAAAAACAAAAABAAQAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\Services\MazeGeneratorService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Services.PlayerMovementService" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAEAAAAAIAJQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Services\PlayerMovementService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Services.PlayerUpdateService" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAEAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Services\PlayerUpdateService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Services.RoomGeneratorService" Collapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Services\RoomGeneratorService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.Services.QuestionGeneratorService" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Services\QuestionGeneratorService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.Services.BasicMathGenerator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Services\QuestionGeneratorService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Assets.Scripts.Services.MathUtilities" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Services\QuestionGeneratorService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.Buttons.BrowseLobbyButton" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAABAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\BrowseLobbyButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.Buttons.CreateLobbyButton" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAABAAAAAAAAAAAIAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\CreateLobbyButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.Buttons.JoinLobbyButton" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAABAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\JoinLobbyButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.Buttons.MultiplayerButton" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAABAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\MultiplayerButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.Buttons.QuestionButton" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\QuestionButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.Buttons.SingleplayerButon">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\SinglePlayerButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.Buttons.StartGameButton" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Buttons\StartGameButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.MazeMiniMap" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAEA=</HashCode>
+      <FileName>Assets\Scripts\UI\MazeMiniMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.UI.QuestionUI">
+    <Position X="15.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAQAAAgAAACAAAAAAAAIAAAAAABAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\QuestionUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Assets.Scripts.Interfaces.IQuestionGenerator" Collapsed="true">
+    <Position X="3" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IQuestionGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

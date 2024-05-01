@@ -6,7 +6,7 @@ public class ChestButtonHandler : MonoBehaviour
     // The distance at which the player can interact with the chest.
     public float interactionDistance = 1.2f;
 
-    // Reference to the player GameObject. You can assign this in the Unity Editor.
+    // Reference to the player GameObject. We can assign this in the Unity Editor.
     public Player player;
 
     // Reference to the chest's Animator component.
@@ -37,7 +37,7 @@ public class ChestButtonHandler : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, interactionDistance);
     }
 
-    // Update is called once per frame
+    // Update is called once per frame (60-200fps ish).
     void Update()
     {
         if (player == null || chestAnimator == null)

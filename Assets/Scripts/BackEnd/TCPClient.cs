@@ -3,11 +3,7 @@ using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Text;
-using System.Text.Json;
 using UnityEngine.SceneManagement;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Net.Http;
 using Unity.Plastic.Newtonsoft.Json;
 
 
@@ -24,8 +20,6 @@ public class TCPClient : MonoBehaviour
 
 
 
-
-
     public int port = 13000;
     public string hostAdress = "127.0.0.1";
 
@@ -34,7 +28,6 @@ public class TCPClient : MonoBehaviour
        
         DontDestroyOnLoad(gameObject);
         
-
     }
 
     private async void Start()
@@ -61,8 +54,8 @@ public class TCPClient : MonoBehaviour
     // Generate a unique player ID
     public string GeneratePlayerId()
     {
-        // You can generate a unique ID based on various factors such as timestamp, GUID, etc.
-        // Here's an example using timestamp:
+        // We can generate a unique ID based on various factors such as timestamp, GUID, etc.
+        // Using timestamp:
         string playerId = DateTime.Now.ToString("ddHHmmssfff");
 
         return playerId;
@@ -138,7 +131,7 @@ public class TCPClient : MonoBehaviour
                 {
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
-                // Send "CREATE" message to the server
+                // Send "REGISTER" message to the server
                 string message = $"REGISTER,,{realName},{email},{username},{password}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);

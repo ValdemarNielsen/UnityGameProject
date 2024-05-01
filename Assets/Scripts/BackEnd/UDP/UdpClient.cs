@@ -25,7 +25,7 @@ public class UDPClient
 
     public void SendPlayerInput(float horizontalInput, bool jumpInput, bool attackInput, bool interactInput)
     {
-        // Convert input data to a string (you can customize this format based on your needs)
+        // Convert input data to a string (we can customize this format based on our needs)
         string inputString = string.Format("Input|{0},{1},{2},{3}", horizontalInput, jumpInput ? 1 : 0, attackInput ? 1 : 0, interactInput ? 1 : 0);
 
         // Convert the message to bytes

@@ -4,7 +4,7 @@ using System.Linq;
 using GameProject.Models;
 
 
-/// MazeGeneratorService.cs: Contains the logic for generating the entire maze. This service would use algorithms to ensure 
+/// MazeGeneratorService.cs: Contains the logic for generating the entire maze. This service will use algorithms to ensure 
 /// all rooms are accessible from the starting point and correctly interconnected. It may utilize RoomGeneratorService to create 
 /// individual rooms with specific configurations.
 namespace GameProject.Services

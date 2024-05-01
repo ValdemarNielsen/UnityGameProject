@@ -7,7 +7,7 @@ public class RightDoor : MonoBehaviour
     // The distance at which the player can interact with the chest.
     public float interactionDistance = 1.5f;
 
-    // Reference to the player GameObject. You can assign this in the Unity Editor.
+    // Reference to the player GameObject. We can assign this in the Unity Editor.
     public Player player;
     
     private void Update()

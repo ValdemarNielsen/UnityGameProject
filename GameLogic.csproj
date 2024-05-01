@@ -160,6 +160,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Services\RoomGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\PlayerMeleeAttack.cs" />
+    <Compile Include="Assets\Scripts\BackEnd\AuthenticationManager.cs" />
     <Compile Include="Assets\Scripts\Services\MazeGeneratorService.cs" />
     <Compile Include="Assets\Scripts\Services\GameManagerService.cs" />
     <Compile Include="Assets\Scripts\BackEnd\GameHub.cs" />
@@ -186,7 +187,6 @@
     <Compile Include="Assets\Scripts\UI\Buttons\ExitGameButton.cs" />
     <Compile Include="Assets\Scripts\BackEnd\TCPClient.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\ChestButtonHandler.cs" />
-    <Compile Include="Assets\Scripts\hej.cs" />
     <Compile Include="Assets\Scripts\Services\EnemyPatrolService.cs" />
     <Compile Include="Assets\Scripts\Manager\MazeManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Maze.cs" />
@@ -197,6 +197,7 @@
     <Compile Include="Assets\Scripts\Manager\SceneManagements.cs" />
     <Compile Include="Assets\Scripts\Manager\QuestionManager.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\CreateUserButton.cs" />
+    <Compile Include="Assets\Scripts\BackEnd\HttpClientService.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\StartGameButton.cs" />
     <Compile Include="Assets\Scripts\UI\MazeMiniMap.cs" />
     <Compile Include="Assets\Scripts\Services\BackEnd\WebSocketClient.cs" />

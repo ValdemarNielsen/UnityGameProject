@@ -21,8 +21,7 @@ namespace Assets.Scripts.UI.Buttons
         public async void TaskOnClick()
         {
             //await tcpClient.CreateLobby();
-            Debug.Log("You have clicked the button!");
-            Console.WriteLine("test");
+            Debug.Log("You have clicked the CreateLobbyButton!");
             //tcpClient.ListenForServerMessages();
             if (GameManager.localPlayerId == null)
             {

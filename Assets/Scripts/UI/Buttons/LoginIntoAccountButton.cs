@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Net;
 
 
 
@@ -20,6 +21,9 @@ public class LoginIntoAccountButton : MonoBehaviour
 
     private TCPClient tcpClient;
     private Button LoginButton;
+    private readonly HttpClientService httpClientService = new HttpClientService();
+    private readonly AuthenticationManager authenticationManager = new AuthenticationManager();
+
 
 
 
@@ -42,11 +46,34 @@ public class LoginIntoAccountButton : MonoBehaviour
             {
                 GameManager.localPlayerId = tcpClient.GeneratePlayerId();
             }
-            await tcpClient.LoginIntoAccount(username.text, password.text);
+            LoginModel login = new LoginModel
+            {
+                Username = username.text,
+                Password = password.text
+            };
+
+            // Call the LoginAsync method of the AuthenticationManager
+            string token = await authenticationManager.LoginAsync(login);
+
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                Debug.Log("Login successful!");
+                // Save the token or handle authentication as needed
+                // 
+                SceneManager.LoadScene("InitialLobbyScene");
+
+            }
+            else
+            {
+                Debug.LogError("Failed to log in. Username or password incorrect.");
+            }
+
+
+
+            // await tcpClient.LoginIntoAccount(username.text, password.text);
             Console.WriteLine("realName, username, email and password was filled");
             //tcpClient.ListenForServerMessages();
-
-            SceneManager.LoadScene("InitialLobbyScene");
 
         }
         else

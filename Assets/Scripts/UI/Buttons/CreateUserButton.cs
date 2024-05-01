@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.BackEnd;
 
 
 public class CreateUserButton : MonoBehaviour
@@ -12,6 +13,8 @@ public class CreateUserButton : MonoBehaviour
     [SerializeField] InputField email;
     [SerializeField] InputField password;
     [SerializeField] InputField messageTextField;
+    private readonly HttpClientService httpClientService = new HttpClientService();
+
 
 
 
@@ -35,12 +38,29 @@ public class CreateUserButton : MonoBehaviour
         
         if (realName.text.Length != 0 && username.text.Length != 0 && email.text.Length != 0 && password.text.Length != 0)
         {
-            
-            await tcpClient.CreateUser(realName.text, email.text, username.text, password.text);
+            CreateUserModel newUser = new CreateUserModel
+            {
+                Name = realName.text,
+                Username = username.text,
+                Email = email.text,
+                Password = password.text
+            };
+            bool registrationSuccessful = await httpClientService.RegisterAsync(newUser);
+
+            if (registrationSuccessful)
+            {
+                Debug.Log("User registered successfully!");
+                SceneManager.LoadScene("LoginScene");
+            }
+            else
+            {
+                Debug.LogError("Failed to register user.");
+            }
+            // await tcpClient.CreateUser(realName.text, email.text, username.text, password.text);
             Console.WriteLine("realName, username, email and password was filled");
-            //tcpClient.ListenForServerMessages();
+            // tcpClient.ListenForServerMessages();
             
-            SceneManager.LoadScene("LoginScene");
+            
 
         }
         else

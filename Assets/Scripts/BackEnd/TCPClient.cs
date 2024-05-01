@@ -110,7 +110,7 @@ public class TCPClient : MonoBehaviour
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
                 // Send "CREATE" message to the server
-                string message = $"LOGIN,{GameManager.localPlayerId},{username},{password}";
+                string message = $"LOGIN,{username},{password}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
 
@@ -139,7 +139,7 @@ public class TCPClient : MonoBehaviour
                     GameManager.localPlayerId = GeneratePlayerId();
                 }
                 // Send "CREATE" message to the server
-                string message = $"REGISTER,{GameManager.localPlayerId},{realName},{email},{password}";
+                string message = $"REGISTER,,{realName},{email},{username},{password}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
 
@@ -254,7 +254,7 @@ public class TCPClient : MonoBehaviour
                         SpawnPlayer(dataParts[1]);
                         Debug.Log("a spawn player signal has been detected.");
                     }
-                    if (dataParts[0] == "MOVE")
+                    if (dataParts[0] == "MOVEMENT")
                     {
                         await playerMovement.ExecuteCommandFromServer(dataParts[1], dataParts[2]);
                     }
@@ -296,7 +296,6 @@ public class TCPClient : MonoBehaviour
         {
             GameManager.localPlayerId = GeneratePlayerId();
         }
-        Debug.Log("Entered the send player action method");
         if (client != null && stream != null)
         {
             try
@@ -312,9 +311,7 @@ public class TCPClient : MonoBehaviour
                 string message = JsonConvert.SerializeObject(dataObject) + "\n"; // Adding newline at the end
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
-                Debug.Log($"GameManager.localPlayerId: {GameManager.localPlayerId}");
                 Debug.Log($"action message: {message}");
-                Debug.Log($"data to send: {BitConverter.ToString(dataToSend)}");
             }
             catch (Exception ex)
             {

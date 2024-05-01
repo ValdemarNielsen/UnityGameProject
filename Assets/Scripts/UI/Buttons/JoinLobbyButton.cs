@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UI.Buttons
 {
-    // IMPORTANT: BELOW IS MADE INTO SPAWN PLAYER PREFAB TEMPORARILY !!! 
 
 
     internal class JoinLobbyButton : MonoBehaviour
@@ -34,7 +33,7 @@ namespace Assets.Scripts.UI.Buttons
             }
             tcpClient.JoinLobby();
             Debug.Log("You have clicked the button!");
-            SceneManager.LoadScene("Lobby");
+            SceneManager.LoadScene("MutiplayerLobby");
             //tcpClient.ListenForServerMessages();
             
         }

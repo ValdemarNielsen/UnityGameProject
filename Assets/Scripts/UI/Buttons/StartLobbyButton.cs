@@ -38,7 +38,7 @@ public class StartLobbyButton : MonoBehaviour
             {
                 GameManager.localPlayerId = tcpClient.GeneratePlayerId();
             }
-            SceneManager.LoadScene("Lobby");
+            SceneManager.LoadScene("MultiplayerLobby");
 
         }
         else

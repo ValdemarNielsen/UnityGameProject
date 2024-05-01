@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using System.Text;
 using System.Text.Json;
 using UnityEngine.SceneManagement;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Net.Http;
+using Unity.Plastic.Newtonsoft.Json;
 
 
 
@@ -94,6 +98,64 @@ public class TCPClient : MonoBehaviour
         }
     }
 
+    public async Task LoginIntoAccount(string username, string password)
+    {
+        if (client != null && stream != null)
+        {
+            try
+            {
+                // Ensure there's a player ID generated and assigned.
+                if (GameManager.localPlayerId == null)
+                {
+                    GameManager.localPlayerId = GeneratePlayerId();
+                }
+                // Send "CREATE" message to the server
+                string message = $"LOGIN,{username},{password}";
+                byte[] dataToSend = Encoding.UTF8.GetBytes(message);
+                await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+
+                // Read server's response
+                byte[] receivedBytes = new byte[1024]; // Adjust buffer size as needed
+                int bytesRead = await stream.ReadAsync(receivedBytes, 0, receivedBytes.Length);
+                string receivedData = Encoding.UTF8.GetString(receivedBytes, 0, bytesRead);
+                Debug.Log("Received from server: " + receivedData);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Error in LoginIntoAccount: " + ex.Message);
+            }
+        }
+    }
+
+    public async Task CreateUser(string realName, string email, string username, string password)
+    {
+        if (client != null && stream != null)
+        {
+            try
+            {
+                // Ensure there's a player ID generated and assigned.
+                if (GameManager.localPlayerId == null)
+                {
+                    GameManager.localPlayerId = GeneratePlayerId();
+                }
+                // Send "CREATE" message to the server
+                string message = $"REGISTER,,{realName},{email},{username},{password}";
+                byte[] dataToSend = Encoding.UTF8.GetBytes(message);
+                await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+
+                // Read server's response
+                byte[] receivedBytes = new byte[1024]; // Adjust buffer size as needed
+                int bytesRead = await stream.ReadAsync(receivedBytes, 0, receivedBytes.Length);
+                string receivedData = Encoding.UTF8.GetString(receivedBytes, 0, bytesRead);
+                Debug.Log("Received from server: " + receivedData);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Error in CreateUser: " + ex.Message);
+            }
+        }
+    }
+
     public async Task JoinLobby()
     {
         if (client != null && stream != null)
@@ -168,56 +230,34 @@ public class TCPClient : MonoBehaviour
                 try
                 {
                     // Deserialize the JSON data directly into an array of Lobby objects
-                    Lobby[] lobbies = JsonSerializer.Deserialize<Lobby[]>(receivedData);
+                    Lobby[] lobbies = System.Text.Json.JsonSerializer.Deserialize<Lobby[]>(receivedData);
                     if (lobbies != null && lobbies.Length > 0)
                     {
                         Debug.Log($"Total lobbies received: {lobbies.Length}");
-                        
                         foreach (Lobby lobby in lobbies)
                         {
-                            Debug.Log("Entered the foreach loop");
                             Debug.Log($"Lobby found: ID = {lobby.LobbyId}, Name = {lobby.LobbyName}, Creator = {lobby.CreatorName}");
                             lobbyListManager.GenerateLobbyPanels(lobbies);
-                            
-                            // Additional logic to handle the lobby data, e.g., update UI
-
                         }
-                        
-                        
                     }
                     else
                     {
-                        string[] dataparts = JsonSerializer.Deserialize<string[]>(receivedData);
-                        if (dataparts[0] == "SPAWN_PLAYER")
-                        {
-                            SpawnPlayer(dataparts[1]);
-                            Debug.Log("a spawn player signal has been detected.");
-                        }
-                        if (dataparts[0] == "MOVE")
-                        {
-                            await playerMovement.ExecuteCommandFromServer(dataparts[1], dataparts[2]);
-                        }
                         Debug.Log("No lobbies found in the received message.");
-                        BroadcastMessage("No lobbies found");
                     }
                 }
-                catch (JsonException jsonEx)
+                catch (System.Text.Json.JsonException jsonEx)
                 {
                     Debug.Log("Not a lobby data message: " + jsonEx.Message + " Data: " + receivedData);
-                    // If parsing fails, it wasn't lobby data. Handle other message types.
                     string[] dataParts = receivedData.Split(',');
                     if (dataParts[0] == "SPAWN_PLAYER")
                     {
                         SpawnPlayer(dataParts[1]);
                         Debug.Log("a spawn player signal has been detected.");
                     }
-                    if (dataParts[0] == "MOVE")
+                    if (dataParts[0] == "MOVEMENT")
                     {
                         await playerMovement.ExecuteCommandFromServer(dataParts[1], dataParts[2]);
                     }
-
-
-                    // Add more cases for other types of messages if needed
                 }
             }
             catch (Exception ex)
@@ -227,6 +267,7 @@ public class TCPClient : MonoBehaviour
             }
         }
     }
+
 
     public void SpawnPlayer(string playerId)
     {
@@ -248,27 +289,40 @@ public class TCPClient : MonoBehaviour
         }        
     }
 
-   
+
     public async Task SendPlayerActionAsync(string actionType, string action, string playerId, string jsonData)
     {
-        Debug.Log("Entered the send player action method");
+        if (GameManager.localPlayerId == null)
+        {
+            GameManager.localPlayerId = GeneratePlayerId();
+        }
         if (client != null && stream != null)
+        {
             try
             {
+                var dataObject = new
+                {
+                    Command = actionType,
+                    Key = action,
+                    PlayerId = GameManager.localPlayerId,
+                    Data = JsonConvert.DeserializeObject(jsonData)  // Assuming jsonData is a valid JSON string
+                };
 
-                string message = $"{actionType}, {action},{playerId},{jsonData}";
+                string message = JsonConvert.SerializeObject(dataObject) + "\n"; // Adding newline at the end
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
-                Debug.Log("action message: " + message + "data to send: " + dataToSend);
+                Debug.Log($"action message: {message}");
             }
             catch (Exception ex)
             {
-                Debug.LogError("Error in send action: " + ex.Message);
+                Debug.LogError($"Error in send action: {ex.Message}");
             }
+        }
     }
 
 
-    
+
+
     private void OnApplicationQuit()
     {
         stream?.Close();

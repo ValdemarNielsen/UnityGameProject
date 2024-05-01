@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{00815B67-BB12-E914-7CDF-0652DD6100DA}</ProjectGuid>
+    <ProjectGuid>{41CE5DB1-B9E6-146E-A80E-D329BF387180}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Tests</AssemblyName>

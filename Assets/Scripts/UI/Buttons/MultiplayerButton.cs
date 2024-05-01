@@ -18,7 +18,7 @@ namespace Assets.Scripts.UI.Buttons
         {
             GameManager.multiPlayer = true;
             Debug.Log("You have clicked Single player button");
-            SceneManager.LoadScene("LoginScreen");
+            SceneManager.LoadScene("CreateUserScene");
 
         }
     }

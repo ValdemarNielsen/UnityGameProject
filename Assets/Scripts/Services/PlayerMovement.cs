@@ -1,6 +1,7 @@
 using UnityEngine;
 using GameProject.Models;
 using System.Threading.Tasks;
+using System.Collections;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -38,7 +39,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.multiPlayer == true)
+        {
 
+            HandleMultiplayerInput();
+
+
+        }
         TriggerJump();
         FlipAimation();
         Jump();
@@ -53,61 +60,90 @@ public class PlayerMovement : MonoBehaviour
     // to move our charactor
     void FixedUpdate()
     {
-       
-            // Get horizontal input
-            float horizontalInput = Input.GetAxis("Horizontal");
+        
+        float horizontalInput = Input.GetAxis("Horizontal");
 
-            // Calculate movement vector
-            Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+        // Calculate movement vector
+        Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
-            // Apply movement
-            rb.velocity = movement;
+        // Apply movement
+        rb.velocity = movement;
 
-            // jump = false;
+        // jump = false;
 
-            CheckGrounded();
-               
+        CheckGrounded();
+        
+        
+    }
+        
 
+    IEnumerator SendMoveCommand(string action, string key)
+    {
+        // Assuming tcpClient is a defined field and SendPlayerActionAsync is an async method suitable for coroutine usage
+        yield return tcpClient.SendPlayerActionAsync(action, key, GameManager.localPlayerId, "{}");
     }
 
-    public async void HorizontalMovement()
+    private void RunLeft()
+    {
+        float horizontalInput = -1;
+
+        // Calculate movement vector
+        Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+
+        // Apply movement
+        rb.velocity = movement;
+
+        // jump = false;
+
+        CheckGrounded();
+    }
+    private void RunRight()
+    {
+        float horizontalInput = 1;
+
+        // Calculate movement vector
+        Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+
+        // Apply movement
+        rb.velocity = movement;
+
+        // jump = false;
+
+        CheckGrounded();
+    }
+
+    public void HandleMultiplayerInput()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            await tcpClient.SendPlayerActionAsync("MOVE", "A", GameManager.localPlayerId, "{}");
+            StartCoroutine(SendMoveCommand("MOVEMENT","A"));
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            await tcpClient.SendPlayerActionAsync("MOVE", "D", GameManager.localPlayerId, "{}");
-
+            StartCoroutine(SendMoveCommand("MOVEMENT","D"));
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            StartCoroutine(SendMoveCommand("MOVEMENT","SPACE"));
         }
         else
         {
-            Debug.Log("Went past the send statement of the horizontal movement action");
+           // Debug.Log("Went past the send statement of the horizontal movement action");
         }
     }
 
-    public async void MultiplayerJump()
+    public void MultiplayerJump()
     {        
         rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
     }
 
-    public async void Jump()
+    public void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Debug.Log("IM GROUNDED");
             // Apply jump force
-            rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
-            if (GameManager.multiPlayer == true)
-            {
-                await tcpClient.SendPlayerActionAsync("MOVE","SPACE", GameManager.localPlayerId, "{}");
-
-            }
-            else 
-            {
-                Debug.Log("Went past the send statement of the action");
-            }
+            rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);        
         }
     }
 
@@ -177,10 +213,10 @@ public class PlayerMovement : MonoBehaviour
                             TriggerJump();
                             break;
                         case "A":
-                            HorizontalMovement();
+                            RunLeft();
                             break;
                         case "D":
-                            HorizontalMovement();
+                            RunRight();
                             break;
 
                     }

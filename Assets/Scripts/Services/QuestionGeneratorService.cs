@@ -27,7 +27,7 @@ namespace Assets.Scripts.Services
         {
             int a = random.Next(1, 10);
             int b = random.Next(1, 10);
-            int operation = random.Next(0, 4); // Randomly choose an operation: 0, 1, 2, or 3
+            int operation = random.Next(0, 4);
 
             switch (operation)
             {
@@ -53,7 +53,7 @@ namespace Assets.Scripts.Services
 
         public static class MathUtilities
     {
-        public static int GCD(int a, int b)
+        private static int GCD(int a, int b)
         {
             while (b != 0)
             {

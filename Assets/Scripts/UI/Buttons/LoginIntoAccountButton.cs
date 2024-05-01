@@ -66,13 +66,12 @@ public class LoginIntoAccountButton : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Failed to log in. Username or password incorrect.");
+                Debug.LogError("Failed to log in. Username or password incorrect. No token aquired");
             }
 
 
 
             // await tcpClient.LoginIntoAccount(username.text, password.text);
-            Console.WriteLine("realName, username, email and password was filled");
             //tcpClient.ListenForServerMessages();
 
         }

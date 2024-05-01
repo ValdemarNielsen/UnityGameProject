@@ -38,10 +38,8 @@ public class CharacterHealth : MonoBehaviour
 
     public void CharacterDeath()
     {
-#if UNITY_EDITOR
+
         Destroy(character);
-#else
-        Destroy(character);
-#endif
+
     }
 }

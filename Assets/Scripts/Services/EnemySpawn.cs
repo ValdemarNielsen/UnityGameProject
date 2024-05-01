@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject[] enemies;
     [SerializeField] private int spawnRate;
 
 
@@ -11,9 +11,11 @@ public class EnemySpawn : MonoBehaviour
 
         int[] playerPosition = GameManager.GetPlayerPosition();
 
-        if (GetRandomPercentage() < spawnRate)
+        if (GetRandomPercentage() < spawnRate || GameManager.hasKilled[playerPosition[0], playerPosition[1]] == 1)
         {
+            foreach (var enemy in enemies) { 
             Destroy(enemy);
+            }
         }
     }
 

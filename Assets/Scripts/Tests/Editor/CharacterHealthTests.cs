@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
 
-namespace Assets.Scripts.Tests.Editor
+namespace GameProject.Tests
 {
     public class CharacterHealthTests
     {

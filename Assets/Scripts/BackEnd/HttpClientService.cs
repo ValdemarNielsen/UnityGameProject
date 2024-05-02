@@ -14,7 +14,7 @@ public class HttpClientService
         httpClient.BaseAddress = new Uri("http://localhost:5009"); // Replace with your API base URL
     }
 
-    // Example method to register a new user
+    // Method to register a new user
     public async Task<bool> RegisterAsync(CreateUserModel createUser)
     {
         var json = JsonSerializer.Serialize(createUser);
@@ -24,7 +24,7 @@ public class HttpClientService
         return response.IsSuccessStatusCode;
     }
 
-    // Example method to login
+    // Method to login
     public async Task<string> LoginAsync(LoginModel login)
     {
         var json = JsonSerializer.Serialize(login);

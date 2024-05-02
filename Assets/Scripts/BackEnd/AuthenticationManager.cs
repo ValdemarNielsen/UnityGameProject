@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 public class AuthenticationManager
 {
@@ -13,7 +12,7 @@ public class AuthenticationManager
 
     public async Task<string> LoginAsync(LoginModel login)
     {
-        // Call your login method to obtain the token
+        // Call our login method to obtain the token
         string token = await httpClientService.LoginAsync(login);
 
         if (!string.IsNullOrEmpty(token))

@@ -11,7 +11,7 @@ public class HttpClientService
     public HttpClientService()
     {
         httpClient = new HttpClient();
-        httpClient.BaseAddress = new Uri("http://localhost:5009"); // Replace with your API base URL
+        httpClient.BaseAddress = new Uri("http://localhost:5009"); // Replace with our API base URL
     }
 
     // Method to register a new user
@@ -43,10 +43,6 @@ public class HttpClientService
         }
     }
 }
-
-// Model classes
-// (same as before)
-
 
 // Model classes
 

@@ -45,8 +45,6 @@ namespace SceneManagement
             {
                 for (int j = 0; j < size; j++)
                 {
-                    // To see if we actually assign the rooms in the maze remove the comment below
-                   // Debug.Log("Assigning scenes to rooms in the maze");
                     Room room = maze.Rooms[i, j];
                     string layout = room.DirectionLetter;
                     string sceneName = GetSceneForLayout(layout);

@@ -8,13 +8,11 @@ public class PlayerMovement : MonoBehaviour
 {
     float moveSpeed = 5f;
     float jumpAmount = 6.5f;
-    // float climbSpeed = 3f;
     private bool isGrounded;
     private bool m_FacingRight = true;  // To know which way the player is currently facing.
     private Rigidbody2D rb;
     public Animator animator;
     private bool jump = false;
-    //   bool jump = false;
     private TCPClient tcpClient;
     private Player player;
     private PlayerMovement[] playerMovements;
@@ -69,8 +67,6 @@ public class PlayerMovement : MonoBehaviour
         // Apply movement
         rb.velocity = movement;
 
-        // jump = false;
-
         CheckGrounded();
         
         
@@ -93,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
         // Apply movement
         rb.velocity = movement;
 
-        // jump = false;
 
         CheckGrounded();
     }
@@ -107,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
         // Apply movement
         rb.velocity = movement;
 
-        // jump = false;
 
         CheckGrounded();
     }
@@ -128,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-           // Debug.Log("Went past the send statement of the horizontal movement action");
+           Debug.Log("Went past the send statement of the movement action");
         }
     }
 
@@ -207,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         case "E":
                             // Insert action of E
+                            // No action will be implemented for now.
                             break;
                         case "SPACE":
                             MultiplayerJump();

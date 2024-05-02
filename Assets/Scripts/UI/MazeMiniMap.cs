@@ -3,8 +3,6 @@
 namespace Assets.Scripts.UI
 {
 
-
-
     public class MazeMiniMap : MonoBehaviour
     {
         [SerializeField] GameObject gridPrefab;
@@ -16,9 +14,9 @@ namespace Assets.Scripts.UI
 
         private void Awake()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < GameManager.mazeSize; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < GameManager.mazeSize; j++)
                 {
                     // Calculate position with gap
                     float xPosition = 7 + j * (tileSize + gapSize); // Use j for x-coordinate (columns)
@@ -37,8 +35,5 @@ namespace Assets.Scripts.UI
                 }
             }
         }
-
-
-
     }
 }

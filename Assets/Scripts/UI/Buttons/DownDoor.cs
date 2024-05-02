@@ -71,10 +71,10 @@ public class DownDoor : MonoBehaviour
         }
     }
 
-    // Method to check if the player is close enough to the chest.
+    // Method to check if the player is close enough to the item.
     bool IsPlayerCloseEnough()
     {
-        // Calculate the distance between the player and the chest.
+        // Calculate the distance between the player and the item.
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
         // Return true if the distance is less than or equal to the interaction distance.

@@ -1,4 +1,3 @@
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement; // reference to our playermovement script.
     private PlayerMeleeAttack playerAttack;
     public string PlayerId { get; set; }
-    // Find all player objects. This could be optimized if you have a list or dictionary.
+    // Find all player objects. This could be optimized if we have a list or dictionary.
     PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
 
     void Start()
@@ -62,6 +61,7 @@ public class PlayerController : MonoBehaviour
                     {
                         case "E":
                             // Insert action of E
+                            // will not be implemented for now.
                             break;
                         case "SPACE":
                             playerMovement.MultiplayerJump();

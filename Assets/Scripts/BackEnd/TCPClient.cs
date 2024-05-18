@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Text;
 using UnityEngine.SceneManagement;
 using Unity.Plastic.Newtonsoft.Json;
+using System.Linq;
 
 
 
@@ -20,7 +21,7 @@ public class TCPClient : MonoBehaviour
 
 
 
-    public int port = 13000;
+    public int port = 5010;
     public string hostAdress = "127.0.0.1";
 
     private void Awake()
@@ -39,9 +40,7 @@ public class TCPClient : MonoBehaviour
             client = new TcpClient(hostAdress, port);
             stream = client.GetStream();
             ListenForServerMessages();
-            await client.ConnectAsync(hostAdress, port);
-            
-            Debug.Log("Connected to the server.");
+            await client.ConnectAsync(hostAdress, port);            
             
         }
         catch (System.Exception e)
@@ -61,6 +60,45 @@ public class TCPClient : MonoBehaviour
         return playerId;
     }
 
+    public async Task SendTokenForValidation(string token)
+    {
+        if (client != null && stream != null)
+        {
+
+            try
+            {
+
+                string cleanedToken = new string(token.Where(char.IsLetterOrDigit).ToArray());
+
+                // Send token to the server
+                string message = cleanedToken;
+                byte[] dataToSend = Encoding.UTF8.GetBytes(message);
+                await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
+
+                // Read server's response
+                byte[] receivedBytes = new byte[1024]; // Adjust buffer size as needed
+                int bytesRead = await stream.ReadAsync(receivedBytes, 0, receivedBytes.Length);
+                string receivedData = Encoding.UTF8.GetString(receivedBytes, 0, bytesRead);
+                Debug.Log("TRYING TO SEND TOKEN FOR VALIDATION TEST STEP 1");
+
+                Debug.Log("Received from server: " + receivedData);
+                Debug.Log("TRYING TO SEND TOKEN FOR VALIDATION STEP TEST STEP 2");
+
+                string[] dataParts = receivedData.Split(':');
+                if (dataParts[0] == "playerID")
+                {
+                    GameManager.localPlayerId = dataParts[1];
+                    Debug.Log("THIS IS OUT LOCAL PLAYER ID FROM SERVER: " + GameManager.localPlayerId);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Error in CreateLobby: " + ex.Message);
+            }
+        }
+    }
+
     // Method to create a lobby
     public async Task CreateLobby(string playerName, string lobbyName)
     {
@@ -68,11 +106,7 @@ public class TCPClient : MonoBehaviour
         {
             try
             {
-                // Ensure there's a player ID generated and assigned.
-                if (GameManager.localPlayerId == null)
-                {
-                    GameManager.localPlayerId = GeneratePlayerId();
-                }
+                
                 // Send "CREATE" message to the server
                 string message = $"CREATE,{GameManager.localPlayerId},{playerName},{lobbyName}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
@@ -97,11 +131,7 @@ public class TCPClient : MonoBehaviour
         {
             try
             {
-                // Ensure there's a player ID generated and assigned.
-                if (GameManager.localPlayerId == null)
-                {
-                    GameManager.localPlayerId = GeneratePlayerId();
-                }
+               
                 // Send "CREATE" message to the server
                 string message = $"LOGIN,{username},{password}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
@@ -126,11 +156,7 @@ public class TCPClient : MonoBehaviour
         {
             try
             {
-                // Ensure there's a player ID generated and assigned.
-                if (GameManager.localPlayerId == null)
-                {
-                    GameManager.localPlayerId = GeneratePlayerId();
-                }
+                
                 // Send "REGISTER" message to the server
                 string message = $"REGISTER,,{realName},{email},{username},{password}";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(message);
@@ -141,6 +167,16 @@ public class TCPClient : MonoBehaviour
                 int bytesRead = await stream.ReadAsync(receivedBytes, 0, receivedBytes.Length);
                 string receivedData = Encoding.UTF8.GetString(receivedBytes, 0, bytesRead);
                 Debug.Log("Received from server: " + receivedData);
+                string[] dataParts = receivedData.Split(':');
+                if (dataParts[0] == "playerID")
+                if (GameManager.localPlayerId == null)
+                    {
+                        {
+                            GameManager.localPlayerId = dataParts[1];
+                            Debug.Log(GameManager.localPlayerId);
+                        }
+                    }
+                
             }
             catch (Exception ex)
             {
@@ -154,13 +190,8 @@ public class TCPClient : MonoBehaviour
         if (client != null && stream != null)
         {
             try
-            {              
-                // Ensure there's a player ID generated and assigned.
-                if (GameManager.localPlayerId == null)
-                {
-                    GameManager.localPlayerId = GeneratePlayerId();
-                }
-
+            {            
+                
                 string joinMessage = $"JOIN,{GameManager.localPlayerId},Henrik";
                 byte[] dataToSend = Encoding.UTF8.GetBytes(joinMessage);
                 await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
@@ -182,10 +213,6 @@ public class TCPClient : MonoBehaviour
             try
             {
 
-                if (GameManager.localPlayerId == null)
-                {
-                    GameManager.localPlayerId = GeneratePlayerId();
-                }
 
                 SceneManager.LoadScene("LobbyBrowse");
                 string BrowseLobbiesMessage = $"LIST_LOBBIES";
@@ -247,6 +274,11 @@ public class TCPClient : MonoBehaviour
                         SpawnPlayer(dataParts[1]);
                         Debug.Log("a spawn player signal has been detected.");
                     }
+                    if (dataParts[0] == "REMOVE_PLAYER")
+                    {
+                        RemovePlayer(dataParts[1]);
+                        Debug.Log("a remove player signal has been detected.");
+                    }
                     if (dataParts[0] == "MOVEMENT")
                     {
                         await playerMovement.ExecuteCommandFromServer(dataParts[1], dataParts[2]);
@@ -282,13 +314,34 @@ public class TCPClient : MonoBehaviour
         }        
     }
 
+    public void RemovePlayer(string playerId)
+    {
+        Debug.Log("RemovePlayer request received for player ID: " + playerId);
+
+        // Find all PlayerMovement components in the scene
+        PlayerMovement[] allPlayers = FindObjectsOfType<PlayerMovement>();
+
+        // Iterate through all PlayerMovement components to find the one with the matching PlayerId
+        foreach (PlayerMovement player in allPlayers)
+        {
+            if (player.PlayerId == playerId)
+            {
+                // Log the removal
+                Debug.Log("Removing player with ID: " + playerId);
+
+                // Destroy the player's GameObject
+                Destroy(player.gameObject);
+                return;
+            }
+        }
+
+        // Log if the player was not found
+        Debug.Log("Player with ID " + playerId + " not found.");
+    }
+
 
     public async Task SendPlayerActionAsync(string actionType, string action, string playerId, string jsonData)
-    {
-        if (GameManager.localPlayerId == null)
-        {
-            GameManager.localPlayerId = GeneratePlayerId();
-        }
+    {        
         if (client != null && stream != null)
         {
             try
@@ -296,7 +349,7 @@ public class TCPClient : MonoBehaviour
                 var dataObject = new
                 {
                     Command = actionType,
-                    Key = action,
+                    Input = action,
                     PlayerId = GameManager.localPlayerId,
                     Data = JsonConvert.DeserializeObject(jsonData)  // Assuming jsonData is a valid JSON string
                 };

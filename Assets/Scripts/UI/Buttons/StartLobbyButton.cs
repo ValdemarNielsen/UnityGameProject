@@ -34,10 +34,7 @@ public class StartLobbyButton : MonoBehaviour
             await tcpClient.CreateLobby(playerName.text, lobbyName.text);
             Console.WriteLine("Playername and lobbyname was filled");
             //tcpClient.ListenForServerMessages();
-            if (GameManager.localPlayerId == null)
-            {
-                GameManager.localPlayerId = tcpClient.GeneratePlayerId();
-            }
+            
             SceneManager.LoadScene("MultiplayerLobby");
 
         }

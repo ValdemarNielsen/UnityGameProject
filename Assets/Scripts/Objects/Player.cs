@@ -11,7 +11,7 @@ namespace GameProject.Models
         private int attack;
         private int hp;
         private int movementSpeed;
-        
+        public int playerID;
         private Vector2 pos;
 
         // Properties

@@ -120,10 +120,7 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(SendMoveCommand("MOVEMENT","SPACE"));
         }
-        else
-        {
-           Debug.Log("Went past the send statement of the movement action");
-        }
+        
     }
 
     public void MultiplayerJump()

@@ -2713,7 +2713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 3163845}
   spawnPoint: {x: 0, y: 0, z: 0}
-  port: 13000
+  port: 5010
   hostAdress: 127.0.0.1
 --- !u!4 &2048338930
 Transform:

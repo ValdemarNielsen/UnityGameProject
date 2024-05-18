@@ -22,10 +22,7 @@ namespace Assets.Scripts.UI.Buttons
 
         public async void TaskOnClick()
         {
-            if (GameManager.localPlayerId == null)
-            {
-                GameManager.localPlayerId = tcpClient.GeneratePlayerId();
-            }
+            
             if (tcpClient.playerPrefab == null)
             {
                 Debug.LogError("Player prefab is not assigned.");

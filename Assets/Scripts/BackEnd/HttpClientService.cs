@@ -3,6 +3,17 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine;
+using System.Net;
+using PlasticGui.Configuration.CloudEdition.Welcome;
+
 
 public class HttpClientService
 {
@@ -41,7 +52,8 @@ public class HttpClientService
         {
             return null;
         }
-    }
+    }    
+       
 }
 
 // Model classes
@@ -64,3 +76,5 @@ public class LoginResponse
 {
     public string Token { get; set; }
 }
+
+

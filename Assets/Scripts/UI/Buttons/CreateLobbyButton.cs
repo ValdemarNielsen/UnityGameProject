@@ -22,11 +22,7 @@ namespace Assets.Scripts.UI.Buttons
         {
             //await tcpClient.CreateLobby();
             Debug.Log("You have clicked the CreateLobbyButton!");
-            //tcpClient.ListenForServerMessages();
-            if (GameManager.localPlayerId == null)
-            {
-                GameManager.localPlayerId = tcpClient.GeneratePlayerId();
-            }
+            //tcpClient.ListenForServerMessages();            
             SceneManager.LoadScene("CreateLobby");
             
         }

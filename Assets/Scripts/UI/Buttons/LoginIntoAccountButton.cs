@@ -42,10 +42,7 @@ public class LoginIntoAccountButton : MonoBehaviour
 
         if (username.text.Length != 0 && password.text.Length != 0)
         {
-            if (GameManager.localPlayerId == null)
-            {
-                GameManager.localPlayerId = tcpClient.GeneratePlayerId();
-            }
+            
             LoginModel login = new LoginModel
             {
                 Username = username.text,
@@ -58,11 +55,13 @@ public class LoginIntoAccountButton : MonoBehaviour
 
             if (!string.IsNullOrEmpty(token))
             {
+                GameManager.token = token;
                 Debug.Log("Login successful!");
+                await tcpClient.SendTokenForValidation(token);
+
                 // Save the token or handle authentication as needed
                 // 
                 SceneManager.LoadScene("InitialLobbyScene");
-
             }
             else
             {

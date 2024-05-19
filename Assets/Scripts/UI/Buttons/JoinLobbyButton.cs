@@ -22,15 +22,10 @@ namespace Assets.Scripts.UI.Buttons
 
         public async void TaskOnClick()
         {
-            
-            if (tcpClient.playerPrefab == null)
-            {
-                Debug.LogError("Player prefab is not assigned.");
-                return;
-            }
+                      
             tcpClient.JoinLobby();
             Debug.Log("You have clicked the button!");
-            SceneManager.LoadScene("MutiplayerLobby");
+           // SceneManager.LoadScene("MultiplayerLobby");
             //tcpClient.ListenForServerMessages();
             
         }

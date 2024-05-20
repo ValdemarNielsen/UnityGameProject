@@ -10,6 +10,7 @@ namespace Assets.Scripts.UI.Buttons
 
 
     {
+        [SerializeField] InputField lobbyName;
         private TCPClient tcpClient;
         private Button joinLobby;
 
@@ -22,9 +23,16 @@ namespace Assets.Scripts.UI.Buttons
 
         public async void TaskOnClick()
         {
-                      
-            tcpClient.JoinLobby();
-            Debug.Log("You have clicked the button!");
+            if(lobbyName.text.Length != 0)
+            {
+                await tcpClient.JoinLobby(GameManager.localPlayerId, lobbyName.text);
+                Debug.Log("You have clicked the button!");
+            } 
+            else
+            {
+                Debug.Log("YOU HAVE TO ENTER A LOBBYNAME!!!");
+            }
+            
            // SceneManager.LoadScene("MultiplayerLobby");
             //tcpClient.ListenForServerMessages();
             

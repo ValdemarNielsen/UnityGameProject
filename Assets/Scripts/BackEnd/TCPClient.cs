@@ -23,8 +23,8 @@ public class TCPClient : MonoBehaviour
 
 
 
-    public int port = 5010;
-    public string hostAdress = "127.0.0.1";
+    public int port = 10302;
+    public string hostAdress = "130.225.170.52";
 
     private void Awake()
     {

@@ -36,7 +36,7 @@ public class TCPClient : MonoBehaviour
     private async void Start()
     {
         
-        Debug.Log("we got into start");
+      //  Debug.Log("we got into start");
         try
         {
             client = new TcpClient(hostAdress, port);
@@ -69,7 +69,6 @@ public class TCPClient : MonoBehaviour
 
             try
             {
-                Debug.Log("THIS IS THE PRE CLEANED TOKEN: " + token);
                 
                // string cleanedToken = token.Replace("\"", "");
                // Console.WriteLine("Cleaned Token: " + cleanedToken);
@@ -77,7 +76,6 @@ public class TCPClient : MonoBehaviour
                 var jsonDocument = JsonDocument.Parse(token);
                 // Extract the token value
                 string cleanedToken = jsonDocument.RootElement.GetProperty("token").GetString();
-                Debug.Log("THIS IS THE AFTER CLEANED TOKEN: " + cleanedToken);
 
                 // Send token to the server
                 string message = cleanedToken;
@@ -209,7 +207,7 @@ public class TCPClient : MonoBehaviour
                // byte[] dataToSend = Encoding.UTF8.GetBytes(joinMessage);
                // await stream.WriteAsync(dataToSend, 0, dataToSend.Length);
 
-                Debug.Log("'JOIN'Lobby message sent to server.");
+                Debug.Log("JOIN Lobby message sent to server.");
             }
             catch (Exception ex)
             {
@@ -267,6 +265,7 @@ public class TCPClient : MonoBehaviour
                 {
                     // Deserialize the JSON data directly into an array of Lobby objects
                     Lobby[] lobbies = System.Text.Json.JsonSerializer.Deserialize<Lobby[]>(receivedData);
+                    Debug.Log("Lobbies length: " + lobbies.Length);
                     if (lobbies != null && lobbies.Length > 0)
                     {
                         Debug.Log($"Total lobbies received: {lobbies.Length}");
@@ -287,16 +286,19 @@ public class TCPClient : MonoBehaviour
                     string[] dataParts = receivedData.Split(',');
                     if (dataParts[0] == "SPAWN_PLAYER")
                     {
+                        Debug.Log("in spawn player listn for server messages case");
                         SpawnPlayer(dataParts[1]);
                         Debug.Log("a spawn player signal has been detected.");
                     }
                     if (dataParts[0] == "REMOVE_PLAYER")
                     {
+                        Debug.Log("in remove player listn for server messages case");
                         RemovePlayer(dataParts[1]);
                         Debug.Log("a remove player signal has been detected.");
                     }
                     if (dataParts[0] == "MOVEMENT")
                     {
+                        Debug.Log("in movement listn for server messages case");
                         await playerMovement.ExecuteCommandFromServer(dataParts[1], dataParts[2]);
                     }
                 }

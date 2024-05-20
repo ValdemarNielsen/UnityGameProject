@@ -26,7 +26,7 @@ namespace Assets.Scripts.UI.Buttons
             if(lobbyName.text.Length != 0)
             {
                 await tcpClient.JoinLobby(GameManager.localPlayerId, lobbyName.text);
-                Debug.Log("You have clicked the button!");
+              //  Debug.Log("You have clicked the button!");
             } 
             else
             {
